@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "ts-compile-check": "tsc -p tsconfig.json --noEmit --skipLibCheck"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -17,15 +18,23 @@
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
-    "@types/jest": "^25.2.3",
+    "@types/jest": "^26.0.15",
     "@types/react-native": "^0.63.2",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^25.1.0",
-    "eslint": "^6.5.1",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react-native": "^3.10.0",
+    "husky": "^4.3.0",
     "jest": "^25.1.0",
+    "lint-staged": "^10.5.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "prettier": "^2.1.2",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
@@ -38,6 +47,16 @@
       "jsx",
       "json",
       "node"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run ts-compile-check && yarn lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
     ]
   }
 }

@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {FC} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -26,9 +26,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-declare const global: {HermesInternal: null | {}};
+declare const global: {
+  HermesInternal: null | {};
+};
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -46,8 +48,8 @@ const App = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                screen and then come back to see your edits.
+                Edit <Text style={styles.highlight}>App.tsx</Text> to change
+                this screen and then come back to see your edits.
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -92,15 +94,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionTitle: {
+    color: Colors.black,
     fontSize: 24,
     fontWeight: '600',
-    color: Colors.black,
   },
   sectionDescription: {
-    marginTop: 8,
+    color: Colors.dark,
     fontSize: 18,
     fontWeight: '400',
-    color: Colors.dark,
+    marginTop: 8,
   },
   highlight: {
     fontWeight: '700',
