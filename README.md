@@ -18,10 +18,10 @@ React Native boilerplate with mostly used features.
  - TS template :white_check_mark:
  - ESlint and Prettier integration :white_check_mark:
  - Pre-commit hook with eslint and TS compiling checks :white_check_mark:
+ - React navigation: bottoms tabs and nested stack navigators with TS support :white_check_mark:
+ - RN vector icons :white_check_mark:
 
 ## To do features:
-- React navigation: bottoms tabs and nested stack navigators with TS support;
-- Connect RN vector icons font;
 - Integrate RN svg;
 - Predefined commands on package.json for dependencies instalment
 - App localization: i18next with en and [es?] languages;
