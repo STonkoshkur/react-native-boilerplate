@@ -20,9 +20,9 @@ React Native boilerplate with mostly used features.
  - Pre-commit hook with eslint and TS compiling checks :white_check_mark:
  - React navigation: bottoms tabs and nested stack navigators with TS support :white_check_mark:
  - RN vector icons :white_check_mark:
+ - SVG support ([react-native-svg](https://github.com/react-native-svg/react-native-svg), [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer)) :white_check_mark:
 
 ## To do features:
-- Integrate RN svg;
 - Predefined commands on package.json for dependencies instalment
 - App localization: i18next with en and [es?] languages;
 - Style theming with dark-mode support (depends on device day / night mode);
