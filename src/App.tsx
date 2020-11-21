@@ -9,12 +9,15 @@
  */
 
 import React, { FC } from 'react';
+import { AppearanceProvider } from 'react-native-appearance';
 import { AppNavigationContainer } from './navigation';
 
 const App: FC = () => {
   return (
     <>
-      <AppNavigationContainer />
+      <AppearanceProvider>
+        <AppNavigationContainer />
+      </AppearanceProvider>
     </>
   );
 };

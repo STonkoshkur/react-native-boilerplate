@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
 import { Text, StyleSheet, SafeAreaView, Button } from 'react-native';
-// navigation
+// Navigation
 import { StackScreenProps } from '@react-navigation/stack';
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
+// Styling
+import { useThemeSchema } from 'src/hooks/useThemeShema';
 
 type TmpIndexScreenProps = StackScreenProps<
   RootNavigationStackParamsList,
@@ -10,16 +12,18 @@ type TmpIndexScreenProps = StackScreenProps<
 >;
 
 const TmpIndexScreen: FC<TmpIndexScreenProps> = ({ navigation, route }) => {
+  const { colors } = useThemeSchema();
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Example Index Screen</Text>
+      <Text style={{ color: colors.text }}>Example Index Screen</Text>
       <Button
         title="Show nested screen"
-        onPress={() =>
+        onPress={(): void => {
           navigation.push(Routes.ExampleStackChild, {
             payload: `Opened from ${route.name as string}`,
-          })
-        }
+          });
+        }}
       />
     </SafeAreaView>
   );
