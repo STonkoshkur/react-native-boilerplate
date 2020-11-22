@@ -22,11 +22,11 @@ React Native boilerplate with mostly used features.
  - RN vector icons :white_check_mark:
  - SVG support ([react-native-svg](https://github.com/react-native-svg/react-native-svg), [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer)) :white_check_mark:
  - Style theming with dark-mode support based on system theme settings ([reactnavigation themes](https://reactnavigation.org/docs/themes), [react-native-appearance](https://github.com/expo/react-native-appearance)) :white_check_mark:
+ - Multi-language localization ([i18next](https://www.i18next.com), [react-native-localize](https://github.com/zoontek/react-native-localize)). Add english and spanish translations :white_check_mark:
 
 
 ## To do features:
 - Predefined commands on package.json for dependencies instalment
-- App localization: i18next with en and [es?] languages;
 - Formik or Hook-forms integration with TS types and validation examples;
 - Auth flow: sign in, sign up, reset password, auth loading screen for navigation, log out;
 - Social in-app auth (Google, FB, Twitter, Apple);
@@ -107,7 +107,7 @@ To start not-default simulator, add `--simulator=[simulator name]` flag.
 For example:
 
 ```bash
-yarn ios --simulator="iPhone 11 Pro"
+yarn ios --simulator="iPhone 12 Pro"
 ```
 
 Shake your real device to open development menu. Use `CMD+D` or `CMD+CTRL+Z` to open menu on simulator.
