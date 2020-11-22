@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 // navigation
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
-import ExmapleStackNavigator from '../ExampleStack';
+import ExmapleStackNavigator from 'src/navigation/navigators/ExampleStack';
 // localization
 import { useTranslation } from 'react-i18next';
 

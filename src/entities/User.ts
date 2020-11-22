@@ -1,6 +1,6 @@
-import { FileEntity } from './FileEntity';
-import { Role } from './Role';
-import { Status } from './Status';
+import { FileEntity } from 'src/entities/FileEntity';
+import { Role } from 'src/entities/Role';
+import { Status } from 'src/entities/Status';
 
 export type User = {
   id: number;

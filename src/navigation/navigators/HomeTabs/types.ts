@@ -1,4 +1,4 @@
-import Routes from '../../routes';
+import Routes from 'src/navigation/routes';
 
 type TabNavigationParams = undefined;
 
