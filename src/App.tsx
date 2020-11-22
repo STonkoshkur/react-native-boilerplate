@@ -10,6 +10,7 @@
 
 import React, { FC } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import { AppearanceProvider } from 'react-native-appearance';
 import { AppNavigationContainer } from './navigation';
 import i18n from './services/localization';
 
@@ -17,7 +18,9 @@ const App: FC = () => {
   return (
     <>
       <I18nextProvider i18n={i18n}>
-        <AppNavigationContainer />
+        <AppearanceProvider>
+          <AppNavigationContainer />
+        </AppearanceProvider>
       </I18nextProvider>
     </>
   );
