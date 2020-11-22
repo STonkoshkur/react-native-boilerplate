@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // navigation
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
 import ExmapleStackNavigator from '../ExampleStack';
+// localization
+import { useTranslation } from 'react-i18next';
 
 /*
  * Bottom Tabs navigator
@@ -13,6 +15,8 @@ import ExmapleStackNavigator from '../ExampleStack';
 const Tab = createBottomTabNavigator<RootNavigationStackParamsList>();
 
 const HomeTabsNavigator: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -22,6 +26,7 @@ const HomeTabsNavigator: FC = () => {
           tabBarIcon: ({ focused, ...props }): ReactNode => (
             <Icon name={focused ? 'home' : 'home-outline'} {...props} />
           ),
+          tabBarLabel: t('common:home'),
         }}
       />
       <Tab.Screen
@@ -31,6 +36,7 @@ const HomeTabsNavigator: FC = () => {
           tabBarIcon: ({ focused, ...props }): ReactNode => (
             <Icon name={focused ? 'planet' : 'planet-outline'} {...props} />
           ),
+          tabBarLabel: 'WoW',
         }}
       />
       <Tab.Screen
@@ -40,6 +46,7 @@ const HomeTabsNavigator: FC = () => {
           tabBarIcon: ({ focused, ...props }): ReactNode => (
             <Icon name={focused ? 'settings' : 'settings-outline'} {...props} />
           ),
+          tabBarLabel: t('common:settings'),
         }}
       />
     </Tab.Navigator>
