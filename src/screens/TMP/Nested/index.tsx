@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
 import { Text, StyleSheet, SafeAreaView, Button } from 'react-native';
-// navigation
+// Navigation
 import { StackScreenProps } from '@react-navigation/stack';
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
+// Assets
 import DetailsInfoIcon from 'src/assets/vector/DetailsInfo';
+// Styling
+import { useThemeSchema } from 'src/hooks/useThemeShema';
 
 type TmpNestedScreenProps = StackScreenProps<
   RootNavigationStackParamsList,
@@ -11,14 +14,21 @@ type TmpNestedScreenProps = StackScreenProps<
 >;
 
 const TmpNestedScreen: FC<TmpNestedScreenProps> = ({ navigation, route }) => {
+  const { colors } = useThemeSchema();
+
   return (
     <SafeAreaView style={styles.container}>
-      <DetailsInfoIcon color="#8E8E93" size={80} />
+      <DetailsInfoIcon color={colors.primary} size={80} />
 
-      <Text style={styles.title}>Nested Screen</Text>
-      <Text>{route.params.payload}</Text>
+      <Text style={[styles.title, { color: colors.text }]}>Nested Screen</Text>
+      <Text style={{ color: colors.text }}>{route.params.payload}</Text>
 
-      <Button title="Go back" onPress={navigation.goBack} />
+      <Button
+        title="Go back"
+        onPress={(): void => {
+          navigation.goBack();
+        }}
+      />
     </SafeAreaView>
   );
 };

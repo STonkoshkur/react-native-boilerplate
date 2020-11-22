@@ -194,7 +194,6 @@
 				7E7C9D8C8131BED0E37F557D /* Pods-ReactNativeBoilerplate-tvOSTests.debug.xcconfig */,
 				DCD9129BC2ECF061D7A1DC49 /* Pods-ReactNativeBoilerplate-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -313,6 +312,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
