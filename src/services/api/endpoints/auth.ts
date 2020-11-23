@@ -7,7 +7,7 @@ import {
   AuthSocialSignInDto,
   AuthRegistrationDto,
   AuthForgotPasswordDto,
-} from 'src/dtos/Auth';
+} from 'src/services/api/dtos/Auth';
 // entities
 import { User } from 'src/entities/User';
 

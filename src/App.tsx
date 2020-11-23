@@ -18,15 +18,13 @@ import i18n from './services/localization';
 
 const App: FC = () => {
   return (
-    <>
-      <StoreProvider store={store}>
-        <I18nextProvider i18n={i18n}>
-          <AppearanceProvider>
-            <AppNavigationContainer />
-          </AppearanceProvider>
-        </I18nextProvider>
-      </StoreProvider>
-    </>
+    <StoreProvider store={store}>
+      <I18nextProvider i18n={i18n}>
+        <AppearanceProvider>
+          <AppNavigationContainer />
+        </AppearanceProvider>
+      </I18nextProvider>
+    </StoreProvider>
   );
 };
 

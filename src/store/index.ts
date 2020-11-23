@@ -1,7 +1,6 @@
 // redux
 import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 // root reducer
 import rootReducer from 'src/store/rootReducer';
 // services
@@ -11,7 +10,6 @@ export const persistConfig = {
   key: 'persist-data',
   keyPrefix: 'persist-data-prefix-',
   storage: AsyncStorage,
-  stateReconciler: autoMergeLevel2,
 };
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -25,6 +23,7 @@ export const store = configureStore({
       serializableCheck: false,
     }),
   ],
+  // TODO: add flipper redux middleware
   devTools: !!__DEV__,
 });
 

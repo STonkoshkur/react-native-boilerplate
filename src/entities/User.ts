@@ -5,7 +5,6 @@ import { Status } from 'src/entities/Status';
 export type User = {
   id: number;
   email: string | null;
-  password?: string;
   provider: string;
   socialId?: string | null;
   firstName: string | null;

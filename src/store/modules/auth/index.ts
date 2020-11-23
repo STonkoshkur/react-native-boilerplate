@@ -3,20 +3,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 // entities
 import { User } from 'src/entities/User';
 // dtos
-import { Token } from 'src/dtos/Auth';
+import { Token } from 'src/services/api/dtos/Auth';
 
 type AuthSliceState = {
   token: Token | null;
   user: User | null;
 };
 
+const initialState: AuthSliceState = { token: null, user: null };
+
 // slice
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    token: null,
-    user: null,
-  } as AuthSliceState,
+  initialState,
   reducers: {
     updateAuthUser(state, { payload }: PayloadAction<User>): void {
       state.user = payload;
