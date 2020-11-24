@@ -4,4 +4,8 @@ export default {
     home: 'Home',
     settings: 'Settings',
   },
+  errors: {
+    serverError: 'Server Error',
+    statusCode: 'Status code: {{code}}',
+  },
 } as const;

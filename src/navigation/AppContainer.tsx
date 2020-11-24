@@ -2,7 +2,7 @@ import React, { FC, useMemo } from 'react';
 import { StatusBar, Platform } from 'react-native';
 // Navigation
 import { NavigationContainer } from '@react-navigation/native';
-import HomeNavigator from './navigators/HomeTabs';
+import HomeNavigator from 'src/navigation/navigators/HomeTabs';
 // Styling
 import { useColorScheme } from 'react-native-appearance';
 import { darkTheme, lightTheme } from 'src/styles';
