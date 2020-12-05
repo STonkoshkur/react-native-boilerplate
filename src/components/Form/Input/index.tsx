@@ -9,7 +9,7 @@ import {
 // styling
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 
-type InputProps = TextInputProps & {
+export type InputProps = TextInputProps & {
   label: string;
   error?: string;
 };
