@@ -11,13 +11,15 @@ import {
  * But any custom color properties can be defined here
  * and used in UI via useThemeSchema hook.
  *
- * React navigation thems doc: https://reactnavigation.org/docs/themes/
+ * React navigation themes doc: https://reactnavigation.org/docs/themes/
  */
 
 // types
 
 type ThemeSchemaColors = NavigationTheme['colors'] & {
   // Custom color properties can be defined here
+  error: string;
+  input: string;
 };
 
 export type ThemeSchema = {
@@ -31,6 +33,9 @@ export const darkTheme: ThemeSchema = {
   dark: true,
   colors: {
     ...DarkTheme.colors,
+    error: '#ff0000',
+    input: '#444444',
+    background: '#121212',
   },
 };
 
@@ -38,5 +43,8 @@ export const lightTheme: ThemeSchema = {
   dark: false,
   colors: {
     ...DefaultTheme.colors,
+    error: '#ff0000',
+    input: '#ffffff',
+    background: '#ffffff',
   },
 };
