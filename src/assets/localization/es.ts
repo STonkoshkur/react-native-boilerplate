@@ -7,6 +7,7 @@ export default {
     password: 'Contraseña',
     signIn: 'Registrarse',
     signUp: 'Regístrate',
+    logout: 'Cerrar sesión',
     firstName: 'Nombre de pila',
     lastName: 'Apellido',
   },

@@ -40,7 +40,7 @@ const TmpIndexScreen: FC<TmpIndexScreenProps> = ({ navigation, route }) => {
           });
         }}
       />
-      <Button title="Logout" onPress={onLogout} />
+      <Button title={t('common:logout')} onPress={onLogout} />
     </SafeAreaView>
   );
 };
