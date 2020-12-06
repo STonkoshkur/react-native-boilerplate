@@ -12,7 +12,7 @@ export const schemaValidation = yup.object().shape({
     .required(i18n.t('validation:required'))
     .min(
       6,
-      i18n.t('validation:min', {
+      i18n.t('validation:minString', {
         value: 6,
       }),
     ),

@@ -17,7 +17,7 @@ export default {
   },
   validation: {
     required: 'Field is required',
-    min: 'Must be at least {{value}} characters',
+    minString: 'Must be at least {{value}} characters',
     invalidEmail: 'Must be a valid email',
     emailNotExists: 'User with this email not found',
     incorrectPassword: 'Wrong password',
