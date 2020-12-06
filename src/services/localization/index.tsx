@@ -23,7 +23,6 @@ const fallbackLocale: keyof typeof localizationResources = 'en'; // Default fall
 const languageDetector = {
   type: 'languageDetector' as const,
   //   async: true,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   init: (): void => {}, // required property
   detect: (): string => {
     /*
@@ -37,7 +36,6 @@ const languageDetector = {
 
     return locale?.languageTag ?? fallbackLocale;
   },
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   cacheUserLanguage: (): void => {}, // required property
 };
 
