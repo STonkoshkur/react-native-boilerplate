@@ -13,6 +13,8 @@ import { updateAuthToken } from 'src/store/modules/auth';
 import SignUpForm from './components/form/SignUpForm';
 // services
 import transformErrors from 'src/services/utils/transformErrors';
+// styling
+import { useThemeSchema } from 'src/hooks/useThemeShema';
 // types
 import { AuthRegistrationDto } from 'src/services/api/dtos/Auth';
 
@@ -22,6 +24,7 @@ type SignInScreenProps = StackScreenProps<
 >;
 
 const SignInScreen: FC<SignInScreenProps> = () => {
+  const { colors } = useThemeSchema();
   const dispatch = useDispatch();
 
   const onSubmit = useCallback(
@@ -45,7 +48,7 @@ const SignInScreen: FC<SignInScreenProps> = () => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
       <ScrollView>
         <SignUpForm onSubmit={onSubmit} />
       </ScrollView>

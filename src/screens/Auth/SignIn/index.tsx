@@ -16,6 +16,8 @@ import SignInForm from './components/form/SignInForm';
 import Button, { ButtonTypes } from 'src/components/Button';
 // services
 import transformErrors from 'src/services/utils/transformErrors';
+// styling
+import { useThemeSchema } from 'src/hooks/useThemeShema';
 // types
 import { AuthEmailSignInDto } from 'src/services/api/dtos/Auth';
 
@@ -25,6 +27,7 @@ type SignInScreenProps = StackScreenProps<
 >;
 
 const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
+  const { colors } = useThemeSchema();
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -52,7 +55,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
       <ScrollView>
         <SignInForm onSubmit={onSubmit} />
         <Button

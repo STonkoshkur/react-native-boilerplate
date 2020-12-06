@@ -35,7 +35,6 @@ export const darkTheme: ThemeSchema = {
     ...DarkTheme.colors,
     error: '#ff0000',
     input: '#444444',
-    background: '#121212',
   },
 };
 
@@ -45,6 +44,5 @@ export const lightTheme: ThemeSchema = {
     ...DefaultTheme.colors,
     error: '#ff0000',
     input: '#ffffff',
-    background: '#ffffff',
   },
 };
