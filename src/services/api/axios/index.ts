@@ -25,9 +25,9 @@ const axiosInstance = axios.create({
 
 /* request interceptor */
 axiosInstance.interceptors.request.use(
-  async (config): Promise<AxiosRequestConfig> => {
+  (config): AxiosRequestConfig => {
     if (handlerEnabled(config)) {
-      const authToken = await getAuthToken();
+      const authToken = getAuthToken();
 
       config.headers.authorization = `Bearer ${authToken || ''}`;
     }

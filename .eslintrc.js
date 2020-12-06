@@ -34,59 +34,60 @@ module.exports = {
         extensions: ['.js', '.ts', '.jsx', '.tsx'],
       },
     ],
-    "react/jsx-max-props-per-line": [
+    'react/jsx-max-props-per-line': [
       1,
       {
-        "maximum": 1,
-        "when": "multiline"
-      }
+        maximum: 1,
+        when: 'multiline',
+      },
     ],
     // typescript
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
-    '@typescript-eslint/no-empty-function' : 1,
+    '@typescript-eslint/no-empty-function': 1,
+    '@typescript-eslint/no-empty-function': 'off',
 
     // naming
-    'camelcase': 'off',
+    camelcase: 'off',
     '@typescript-eslint/naming-convention': [
       'error',
       {
-        'selector': 'function',
-        'format': ['camelCase', 'PascalCase'],
+        selector: 'function',
+        format: ['camelCase', 'PascalCase'],
       },
       {
-        'selector': 'variable',
-        'types': ['function'],
-        'format': ['camelCase', 'PascalCase'],
+        selector: 'variable',
+        types: ['function'],
+        format: ['camelCase', 'PascalCase'],
       },
       {
-        'selector': 'variable',
-        'format': ['camelCase', 'UPPER_CASE', 'PascalCase'],
-        'leadingUnderscore': 'forbid',
-        'trailingUnderscore': 'forbid',
+        selector: 'variable',
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+        leadingUnderscore: 'forbid',
+        trailingUnderscore: 'forbid',
       },
       {
-        'selector': 'variable',
-        'types': ['boolean'],
-        'format': ['PascalCase'],
-        'prefix': ['is', 'should', 'has', 'can', 'did', 'will']
+        selector: 'variable',
+        types: ['boolean'],
+        format: ['PascalCase'],
+        prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
       },
       {
-        'selector': 'typeLike',
-        'format': ['PascalCase']
+        selector: 'typeLike',
+        format: ['PascalCase'],
       },
       {
-        'selector': 'interface',
-        'format': ['PascalCase'],
-        'prefix': ['I'],
+        selector: 'interface',
+        format: ['PascalCase'],
+        prefix: ['I'],
       },
       {
-        'selector': 'default',
-        'format': ['camelCase', 'PascalCase'],
-        'leadingUnderscore': 'forbid',
-        'trailingUnderscore': 'forbid',
+        selector: 'default',
+        format: ['camelCase', 'PascalCase'],
+        leadingUnderscore: 'forbid',
+        trailingUnderscore: 'forbid',
       },
     ],
 
@@ -103,14 +104,14 @@ module.exports = {
       'error',
       {
         allowNullish: true,
-      }
+      },
     ],
     '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/no-use-before-define': [
       'warn',
       {
         typedefs: false,
-        variables: false
+        variables: false,
       },
     ],
     // hooks
@@ -127,8 +128,8 @@ module.exports = {
       'error',
       'asc',
       {
-        'ignoreClassNames': true,
-      }
+        ignoreClassNames: true,
+      },
     ],
   },
   plugins: ['@typescript-eslint', 'prettier', 'react-hooks', 'react-native'],
@@ -140,6 +141,5 @@ module.exports = {
       version: 'detect', // tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
-  ignorePatterns: ['/*.js', 'custom.d.ts', 'node_modules/*']
-
+  ignorePatterns: ['/*.js', 'custom.d.ts', 'node_modules/*'],
 };
