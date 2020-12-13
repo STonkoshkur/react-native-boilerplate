@@ -12,6 +12,11 @@ export default {
     lastName: 'Apellido',
     authAgreements:
       'Estoy de acuerdo con los <0>Términos de Condiciones</0> y <1>Política de Privacidad</1>',
+    forgotPassword: 'Se te olvidó tu contraseña',
+    submit: 'Enviar',
+    forgotPasswordSuccessTitle: 'Éxito',
+    forgotPasswordSuccessMessage:
+      'Revise su correo electrónico para restablecer la contraseña',
   },
   errors: {
     serverError: 'Error del Servidor',
@@ -24,5 +29,6 @@ export default {
     emailNotExists: 'Usuario con este correo electrónico no encontrado',
     incorrectPassword: 'Contraseña incorrecta',
     emailAlreadyExists: 'El usuario con este correo electrónico ya existe',
+    notFound: 'Extraviado',
   },
 } as const;

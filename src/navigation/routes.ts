@@ -4,6 +4,7 @@ enum Routes {
   // auth stack
   SignIn = 'SignIn',
   SignUp = 'SignUp',
+  ForgotPassword = 'ForgotPassword',
 
   // tmp example
   Tab1 = 'Tab1',
