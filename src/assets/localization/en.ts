@@ -10,6 +10,8 @@ export default {
     logout: 'Logout',
     firstName: 'First name',
     lastName: 'Last name',
+    authAgreements:
+      'I agree with the <0>Terms of Conditions</0> and <1>Privacy Policy</1>',
   },
   errors: {
     serverError: 'Server Error',
