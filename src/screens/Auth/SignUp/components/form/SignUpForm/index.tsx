@@ -29,6 +29,7 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
   return (
     <View>
       <Input
+        testID="signUpEmail"
         label={t('common:email')}
         control={control}
         name="email"
@@ -41,16 +42,19 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
       />
 
       <Input
+        testID="signUpPassword"
         label={t('common:password')}
         control={control}
         name="password"
         defaultValue=""
         secureTextEntry={true}
+        textContentType="oneTimeCode"
         clearTextOnFocus={false}
         error={errors?.password?.message}
       />
 
       <Input
+        testID="signUpFirstName"
         label={t('common:firstName')}
         control={control}
         name="firstName"
@@ -59,6 +63,7 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
       />
 
       <Input
+        testID="signUpLastName"
         label={t('common:lastName')}
         control={control}
         name="lastName"
@@ -67,6 +72,7 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
       />
 
       <Button
+        testID="signUpButton"
         title={t('common:signUp')}
         onPress={handleSubmit(props.onSubmit(setError))}
       />

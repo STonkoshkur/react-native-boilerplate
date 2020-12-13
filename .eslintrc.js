@@ -141,5 +141,5 @@ module.exports = {
       version: 'detect', // tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
-  ignorePatterns: ['/*.js', 'custom.d.ts', 'node_modules/*'],
+  ignorePatterns: ['/*.js', '/e2e/*', 'custom.d.ts', 'node_modules/*'],
 };
