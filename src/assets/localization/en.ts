@@ -10,6 +10,10 @@ export default {
     logout: 'Logout',
     firstName: 'First name',
     lastName: 'Last name',
+    forgotPassword: 'Forgot password',
+    submit: 'Submit',
+    forgotPasswordSuccessTitle: 'Success',
+    forgotPasswordSuccessMessage: 'Check you email for reset password',
   },
   errors: {
     serverError: 'Server Error',
@@ -22,5 +26,6 @@ export default {
     emailNotExists: 'User with this email not found',
     incorrectPassword: 'Wrong password',
     emailAlreadyExists: 'User with this email already exists',
+    notFound: 'Not found',
   },
 } as const;

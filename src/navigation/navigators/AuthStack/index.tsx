@@ -5,6 +5,7 @@ import { Routes, RootNavigationStackParamsList } from 'src/navigation';
 // screens
 import SignInScreen from 'src/screens/Auth/SignIn';
 import SignUpScreen from 'src/screens/Auth/SignUp';
+import ForgotPasswordScreen from 'src/screens/Auth/ForgotPassword';
 
 /*
  * Stack navigator
@@ -18,6 +19,10 @@ const AuthStackNavigator: FC = () => {
     <Stack.Navigator>
       <Stack.Screen name={Routes.SignIn} component={SignInScreen} />
       <Stack.Screen name={Routes.SignUp} component={SignUpScreen} />
+      <Stack.Screen
+        name={Routes.ForgotPassword}
+        component={ForgotPasswordScreen}
+      />
     </Stack.Navigator>
   );
 };

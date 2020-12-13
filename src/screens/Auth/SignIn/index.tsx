@@ -35,6 +35,10 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
     navigation.navigate(Routes.SignUp);
   }, [navigation]);
 
+  const onForgotPassword = useCallback(() => {
+    navigation.navigate(Routes.ForgotPassword);
+  }, [navigation]);
+
   const onSubmit = useCallback(
     <T extends AuthEmailSignInDto>(
       setError: UseFormMethods<T>['setError'],
@@ -61,6 +65,11 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
         <Button
           title={t('common:signUp')}
           onPress={onSignUp}
+          type={ButtonTypes.link}
+        />
+        <Button
+          title={t('common:forgotPassword')}
+          onPress={onForgotPassword}
           type={ButtonTypes.link}
         />
       </ScrollView>

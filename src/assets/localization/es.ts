@@ -10,6 +10,11 @@ export default {
     logout: 'Cerrar sesión',
     firstName: 'Nombre de pila',
     lastName: 'Apellido',
+    forgotPassword: 'Se te olvidó tu contraseña',
+    submit: 'Enviar',
+    forgotPasswordSuccessTitle: 'Éxito',
+    forgotPasswordSuccessMessage:
+      'Revise su correo electrónico para restablecer la contraseña',
   },
   errors: {
     serverError: 'Error del Servidor',
@@ -22,5 +27,6 @@ export default {
     emailNotExists: 'Usuario con este correo electrónico no encontrado',
     incorrectPassword: 'Contraseña incorrecta',
     emailAlreadyExists: 'El usuario con este correo electrónico ya existe',
+    notFound: 'Extraviado',
   },
 } as const;
