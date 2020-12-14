@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
-import { View } from 'react-native';
+import React, { FC, useState, useCallback } from 'react';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import { useForm, UseFormMethods } from 'react-hook-form';
+import { InAppBrowser } from 'react-native-inappbrowser-reborn';
 // types
 import { AuthRegistrationDto } from 'src/services/api/dtos/Auth';
 // validation
@@ -9,8 +10,11 @@ import { schemaValidation } from './validation';
 // components
 import Button from 'src/components/Button';
 import Input from 'src/components/FormAdapters/HookForm/Input';
+import CheckBox from '@react-native-community/checkbox';
 // localization
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
+// styling
+import { useThemeSchema } from 'src/hooks/useThemeShema';
 
 type SignUpFormProps = {
   onSubmit: (
@@ -20,11 +24,59 @@ type SignUpFormProps = {
 
 const SignUpForm: FC<SignUpFormProps> = (props) => {
   const { t } = useTranslation();
+  const { colors } = useThemeSchema();
   const { control, handleSubmit, errors, setError } = useForm<
     AuthRegistrationDto
   >({
     resolver: yupResolver(schemaValidation),
   });
+
+  const [isAgreed, setIsAgreed] = useState(false);
+
+  const showAgreementDocsPage = useCallback(
+    async (agreementDoc: 'termsConditions' | 'privacyPolicy') => {
+      const urlsToOpen = {
+        termsConditions: 'https://opensource.facebook.com/legal/terms',
+        privacyPolicy: 'https://opensource.facebook.com/legal/privacy',
+      };
+
+      /*
+       * Show in-app browser with T&C or Policy page
+       *
+       * Based on https://www.npmjs.com/package/react-native-inappbrowser-reborn
+       */
+      if (await InAppBrowser.isAvailable()) {
+        const oldStatusBarStyle = StatusBar.pushStackEntry({
+          barStyle: 'light-content',
+          animated: false,
+        });
+
+        await InAppBrowser.open(urlsToOpen[agreementDoc], {
+          // ios config
+          animated: true,
+          modalEnabled: true,
+          modalPresentationStyle: 'pageSheet',
+
+          // Android config
+          showTitle: true,
+          enableDefaultShare: true,
+        });
+
+        StatusBar.popStackEntry(oldStatusBarStyle);
+      }
+    },
+    [],
+  );
+
+  const showTermsAndConditions = useCallback(
+    () => showAgreementDocsPage('termsConditions'),
+    [showAgreementDocsPage],
+  );
+
+  const showPrivacyPolicy = useCallback(
+    () => showAgreementDocsPage('privacyPolicy'),
+    [showAgreementDocsPage],
+  );
 
   return (
     <View>
@@ -71,13 +123,62 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
         error={errors?.lastName?.message}
       />
 
+      <View style={styles.agreementWrapper}>
+        <CheckBox
+          value={isAgreed}
+          onValueChange={setIsAgreed}
+          tintColors={{
+            true: colors.primary,
+          }}
+          animationDuration={0.25}
+        />
+
+        <Text style={[styles.agreementLabel, { color: colors.text }]}>
+          {/* <Trans /> component from i18n library. Doc: https://react.i18next.com/latest/trans-component */}
+          <Trans
+            i18nKey="common:authAgreements"
+            defaults="I agree with the <0>Terms of Conditions</0> and <1>Privacy Policy</1>>"
+            components={[
+              <Text
+                key="termsConditions"
+                style={{ color: colors.primary }}
+                onPress={showTermsAndConditions}
+              />,
+              <Text
+                key="privacyPolicy"
+                style={{ color: colors.primary }}
+                onPress={showPrivacyPolicy}
+              />,
+            ]}
+          />
+        </Text>
+      </View>
+
       <Button
         testID="signUpButton"
         title={t('common:signUp')}
         onPress={handleSubmit(props.onSubmit(setError))}
+        style={styles.button}
+        disabled={!isAgreed}
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  agreementWrapper: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginTop: 16,
+    paddingHorizontal: 16,
+  },
+  agreementLabel: {
+    flex: 1,
+    marginLeft: 8,
+  },
+  button: {
+    marginBottom: 16,
+  },
+});
 
 export default SignUpForm;

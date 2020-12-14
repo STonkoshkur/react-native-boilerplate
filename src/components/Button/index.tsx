@@ -48,6 +48,7 @@ const Button: FC<ButtonProps> = ({
         styles.container,
         typeButtonStyles[type],
         { backgroundColor: typeButtonBackgroundColor[type] },
+        props.disabled && styles.disabledContainer,
         props.style,
       ]}>
       <Text style={[styles.title, { color: typeButtonTextColor[type] }]}>
@@ -64,6 +65,9 @@ const styles = StyleSheet.create({
     marginRight: 16,
     marginTop: 22,
     padding: 14,
+  },
+  disabledContainer: {
+    opacity: 0.6,
   },
   title: {
     fontSize: 16,
