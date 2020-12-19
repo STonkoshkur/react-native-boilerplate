@@ -125,6 +125,7 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
 
       <View style={styles.agreementWrapper}>
         <CheckBox
+          testID="signUpIsAgreed"
           value={isAgreed}
           onValueChange={setIsAgreed}
           tintColors={{

@@ -37,6 +37,12 @@ describe('SignUp flow', () => {
       .scroll(100, 'down');
     await element(by.id('signUpLastName')).typeText(lastName);
 
+    await waitFor(element(by.id('signUpIsAgreed')))
+      .toBeVisible()
+      .whileElement(by.id('signUpScroll'))
+      .scroll(100, 'down');
+    await element(by.id('signUpIsAgreed')).tap();
+
     await waitFor(element(by.id('signUpButton')))
       .toBeVisible()
       .whileElement(by.id('signUpScroll'))
