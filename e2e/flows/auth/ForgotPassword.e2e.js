@@ -1,4 +1,6 @@
 describe('Forgot password flow', () => {
+  const email = `john.doe@example.com`;
+
   beforeEach(async () => {
     await device.reloadReactNative();
   });
@@ -8,9 +10,7 @@ describe('Forgot password flow', () => {
       .toBeVisible()
       .withTimeout(2000);
 
-    await element(by.id('forgotPasswordEmail')).typeText(
-      'john.doe@example.com',
-    );
+    await element(by.id('forgotPasswordEmail')).typeText(email);
 
     await waitFor(element(by.id('forgotPasswordButton')))
       .toBeVisible()

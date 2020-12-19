@@ -1,4 +1,4 @@
-describe('SignUp flow', () => {
+describe('Sign up flow', () => {
   const email = `e2e.user.${Date.now()}@example.com`;
   const password = 'secret';
   const firstName = 'E2e';

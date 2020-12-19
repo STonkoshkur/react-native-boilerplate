@@ -1,4 +1,7 @@
-describe('SignIn flow', () => {
+describe('Sign in flow', () => {
+  const email = `john.doe@example.com`;
+  const password = 'secret';
+
   beforeEach(async () => {
     await device.reloadReactNative();
   });
@@ -7,13 +10,13 @@ describe('SignIn flow', () => {
       .toBeVisible()
       .whileElement(by.id('signInScroll'))
       .scroll(100, 'down');
-    await element(by.id('signInPassword')).typeText('secret');
+    await element(by.id('signInPassword')).typeText(password);
 
     await waitFor(element(by.id('signInEmail')))
       .toBeVisible()
       .whileElement(by.id('signInScroll'))
       .scroll(100, 'up');
-    await element(by.id('signInEmail')).typeText('john.doe@example.com');
+    await element(by.id('signInEmail')).typeText(email);
 
     await waitFor(element(by.id('signInButton')))
       .toBeVisible()
