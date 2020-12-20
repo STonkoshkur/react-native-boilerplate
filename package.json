@@ -7,8 +7,10 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "test:e2e-ios": "detox build --configuration ios && detox test --configuration ios",
-    "test:e2e-android": "detox build --configuration android && detox test --configuration android",
+    "test:e2e-build-ios": "detox build --configuration ios",
+    "test:e2e-run-ios": "detox test --configuration ios",
+    "test:e2e-build-android": "detox build --configuration android",
+    "test:e2e-run-android": "detox test --configuration android",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "ts-compile-check": "tsc -p tsconfig.json --noEmit --skipLibCheck"
   },

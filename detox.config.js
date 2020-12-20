@@ -1,5 +1,12 @@
-const iosSimulatorName = 'iPhone 11';
+const iosSimulatorName = 'iPhone 12';
 const androidSimulatorName = 'Pixel_2_API_29';
+let simulatorName;
+
+process.argv.forEach((arg, index, allArgv) => {
+  if (arg.indexOf('--simulator') === 0) {
+    simulatorName = arg.split('=')[1] || allArgv[index + 1];
+  }
+});
 
 module.exports = {
   testRunner: 'jest',
@@ -9,9 +16,11 @@ module.exports = {
       type: 'ios.simulator',
       binaryPath:
         'ios/build/Build/Products/Debug-iphonesimulator/ReactNativeBoilerplate.app',
-      build: `xcodebuild -workspace ios/ReactNativeBoilerplate.xcworkspace -scheme ReactNativeBoilerplate -configuration Debug -destination 'platform=iOS Simulator,name=${iosSimulatorName}' -derivedDataPath ios/build`,
+      build: `xcodebuild -workspace ios/ReactNativeBoilerplate.xcworkspace -scheme ReactNativeBoilerplate -configuration Debug -destination 'platform=iOS Simulator,name=${
+        simulatorName || iosSimulatorName
+      }' -derivedDataPath ios/build`,
       device: {
-        type: iosSimulatorName,
+        type: simulatorName || iosSimulatorName,
       },
     },
     android: {
@@ -20,7 +29,7 @@ module.exports = {
       build:
         'cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..',
       device: {
-        avdName: androidSimulatorName,
+        avdName: simulatorName || androidSimulatorName,
       },
     },
   },
