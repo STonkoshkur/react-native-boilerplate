@@ -1,12 +1,6 @@
 const iosSimulatorName = 'iPhone 12';
 const androidSimulatorName = 'Pixel_2_API_29';
-let simulatorName;
-
-process.argv.forEach((arg, index, allArgv) => {
-  if (arg.indexOf('--simulator') === 0) {
-    simulatorName = arg.split('=')[1] || allArgv[index + 1];
-  }
-});
+const simulatorName = process.env.SIMULATOR_NAME;
 
 module.exports = {
   testRunner: 'jest',

@@ -138,27 +138,27 @@ For E2E testing used [Detox](https://github.com/wix/Detox).
 Build:
 
 ```bash
-yarn test:e2e-build-ios --simulator="iPhone 12"
+SIMULATOR_NAME="iPhone 12" yarn test:e2e-build-ios
 ```
 
 Run:
 
 ```bash
-yarn test:e2e-run-ios --simulator="iPhone 12"
+SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios
 ```
 
 ### Running Tests for Android
 
-By default Detox will try run Android Simulator with name `Pixel_2_API_29`, but if you want use another simulator name, by pass it via `--simulator="ANDROID SIMULATOR NAME"`
+By default Detox will try run Android Simulator with name `Pixel_2_API_29`, but if you want use another simulator name, by pass it via env variable `SIMULATOR_NAME="ANDROID SIMULATOR NAME"`
 
 Build:
 
 ```bash
-test:e2e-build-android --simulator="Pixel_2_API_29"
+SIMULATOR_NAME="Pixel_2_API_29" test:e2e-build-android
 ```
 
 Run:
 
 ```bash
-test:e2e-run-android --simulator="Pixel_2_API_29"
+SIMULATOR_NAME="Pixel_2_API_29" test:e2e-run-android
 ```
