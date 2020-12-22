@@ -135,6 +135,29 @@ For E2E testing used [Detox](https://github.com/wix/Detox).
 
 ### Running tests for iOS
 
+#### Install the latest version of [Homebrew](http://brew.sh)
+
+Homebrew is a package manager for macOS, we'll need it to install other command line tools.
+
+To ensure everything needed for Homebrew tool installation is installed, run
+
+```sh
+xcode-select --install
+```
+
+> Tip: Verify it works by typing in `brew -h` in a terminal to output list of available commands
+
+#### Install [applesimutils](https://github.com/wix/AppleSimulatorUtils)
+
+A collection of utils for Apple simulators, Detox uses it to communicate with the simulator.
+
+```sh
+brew tap wix/brew
+brew install applesimutils
+```
+
+> Tip: Verify it works by typing in `applesimutils` in a terminal to output the tool help screen
+
 Build:
 
 ```bash
