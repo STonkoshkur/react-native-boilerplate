@@ -60,14 +60,16 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
-      <ScrollView>
+      <ScrollView testID="signInScroll" keyboardShouldPersistTaps="handled">
         <SignInForm onSubmit={onSubmit} />
         <Button
+          testID="signUpButtonScreen"
           title={t('common:signUp')}
           onPress={onSignUp}
           type={ButtonTypes.link}
         />
         <Button
+          testID="forgotPasswordButtonScreen"
           title={t('common:forgotPassword')}
           onPress={onForgotPassword}
           type={ButtonTypes.link}

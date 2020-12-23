@@ -49,7 +49,7 @@ const SignInScreen: FC<SignInScreenProps> = () => {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
-      <ScrollView>
+      <ScrollView testID="signUpScroll" keyboardShouldPersistTaps="handled">
         <SignUpForm onSubmit={onSubmit} />
       </ScrollView>
     </SafeAreaView>

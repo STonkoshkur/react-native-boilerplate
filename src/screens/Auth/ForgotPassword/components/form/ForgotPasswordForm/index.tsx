@@ -29,6 +29,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = (props) => {
   return (
     <View>
       <Input
+        testID="forgotPasswordEmail"
         label={t('common:email')}
         control={control}
         name="email"
@@ -41,6 +42,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = (props) => {
       />
 
       <Button
+        testID="forgotPasswordButton"
         title={t('common:submit')}
         onPress={handleSubmit(props.onSubmit(setError))}
       />
