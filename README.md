@@ -177,11 +177,11 @@ By default Detox will try run Android Simulator with name `Pixel_2_API_29`, but 
 Build:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" test:e2e-build-android
+SIMULATOR_NAME="Pixel_2_API_29" yarn test:e2e-build-android
 ```
 
 Run:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" test:e2e-run-android
+SIMULATOR_NAME="Pixel_2_API_29" yarn test:e2e-run-android
 ```
