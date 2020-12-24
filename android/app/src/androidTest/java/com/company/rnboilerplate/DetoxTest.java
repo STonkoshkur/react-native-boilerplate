@@ -1,5 +1,5 @@
-// Replace "com.reactnativeboilerplate;" here and below with your app's package name from the top of MainActivity.java
-package com.reactnativeboilerplate;
+// Replace "com.company.rnboilerplate;" here and below with your app's package name from the top of MainActivity.java
+package com.company.rnboilerplate;
 
 import com.wix.detox.Detox;
 import com.wix.detox.config.DetoxConfig;
@@ -25,7 +25,7 @@ public class DetoxTest {
         DetoxConfig detoxConfig = new DetoxConfig();
         detoxConfig.idlePolicyConfig.masterTimeoutSec = 90;
         detoxConfig.idlePolicyConfig.idleResourceTimeoutSec = 60;
-        detoxConfig.rnContextLoadTimeoutSec = (com.reactnativeboilerplate.BuildConfig.DEBUG ? 180 : 60);
+        detoxConfig.rnContextLoadTimeoutSec = (com.company.rnboilerplate.BuildConfig.DEBUG ? 180 : 60);
 
         Detox.runTests(mActivityRule, detoxConfig);
     }
