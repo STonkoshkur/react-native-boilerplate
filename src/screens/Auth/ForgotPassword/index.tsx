@@ -58,7 +58,9 @@ const ForgotPasswordScreen: FC<ForgotPaaswordScreenProps> = ({
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
-      <ScrollView>
+      <ScrollView
+        testID="forgotPasswordScroll"
+        keyboardShouldPersistTaps="handled">
         <ForgotPasswordForm onSubmit={onSubmit} />
       </ScrollView>
     </SafeAreaView>
