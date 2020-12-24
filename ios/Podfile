@@ -13,6 +13,11 @@ target 'ReactNativeBoilerplate' do
     # Pods for testing
   end
 
+  # add pods for desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
+
+  pod 'GoogleSignIn', '~> 5.0.2'
+
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and

@@ -7,6 +7,7 @@ import { AuthEmailSignInDto } from 'src/services/api/dtos/Auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaValidation } from './validation';
 // components
+import SocialAuthBar from 'src/screens/Auth/components/SocialAuthBar';
 import Input from 'src/components/FormAdapters/HookForm/Input';
 import Button from 'src/components/Button';
 // localization
@@ -28,6 +29,8 @@ const SignInForm: FC<SignInFormProps> = (props) => {
 
   return (
     <View>
+      <SocialAuthBar />
+
       <Input
         testID="signInEmail"
         label={t('common:email')}
