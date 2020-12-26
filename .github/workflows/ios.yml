@@ -21,6 +21,9 @@ jobs:
           repository: Shchepotin/nestjs-boilerplate
           path: nestjs-boilerplate
       - run: docker --version
+      - run: ls
+      - run: pwd
+      - run: docker-compose --version
       - run: cp env-example .env
       - run: docker-compose up -d
 
