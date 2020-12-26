@@ -19,21 +19,24 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Shchepotin/nestjs-boilerplate
-          path: nestjs-boilerplate
+          path: backend
       - run: docker --version
       - run: ls
       - run: pwd
       - run: docker-compose --version
+      - run: cd backend
+      - run: ls
       - run: cp env-example .env
       - run: docker-compose up -d
+      - run: cd ..
 
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: main
+          path: app
 
       - name: Install Dependencies
-        run: yarn install
+        run: cd app && yarn install
 
       - name: Update Pods
         run: |
