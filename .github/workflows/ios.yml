@@ -18,6 +18,7 @@ jobs:
           path: nestjs-boilerplate
       - name: Docker
         run: brew cask install docker
+      - run: sleep 30
       - run: docker --version
       - run: cp env-example .env
       - run: docker-compose up -d
