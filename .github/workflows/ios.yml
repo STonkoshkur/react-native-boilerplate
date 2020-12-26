@@ -11,18 +11,15 @@ jobs:
     runs-on: macos-11.0
 
     steps:
+      - uses: docker-practice/actions-setup-docker@master
+        with:
+          docker_channel: stable
+          docker_version: 19.03
       - name: Checkout backend repo
         uses: actions/checkout@v2
         with:
           repository: Shchepotin/nestjs-boilerplate
           path: nestjs-boilerplate
-      - name: Docker
-        run: brew install --cask docker
-      - run: brew install bash-completion docker-completion docker-compose-completion
-      - run: echo '[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"' >> ~/.bash_profile
-      - run: source ~/.bash_profile
-      - run: open /Applications/Docker.app
-      - run: sleep 120
       - run: docker --version
       - run: cp env-example .env
       - run: docker-compose up -d
