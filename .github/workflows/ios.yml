@@ -1,0 +1,40 @@
+name: iOS
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macos-11.0
+
+    steps:
+      - name: Checkout backend repo
+        uses: actions/checkout@v2
+        with:
+          repository: Shchepotin/nestjs-boilerplate
+          path: nestjs-boilerplate
+      - name: Docker
+          run: brew cask install docker
+        - run: docker --version
+        - run: cp env-example .env
+        - run: docker-compose up -d
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Update Pods
+        run: |
+          gem update cocoapods xcodeproj
+          cd ios && pod install && cd ..
+      - run: brew tap wix/brew
+      - run: brew install applesimutils
+      - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-build-ios
+      - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios
