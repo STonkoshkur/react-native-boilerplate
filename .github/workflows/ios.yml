@@ -18,6 +18,7 @@ jobs:
           path: nestjs-boilerplate
       - name: Docker
         run: brew install --cask docker
+      - run: brew install bash-completion docker-completion docker-compose-completion
       - run: open /Applications/Docker.app
       - run: sleep 120
       - run: docker --version
