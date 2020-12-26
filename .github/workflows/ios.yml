@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: macos-11.0
 
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12.3.app
+
     steps:
       - uses: docker-practice/actions-setup-docker@master
         with:
