@@ -19,6 +19,8 @@ jobs:
       - name: Docker
         run: brew install --cask docker
       - run: brew install bash-completion docker-completion docker-compose-completion
+      - run: echo '[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"' >> ~/.bash_profile
+      - run: source ~/.bash_profile
       - run: open /Applications/Docker.app
       - run: sleep 120
       - run: docker --version
