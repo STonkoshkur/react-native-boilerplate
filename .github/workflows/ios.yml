@@ -17,8 +17,9 @@ jobs:
           repository: Shchepotin/nestjs-boilerplate
           path: nestjs-boilerplate
       - name: Docker
-        run: brew cask install docker
-      - run: sleep 30
+        run: brew install --cask docker
+      - run: open /Applications/Docker.app
+      - run: sleep 120
       - run: docker --version
       - run: cp env-example .env
       - run: docker-compose up -d
