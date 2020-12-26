@@ -17,10 +17,10 @@ jobs:
           repository: Shchepotin/nestjs-boilerplate
           path: nestjs-boilerplate
       - name: Docker
-          run: brew cask install docker
-        - run: docker --version
-        - run: cp env-example .env
-        - run: docker-compose up -d
+        run: brew cask install docker
+      - run: docker --version
+      - run: cp env-example .env
+      - run: docker-compose up -d
 
       - name: Checkout
         uses: actions/checkout@v2
