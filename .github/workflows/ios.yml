@@ -43,7 +43,7 @@ jobs:
 
       - name: Run backend
         run: cd backend && docker-compose up -d && cd ..
-      - run: backend/wait-for-it.sh localhost:3000 -- echo 'Success run backend'
+      - run: bash backend/wait-for-it.sh -t 600 localhost:3000 -- echo 'Success run backend'
       - run: curl http://localhost:3000
 
       - name: Checkout
