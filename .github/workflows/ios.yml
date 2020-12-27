@@ -17,8 +17,8 @@ jobs:
       - run: brew tap wix/brew
       - run: brew install applesimutils
 
-      - name: Sun iOS simulator
-        run: open -a /Applications/Xcode_12.3.app/Contents/Developer/Applications/Simulator.app --args -CurrentDeviceUDID $(applesimutils --byName "iPhone 12" --list | grep 'udid' | sed 's/.*:.*\"\(.*\)\",/\1/')
+      # - name: Sun iOS simulator
+      #   run: open -a /Applications/Xcode_12.3.app/Contents/Developer/Applications/Simulator.app --args -CurrentDeviceUDID $(applesimutils --byName "iPhone 12" --list | grep 'udid' | sed 's/.*:.*\"\(.*\)\",/\1/')
 
       - uses: docker-practice/actions-setup-docker@master
         with:
