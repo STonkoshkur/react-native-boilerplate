@@ -18,21 +18,40 @@ jobs:
         with:
           docker_channel: stable
           docker_version: 19.03
+
       - name: Checkout backend repo
         uses: actions/checkout@v2
         with:
           repository: Shchepotin/nestjs-boilerplate
           path: backend
-      - run: docker-compose --version
+
       - run: cd backend && cp env-example .env && cd ..
-      - run: cd backend && docker-compose up -d && cd ..
+      - run: ls ~/Library/Containers/com.docker.docker/Data/vms/0
+
+      - name: Cache Docker Images
+        id: cache-backend-docker-images
+        uses: actions/cache@v2
+        with:
+          path: ~/Library/Containers/com.docker.docker/Data/vms/0
+          key: cache-backend-docker-images-${{ hashFiles('backend/docker-compose.yaml', 'backend/package-lock.json', 'backend/package.json', 'backend/.env') }}
+
+      - name: Run backend
+        run: cd backend && docker-compose up -d && cd ..
 
       - name: Checkout
         uses: actions/checkout@v2
         with:
           path: app
 
+      - name: Cache App Dependencies
+        id: cache-node-modules-app
+        uses: actions/cache@v2
+        with:
+          path: app/node_modules
+          key: cache-node-modules-app${{ hashFiles('app/yarn.lock') }}
+
       - name: Install Dependencies
+        if: steps.cache-node-modules-app.outputs.cache-hit != 'true'
         run: cd app && yarn install
 
       - name: Update Pods
