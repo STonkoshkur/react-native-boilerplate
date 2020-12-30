@@ -17,6 +17,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-community/google-signin';
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
 // types
 import { SocialEnum } from 'src/enums/SocialEnum';
 // styling
@@ -53,8 +54,11 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
       const isSignedIn = await GoogleSignin.isSignedIn();
 
       if (isSignedIn) {
-        await GoogleSignin.revokeAccess();
-        await GoogleSignin.signOut();
+        // Need to catch revokeAccess() because in some cases
+        // it can cause 'RNGoogleSignInError: Error when revoking access' error
+        // https://github.com/react-native-google-signin/google-signin/issues/914
+        await GoogleSignin.revokeAccess().catch();
+        await GoogleSignin.signOut().catch();
       }
 
       await GoogleSignin.signIn();
@@ -69,17 +73,41 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
 
       dispatch(updateAuthToken(loginData.token));
     } catch (error) {
-      // TODO: add alerts for error cases
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (e.g. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
-      } else {
-        // some other error happened
+      if (
+        !error.code ||
+        ![
+          statusCodes.SIGN_IN_CANCELLED,
+          statusCodes.IN_PROGRESS,
+          statusCodes.PLAY_SERVICES_NOT_AVAILABLE,
+        ].includes(error.code)
+      ) {
+        // TODO: add alerts for error cases
       }
     }
+  }, [dispatch]);
+
+  const signInWithFacebook = useCallback(async () => {
+    try {
+      const result = await LoginManager.logInWithPermissions([
+        'public_profile',
+        'email',
+      ]);
+
+      if (!result.isCancelled) {
+        const accessData = await AccessToken.getCurrentAccessToken();
+
+        if (accessData) {
+          const loginData = await api.auth.socialSignIn({
+            tokens: {
+              token1: accessData.accessToken,
+            },
+            socialType: SocialEnum.Facebook,
+          });
+
+          dispatch(updateAuthToken(loginData.token));
+        }
+      }
+    } catch {}
   }, [dispatch]);
 
   const socials = useMemo(
@@ -94,6 +122,7 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
         name: 'facebook',
         icon: 'logo-facebook',
         backgroundColor: Colors.facebook,
+        action: signInWithFacebook,
       },
       {
         name: 'twitter',
@@ -107,7 +136,7 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
         color: isDarkTheme ? Colors.apple : Colors.white,
       },
     ],
-    [isDarkTheme, signInWithGoogle],
+    [isDarkTheme, signInWithGoogle, signInWithFacebook],
   );
 
   return (

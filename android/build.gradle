@@ -10,6 +10,7 @@ buildscript {
         googlePlayServicesAuthVersion = "16.0.1" 
     }
     repositories {
+        mavenCentral()
         google()
         jcenter()
     }

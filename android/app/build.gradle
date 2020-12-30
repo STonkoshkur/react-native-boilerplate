@@ -189,11 +189,19 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-
+    
+    // Firebase
     implementation platform("com.google.firebase:firebase-bom:26.1.1")
+
+    // Google sign-in
     implementation(project(":react-native-community_google-signin"))
 
-    implementation "androidx.multidex:multidex:2.0.1" // Enabling Multidex
+    // Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+
+    // Enabling Multidex
+    implementation "androidx.multidex:multidex:2.0.1" 
+
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

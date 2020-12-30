@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import <React/RCTLinkingManager.h>
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
@@ -14,6 +15,7 @@
 
 @import Firebase;
 #import <RNGoogleSignin/RNGoogleSignin.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
@@ -33,7 +35,7 @@ static void InitializeFlipper(UIApplication *application) {
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
-
+  // Firebase
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
@@ -50,7 +52,20 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+  // Facebook SDK
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+    didFinishLaunchingWithOptions:launchOptions];
+
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+          openURL:(nonnull NSURL *)url
+          options:(nonnull NSDictionary<NSString *,id> *)options
+{
+  return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options]
+          || [RNGoogleSignin application:application openURL:url options:options];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
