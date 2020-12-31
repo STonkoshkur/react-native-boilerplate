@@ -124,11 +124,11 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
         backgroundColor: Colors.facebook,
         action: signInWithFacebook,
       },
-      {
-        name: 'twitter',
-        icon: 'logo-twitter',
-        backgroundColor: Colors.twitter,
-      },
+      // {
+      //   name: 'twitter',
+      //   icon: 'logo-twitter',
+      //   backgroundColor: Colors.twitter,
+      // },
       {
         name: 'apple',
         icon: 'ios-logo-apple',

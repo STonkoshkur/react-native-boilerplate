@@ -64,8 +64,15 @@ static void InitializeFlipper(UIApplication *application) {
           openURL:(nonnull NSURL *)url
           options:(nonnull NSDictionary<NSString *,id> *)options
 {
-  return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options]
-          || [RNGoogleSignin application:application openURL:url options:options];
+  if ([[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options]) {
+     return YES;
+  }
+  
+  if ([RNGoogleSignin application:application openURL:url options:options]) {
+    return YES;
+  }
+  
+  return NO;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
