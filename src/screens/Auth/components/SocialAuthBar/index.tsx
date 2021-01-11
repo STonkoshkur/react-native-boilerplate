@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleProp,
   ViewStyle,
+  Platform,
 } from 'react-native';
 // api
 import api from 'src/services/api';
@@ -18,8 +19,14 @@ import {
   statusCodes,
 } from '@react-native-community/google-signin';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import {
+  appleAuthAndroid,
+  appleAuth,
+} from '@invertase/react-native-apple-authentication';
 // types
 import { SocialEnum } from 'src/enums/SocialEnum';
+// utils
+import { v4 as uuid } from 'uuid';
 // styling
 import { Colors } from 'src/styles';
 import { useThemeSchema } from 'src/hooks/useThemeShema';
@@ -47,7 +54,12 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
   const dispatch = useDispatch();
   const { dark: isDarkTheme } = useThemeSchema();
 
-  const signInWithGoogle = useCallback(async () => {
+  /*
+   * Sign in with Google
+   *
+   * Docs: https://github.com/react-native-google-signin/google-signin
+   */
+  const onSignInWithGoogle = useCallback(async () => {
     try {
       await GoogleSignin.hasPlayServices();
 
@@ -55,10 +67,12 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
 
       if (isSignedIn) {
         // Need to catch revokeAccess() because in some cases
-        // it can cause 'RNGoogleSignInError: Error when revoking access' error
+        // it causes 'RNGoogleSignInError: Error when revoking access' error
         // https://github.com/react-native-google-signin/google-signin/issues/914
-        await GoogleSignin.revokeAccess().catch();
-        await GoogleSignin.signOut().catch();
+        try {
+          await GoogleSignin.revokeAccess();
+          await GoogleSignin.signOut();
+        } catch {}
       }
 
       await GoogleSignin.signIn();
@@ -86,7 +100,12 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
     }
   }, [dispatch]);
 
-  const signInWithFacebook = useCallback(async () => {
+  /*
+   * Sign in with Facebook
+   *
+   * Docs: https://github.com/facebook/react-native-fbsdk
+   */
+  const onSignInWithFacebook = useCallback(async () => {
     try {
       const result = await LoginManager.logInWithPermissions([
         'public_profile',
@@ -110,39 +129,138 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
     } catch {}
   }, [dispatch]);
 
+  /*
+   * Sign in via AppleID for iOS
+   *
+   * Docs: https://github.com/invertase/react-native-apple-authentication
+   */
+  const onSignInWithApple = useCallback(async () => {
+    try {
+      const appleAuthRequestResponse = await appleAuth.performRequest({
+        requestedOperation: appleAuth.Operation.LOGIN,
+        requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+      });
+
+      // get current authentication state for user
+      // ! This method must be tested on a real device. On the iOS simulator it always throws an error.
+      const credentialState = await appleAuth.getCredentialStateForUser(
+        appleAuthRequestResponse.user,
+      );
+
+      // ensure the user is authenticated
+      if (credentialState === appleAuth.State.AUTHORIZED) {
+        const { identityToken, fullName } = appleAuthRequestResponse;
+
+        const loginData = await api.auth.socialSignIn({
+          tokens: {
+            token1: identityToken,
+          },
+          socialType: SocialEnum.Apple,
+          firstName: fullName?.givenName ?? null,
+          lastName: fullName?.familyName ?? null,
+        });
+
+        dispatch(updateAuthToken(loginData.token));
+      }
+    } catch {}
+  }, [dispatch]);
+
+  /*
+   * Sign in via AppleID for Android
+   *
+   * Docs: https://github.com/invertase/react-native-apple-authentication#android
+   */
+  const onSignInWithAppleForAndroid = useCallback(async () => {
+    try {
+      if (Platform.OS === 'android' && appleAuthAndroid.isSupported) {
+        const rawNonce = uuid();
+        const state = uuid();
+
+        // Configure the request
+        appleAuthAndroid.configure({
+          // The Service ID from Apple console
+          clientId: 'com.company.rnboilerplate.webapp',
+          // Return URL from Apple Servise ID.
+          redirectUri: 'https://github.com/STonkoshkur/stonkoshkur.github.io',
+          responseType: appleAuthAndroid.ResponseType.ALL,
+          scope: appleAuthAndroid.Scope.ALL,
+          // Random nonce value that will be SHA256 hashed before sending to Apple.
+          nonce: rawNonce,
+          // Unique state value used to prevent CSRF attacks.
+          state,
+        });
+
+        // Open the browser window for user sign in
+        const authResponse = await appleAuthAndroid.signIn();
+
+        if (authResponse.id_token) {
+          const loginData = await api.auth.socialSignIn({
+            tokens: {
+              token1: authResponse.id_token,
+            },
+            socialType: SocialEnum.Apple,
+            firstName: authResponse.user?.name?.firstName ?? null,
+            lastName: authResponse.user?.name?.lastName ?? null,
+          });
+
+          dispatch(updateAuthToken(loginData.token));
+        }
+      }
+    } catch {}
+  }, [dispatch]);
+
   const socials = useMemo(
     () => [
       {
+        testID: 'googleSignInButton',
         name: 'google',
         icon: 'logo-google',
         backgroundColor: Colors.google,
-        action: signInWithGoogle,
+        action: onSignInWithGoogle,
       },
       {
+        testID: 'facebookSignInButton',
         name: 'facebook',
         icon: 'logo-facebook',
         backgroundColor: Colors.facebook,
-        action: signInWithFacebook,
+        action: onSignInWithFacebook,
       },
       // {
+      //   testID: 'twitterSignInButton',
       //   name: 'twitter',
       //   icon: 'logo-twitter',
       //   backgroundColor: Colors.twitter,
       // },
       {
+        testID: 'appleSignInButton',
         name: 'apple',
         icon: 'ios-logo-apple',
         backgroundColor: isDarkTheme ? Colors.white : Colors.apple,
         color: isDarkTheme ? Colors.apple : Colors.white,
+        // need to handle different actions for android and ios
+        action:
+          Platform.OS === 'android'
+            ? onSignInWithAppleForAndroid
+            : onSignInWithApple,
+        disabled:
+          (Platform.OS === 'android' && !appleAuthAndroid.isSupported) ||
+          !appleAuth.isSupported,
       },
     ],
-    [isDarkTheme, signInWithGoogle, signInWithFacebook],
+    [
+      isDarkTheme,
+      onSignInWithGoogle,
+      onSignInWithAppleForAndroid,
+      onSignInWithFacebook,
+      onSignInWithApple,
+    ],
   );
 
   return (
     <View style={[styles.container, style]}>
-      {socials.map(({ name, icon, backgroundColor, color, action }) => (
+      {socials.map(({ testID, name, icon, backgroundColor, color, action }) => (
         <TouchableOpacity
+          testID={testID}
           key={name}
           activeOpacity={0.7}
           onPress={action}

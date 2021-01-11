@@ -31,12 +31,12 @@ React Native boilerplate with mostly used features.
 - Redux-toolkit auth module with redux-persist integration :white_check_mark:
 - [Hook-forms](https://react-hook-form.com/) integration with TS types and validation examples :white_check_mark:
 - Auth flow: sign in, sign up, reset password, log out :white_check_mark:
+- Social sign-in ([Google](https://github.com/react-native-google-signin/google-signin), [Facebook](https://github.com/facebook/react-native-fbsdk), [Apple](https://github.com/invertase/react-native-apple-authentication)for iOS and Android) :white_check_mark:
 - End-2-end tests :white_check_mark:
 
 ## To do features:
 
 - Predefined commands on package.json for dependencies instalment
-- Social in-app auth (Google, FB, Twitter, Apple);
 - Mostly-used components example implementation (like avatar, typography, form controls, etc);
 - User profile page;
 - Unit tests;

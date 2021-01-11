@@ -26,4 +26,12 @@ describe('Sign in flow', () => {
 
     await expect(element(by.text('Welcome!'))).toBeVisible();
   });
+  it('social auth buttons should be shown', async () => {
+    await waitFor(element(by.id('googleSignInButton')))
+      .toBeVisible();
+    await waitFor(element(by.id('facebookSignInButton')))
+      .toBeVisible();
+    await waitFor(element(by.id('appleSignInButton')))
+      .toBeVisible();
+  });
 });
