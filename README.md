@@ -23,6 +23,7 @@ React Native boilerplate with mostly used features.
 - TS template :white_check_mark:
 - ESlint and Prettier integration :white_check_mark:
 - Pre-commit hook with eslint and TS compiling checks :white_check_mark:
+- Environment variables support ([react-native-config](https://github.com/luggit/react-native-config) :white_check_mark:
 - React navigation: bottoms tabs and nested stack navigators with TS support :white_check_mark:
 - RN vector icons :white_check_mark:
 - SVG support ([react-native-svg](https://github.com/react-native-svg/react-native-svg), [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer)) :white_check_mark:
@@ -62,6 +63,7 @@ Clone the repository and install the dependencies:
 ```bash
 git clone https://github.com/STonkoshkur/react-native-boilerplate.git
 cd react-native-boilerplate/
+cp .env.example .env
 yarn && npx pod-install
 ```
 

@@ -13,6 +13,8 @@ import Input from 'src/components/FormAdapters/HookForm/Input';
 import CheckBox from '@react-native-community/checkbox';
 // localization
 import { useTranslation, Trans } from 'react-i18next';
+// utils
+import EnvConfig from 'react-native-config';
 // styling
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 
@@ -36,8 +38,8 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
   const showAgreementDocsPage = useCallback(
     async (agreementDoc: 'termsConditions' | 'privacyPolicy') => {
       const urlsToOpen = {
-        termsConditions: 'https://opensource.facebook.com/legal/terms',
-        privacyPolicy: 'https://opensource.facebook.com/legal/privacy',
+        termsConditions: EnvConfig.TERMS_AND_CONDITIONS_URL,
+        privacyPolicy: EnvConfig.PRIVACY_POLICY_URL,
       };
 
       /*
@@ -45,7 +47,7 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
        *
        * Based on https://www.npmjs.com/package/react-native-inappbrowser-reborn
        */
-      if (await InAppBrowser.isAvailable()) {
+      if ((await InAppBrowser.isAvailable()) && urlsToOpen[agreementDoc]) {
         const oldStatusBarStyle = StatusBar.pushStackEntry({
           barStyle: 'light-content',
           animated: false,

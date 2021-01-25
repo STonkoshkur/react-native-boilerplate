@@ -69,3 +69,7 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# react-native-config env
+/ios/tmp.xcconfig
+.env

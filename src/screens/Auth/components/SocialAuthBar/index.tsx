@@ -27,15 +27,20 @@ import {
 import { SocialEnum } from 'src/enums/SocialEnum';
 // utils
 import { v4 as uuid } from 'uuid';
+import EnvConfig from 'react-native-config';
 // styling
 import { Colors } from 'src/styles';
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 
+/*
+ * Google sign-in configuration
+ *
+ * Docs: https://github.com/react-native-google-signin/google-signin#configureoptions
+ */
 GoogleSignin.configure({
   scopes: ['email', 'profile'],
-  webClientId:
-    '862096405891-80m7mdva2ss1jkmrtb5avll61na228bb.apps.googleusercontent.com',
-  offlineAccess: true, // access Google API on behalf of the user from API side
+  webClientId: EnvConfig.GOOGLE_AUTH_WEB_CLIENT_ID,
+  offlineAccess: true,
 });
 
 type SocialAuthBarProps = {
@@ -178,10 +183,10 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
 
         // Configure the request
         appleAuthAndroid.configure({
-          // The Service ID from Apple console
-          clientId: 'com.company.rnboilerplate.webapp',
-          // Return URL from Apple Servise ID.
-          redirectUri: 'https://github.com/STonkoshkur/stonkoshkur.github.io',
+          // The Service ID from Apple console. Configurate it in .env file.
+          clientId: EnvConfig.APPLE_WEB_AUTH_CLIENT_ID,
+          // Return URL from Apple Servise ID. Configurate it in .env file.
+          redirectUri: EnvConfig.APPLE_WEB_AUTH_REDIRECT_URI,
           responseType: appleAuthAndroid.ResponseType.ALL,
           scope: appleAuthAndroid.Scope.ALL,
           // Random nonce value that will be SHA256 hashed before sending to Apple.

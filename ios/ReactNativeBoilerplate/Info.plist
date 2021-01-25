@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.862096405891-ftco3i15eg96844fsdp8gsqm52eamp7v</string>
+				<string>${GOOGLE_SERVICE_REVERSED_CLIENT_ID}</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,14 +35,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb783406612243544</string>
+				<string>fb${FACEBOOK_APP_ID}</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>783406612243544</string>
+	<string>${FACEBOOK_APP_ID}</string>
 	<key>FacebookDisplayName</key>
 	<string>RN Boilerplate</string>
 	<key>LSRequiresIPhoneOS</key>
