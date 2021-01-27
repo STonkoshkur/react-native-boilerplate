@@ -1,0 +1,6 @@
+//
+//  ReactNativeBoilerplate Config.xcconfig
+//  Used for .env variables generation
+//
+
+#include? "tmp.xcconfig"
