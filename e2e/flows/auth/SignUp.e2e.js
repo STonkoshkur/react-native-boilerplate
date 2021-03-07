@@ -5,7 +5,7 @@ describe('Sign up flow', () => {
   const lastName = `User${Date.now()}`;
 
   beforeEach(async () => {
-    await device.reloadReactNative();
+    await device.launchApp();
   });
   it('should sign up successfully', async () => {
     await element(by.id('signUpButtonScreen')).tap();

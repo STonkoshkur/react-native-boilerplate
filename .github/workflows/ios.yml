@@ -16,6 +16,7 @@ jobs:
     steps:
       - run: brew tap wix/brew
       - run: brew install applesimutils
+      - run: npm install -g detox-cli
 
       - name: Sun iOS simulator
         run: open -a /Applications/Xcode_12.3.app/Contents/Developer/Applications/Simulator.app --args -CurrentDeviceUDID $(applesimutils --byName "iPhone 12" --list | grep 'udid' | sed 's/.*:.*\"\(.*\)\",/\1/')

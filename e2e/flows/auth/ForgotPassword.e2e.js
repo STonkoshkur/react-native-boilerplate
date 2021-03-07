@@ -2,7 +2,7 @@ describe('Forgot password flow', () => {
   const email = `john.doe@example.com`;
 
   beforeEach(async () => {
-    await device.reloadReactNative();
+    await device.launchApp();
   });
   it('should forgot password successfully', async () => {
     await element(by.id('forgotPasswordButtonScreen')).tap();

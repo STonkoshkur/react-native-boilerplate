@@ -3,7 +3,7 @@ describe('Sign in flow', () => {
   const password = 'secret';
 
   beforeEach(async () => {
-    await device.reloadReactNative();
+    await device.launchApp();
   });
   it('should sign in successfully', async () => {
     await waitFor(element(by.id('signInPassword')))

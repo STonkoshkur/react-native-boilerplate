@@ -67,7 +67,7 @@
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^26.0.0",
     "babel-plugin-module-resolver": "^4.0.0",
-    "detox": "^17.14.4",
+    "detox": "^18.7.1",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
