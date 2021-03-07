@@ -62,4 +62,4 @@ jobs:
           key: cache-build-app-${{ hashFiles('yarn.lock') }}
 
       - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-build-ios
-      - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios --cleanup --debug-synchronization 500
+      - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios --cleanup --debug-synchronization 500 --record-videos
