@@ -61,5 +61,14 @@ jobs:
           path: ios/build
           key: cache-build-app-${{ hashFiles('yarn.lock') }}
 
+      - name: Create artifact downloads folder
+        run: mkdir downloads
+
       - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-build-ios
-      - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios --cleanup --debug-synchronization 500 --record-videos
+      - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios --cleanup --debug-synchronization 500 --record-videos all --artifacts-location ./downloads
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-for-download
+          path: downloads
