@@ -23,8 +23,8 @@ module.exports = {
     'ios.debug': {
       type: 'ios.app',
       binaryPath:
-        'ios/build/Build/Products/Debug-iphonesimulator/ReactNativeBoilerplate.app',
-      build: `xcodebuild -workspace ios/ReactNativeBoilerplate.xcworkspace -scheme ReactNativeBoilerplate -configuration Debug -destination 'platform=iOS Simulator,name=${
+        'ios/build/Build/Products/Release-iphonesimulator/ReactNativeBoilerplate.app',
+      build: `xcodebuild -workspace ios/ReactNativeBoilerplate.xcworkspace -scheme ReactNativeBoilerplate -configuration Release -destination 'platform=iOS Simulator,name=${
         simulatorName || iosSimulatorName
       }' -derivedDataPath ios/build`,
     },
