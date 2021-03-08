@@ -74,3 +74,4 @@ jobs:
         with:
           name: assets-for-download
           path: downloads
+          retention-days: 2
