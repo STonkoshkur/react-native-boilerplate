@@ -33,7 +33,8 @@ React Native boilerplate with mostly used features.
 - [Hook-forms](https://react-hook-form.com/) integration with TS types and validation examples :white_check_mark:
 - Auth flow: sign in, sign up, reset password, log out :white_check_mark:
 - Social sign-in ([Google](https://github.com/react-native-google-signin/google-signin), [Facebook](https://github.com/facebook/react-native-fbsdk), [Apple](https://github.com/invertase/react-native-apple-authentication)for iOS and Android) :white_check_mark:
-- End-2-end tests :white_check_mark:
+- E2E tests via [Detox](https://github.com/wix/Detox) :white_check_mark:
+- CI integration :white_check_mark:
 
 ## To do features:
 
@@ -41,7 +42,6 @@ React Native boilerplate with mostly used features.
 - Mostly-used components example implementation (like avatar, typography, form controls, etc);
 - User profile page;
 - Unit tests;
-- CI integration;
 - Integration with RN CLI;
 
 ## Predefined commands on package.json
