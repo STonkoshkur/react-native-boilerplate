@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { updateAuthToken } from 'src/store/modules/auth';
 // components
 import SignUpForm from './components/form/SignUpForm';
+import KeyboardView from 'src/components/KeyboardView';
 // services
 import transformErrors from 'src/services/utils/transformErrors';
 // styling
@@ -49,9 +50,11 @@ const SignInScreen: FC<SignInScreenProps> = () => {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
-      <ScrollView testID="signUpScroll" keyboardShouldPersistTaps="handled">
-        <SignUpForm onSubmit={onSubmit} />
-      </ScrollView>
+      <KeyboardView>
+        <ScrollView testID="signUpScroll" keyboardShouldPersistTaps="handled">
+          <SignUpForm onSubmit={onSubmit} />
+        </ScrollView>
+      </KeyboardView>
     </SafeAreaView>
   );
 };

@@ -8,6 +8,7 @@ import { Routes, RootNavigationStackParamsList } from 'src/navigation';
 import api from 'src/services/api';
 // components
 import ForgotPasswordForm from './components/form/ForgotPasswordForm';
+import KeyboardView from 'src/components/KeyboardView';
 // services
 import transformErrors from 'src/services/utils/transformErrors';
 // localization
@@ -58,11 +59,13 @@ const ForgotPasswordScreen: FC<ForgotPaaswordScreenProps> = ({
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
-      <ScrollView
-        testID="forgotPasswordScroll"
-        keyboardShouldPersistTaps="handled">
-        <ForgotPasswordForm onSubmit={onSubmit} />
-      </ScrollView>
+      <KeyboardView>
+        <ScrollView
+          testID="forgotPasswordScroll"
+          keyboardShouldPersistTaps="handled">
+          <ForgotPasswordForm onSubmit={onSubmit} />
+        </ScrollView>
+      </KeyboardView>
     </SafeAreaView>
   );
 };

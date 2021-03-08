@@ -14,6 +14,7 @@ import { updateAuthToken } from 'src/store/modules/auth';
 // components
 import SignInForm from './components/form/SignInForm';
 import Button, { ButtonTypes } from 'src/components/Button';
+import KeyboardView from 'src/components/KeyboardView';
 // services
 import transformErrors from 'src/services/utils/transformErrors';
 // styling
@@ -60,21 +61,23 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.card }]}>
-      <ScrollView testID="signInScroll" keyboardShouldPersistTaps="handled">
-        <SignInForm onSubmit={onSubmit} />
-        <Button
-          testID="signUpButtonScreen"
-          title={t('common:signUp')}
-          onPress={onSignUp}
-          type={ButtonTypes.link}
-        />
-        <Button
-          testID="forgotPasswordButtonScreen"
-          title={t('common:forgotPassword')}
-          onPress={onForgotPassword}
-          type={ButtonTypes.link}
-        />
-      </ScrollView>
+      <KeyboardView>
+        <ScrollView testID="signInScroll" keyboardShouldPersistTaps="handled">
+          <SignInForm onSubmit={onSubmit} />
+          <Button
+            testID="signUpButtonScreen"
+            title={t('common:signUp')}
+            onPress={onSignUp}
+            type={ButtonTypes.link}
+          />
+          <Button
+            testID="forgotPasswordButtonScreen"
+            title={t('common:forgotPassword')}
+            onPress={onForgotPassword}
+            type={ButtonTypes.link}
+          />
+        </ScrollView>
+      </KeyboardView>
     </SafeAreaView>
   );
 };
