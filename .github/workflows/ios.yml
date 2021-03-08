@@ -65,7 +65,11 @@ jobs:
         run: mkdir downloads
 
       - run: detox clean-framework-cache && detox build-framework-cache
-      - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-build-ios
+
+      - name: Build app for tests
+        if: steps.cache-build-app.outputs.cache-hit != 'true'
+        run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-build-ios
+
       - run: SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios --cleanup --debug-synchronization 500 --take-screenshots failing --artifacts-location ./downloads
 
       - name: Upload Artifacts

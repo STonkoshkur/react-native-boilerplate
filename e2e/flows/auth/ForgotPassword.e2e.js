@@ -15,7 +15,7 @@ describe('Forgot password flow', () => {
     await waitFor(element(by.id('forgotPasswordButton')))
       .toBeVisible()
       .whileElement(by.id('forgotPasswordScroll'))
-      .scroll(20, 'down');
+      .scroll(50, 'down');
     await element(by.id('forgotPasswordButton')).tap();
 
     await expect(element(by.text('Success'))).toBeVisible();

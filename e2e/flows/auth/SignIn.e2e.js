@@ -9,19 +9,19 @@ describe('Sign in flow', () => {
     await waitFor(element(by.id('signInPassword')))
       .toBeVisible()
       .whileElement(by.id('signInScroll'))
-      .scroll(20, 'down');
+      .scroll(50, 'down');
     await element(by.id('signInPassword')).typeText(password);
 
     await waitFor(element(by.id('signInEmail')))
       .toBeVisible()
       .whileElement(by.id('signInScroll'))
-      .scroll(20, 'up');
+      .scroll(50, 'up');
     await element(by.id('signInEmail')).typeText(email);
 
     await waitFor(element(by.id('signInButton')))
       .toBeVisible()
       .whileElement(by.id('signInScroll'))
-      .scroll(20, 'down');
+      .scroll(50, 'down');
     await element(by.id('signInButton')).tap();
 
     await expect(element(by.text('Welcome!'))).toBeVisible();
