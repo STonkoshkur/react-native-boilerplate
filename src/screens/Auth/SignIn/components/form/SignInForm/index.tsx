@@ -21,9 +21,12 @@ type SignInFormProps = {
 
 const SignInForm: FC<SignInFormProps> = (props) => {
   const { t } = useTranslation();
-  const { control, handleSubmit, errors, setError } = useForm<
-    AuthEmailSignInDto
-  >({
+  const {
+    control,
+    handleSubmit,
+    errors,
+    setError,
+  } = useForm<AuthEmailSignInDto>({
     resolver: yupResolver(schemaValidation),
   });
 

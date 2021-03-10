@@ -27,9 +27,12 @@ type SignUpFormProps = {
 const SignUpForm: FC<SignUpFormProps> = (props) => {
   const { t } = useTranslation();
   const { colors } = useThemeSchema();
-  const { control, handleSubmit, errors, setError } = useForm<
-    AuthRegistrationDto
-  >({
+  const {
+    control,
+    handleSubmit,
+    errors,
+    setError,
+  } = useForm<AuthRegistrationDto>({
     resolver: yupResolver(schemaValidation),
   });
 

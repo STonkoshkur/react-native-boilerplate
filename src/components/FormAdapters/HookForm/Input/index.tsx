@@ -1,24 +1,24 @@
-import React, { PropsWithChildren } from 'react';
-import { Control, Controller, FieldName } from 'react-hook-form';
+import React, { PropsWithChildren, ReactElement } from 'react';
+import { Control, Controller, FieldName, FieldValues } from 'react-hook-form';
 // components
 import Input, { InputProps } from 'src/components/Form/Input';
 
-type InputAdapterProps<T> = InputProps & {
-  control: Control<T>;
-  name: FieldName<T>;
+type InputAdapterProps = InputProps & {
+  control: Control<FieldValues>;
+  name: FieldName<FieldValues>;
   defaultValue: unknown;
 };
 
-const InputAdapter = <T extends {} = {}>({
+const InputAdapter = ({
   control,
   name,
   defaultValue,
   ...props
-}: PropsWithChildren<InputAdapterProps<T>>): JSX.Element => {
+}: PropsWithChildren<InputAdapterProps>): ReactElement => {
   return (
     <Controller
       control={control}
-      render={({ onChange, onBlur, value }): JSX.Element => (
+      render={({ onChange, onBlur, value }): ReactElement => (
         <Input
           {...props}
           onBlur={onBlur}
