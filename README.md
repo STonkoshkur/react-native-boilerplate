@@ -18,12 +18,12 @@ React Native boilerplate with mostly used features.
 
 [E2E Testing](#e2e-testing)
 
-## Implemented features:
+## Implemented features
 
 - TS template :white_check_mark:
 - ESlint and Prettier integration :white_check_mark:
 - Pre-commit hook with eslint and TS compiling checks :white_check_mark:
-- Environment variables support ([react-native-config](https://github.com/luggit/react-native-config) :white_check_mark:
+- Environment variables support ([react-native-config](https://github.com/luggit/react-native-config)) :white_check_mark:
 - React navigation: bottoms tabs and nested stack navigators with TS support :white_check_mark:
 - RN vector icons :white_check_mark:
 - SVG support ([react-native-svg](https://github.com/react-native-svg/react-native-svg), [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer)) :white_check_mark:
@@ -32,11 +32,11 @@ React Native boilerplate with mostly used features.
 - Redux-toolkit auth module with redux-persist integration :white_check_mark:
 - [Hook-forms](https://react-hook-form.com/) integration with TS types and validation examples :white_check_mark:
 - Auth flow: sign in, sign up, reset password, log out :white_check_mark:
-- Social sign-in ([Google](https://github.com/react-native-google-signin/google-signin), [Facebook](https://github.com/facebook/react-native-fbsdk), [Apple](https://github.com/invertase/react-native-apple-authentication)for iOS and Android) :white_check_mark:
+- Social sign-in ([Google](https://github.com/react-native-google-signin/google-signin), [Facebook](https://github.com/facebook/react-native-fbsdk), [Apple](https://github.com/invertase/react-native-apple-authentication) for iOS and Android) :white_check_mark:
 - E2E tests via [Detox](https://github.com/wix/Detox) :white_check_mark:
 - CI integration :white_check_mark:
 
-## To do features:
+## To do features
 
 - Predefined commands on package.json for dependencies instalment
 - Mostly-used components example implementation (like avatar, typography, form controls, etc);
