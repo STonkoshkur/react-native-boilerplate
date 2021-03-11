@@ -20,9 +20,12 @@ type ForgotPasswordFormProps = {
 
 const ForgotPasswordForm: FC<ForgotPasswordFormProps> = (props) => {
   const { t } = useTranslation();
-  const { control, handleSubmit, errors, setError } = useForm<
-    AuthForgotPasswordDto
-  >({
+  const {
+    control,
+    handleSubmit,
+    errors,
+    setError,
+  } = useForm<AuthForgotPasswordDto>({
     resolver: yupResolver(schemaValidation),
   });
 

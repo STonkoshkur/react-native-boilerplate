@@ -15,8 +15,7 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended', // disabled ESlint base rules that will conflict with TS
     'plugin:@typescript-eslint/recommended', // uses the recommended rules from the @typescript-eslint/eslint-plugin
     'plugin:@typescript-eslint/recommended-requiring-type-checking', // simmilar with @typescript-eslint/recommended, difference being that all rules in this set will require type information to use
-    'prettier/@typescript-eslint', // uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    'prettier/react',
+    'prettier',
     'plugin:react/recommended', // recomended rules for React from @eslint-plugin-react
     'plugin:react-hooks/recommended',
     'plugin:react-native/all', // specific rules for RN
@@ -114,6 +113,8 @@ module.exports = {
         variables: false,
       },
     ],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'error',
     // hooks
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
