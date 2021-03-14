@@ -1,7 +1,6 @@
-import React, { FC, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import React, { FC, useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import { useForm, UseFormMethods } from 'react-hook-form';
-import { InAppBrowser } from 'react-native-inappbrowser-reborn';
 // types
 import { AuthRegistrationDto } from 'src/services/api/dtos/Auth';
 // validation
@@ -14,7 +13,7 @@ import CheckBox from '@react-native-community/checkbox';
 // localization
 import { useTranslation, Trans } from 'react-i18next';
 // utils
-import EnvConfig from 'react-native-config';
+import { useAgreementsModals } from 'src/hooks/useAgreementsModals';
 // styling
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 
@@ -35,53 +34,12 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
   } = useForm<AuthRegistrationDto>({
     resolver: yupResolver(schemaValidation),
   });
+  const {
+    showPrivacyPolicyModal,
+    showTermsAndConditionsModal,
+  } = useAgreementsModals();
 
   const [isAgreed, setIsAgreed] = useState(false);
-
-  const showAgreementDocsPage = useCallback(
-    async (agreementDoc: 'termsConditions' | 'privacyPolicy') => {
-      const urlsToOpen = {
-        termsConditions: EnvConfig.TERMS_AND_CONDITIONS_URL,
-        privacyPolicy: EnvConfig.PRIVACY_POLICY_URL,
-      };
-
-      /*
-       * Show in-app browser with T&C or Policy page
-       *
-       * Based on https://www.npmjs.com/package/react-native-inappbrowser-reborn
-       */
-      if ((await InAppBrowser.isAvailable()) && urlsToOpen[agreementDoc]) {
-        const oldStatusBarStyle = StatusBar.pushStackEntry({
-          barStyle: 'light-content',
-          animated: false,
-        });
-
-        await InAppBrowser.open(urlsToOpen[agreementDoc], {
-          // ios config
-          animated: true,
-          modalEnabled: true,
-          modalPresentationStyle: 'pageSheet',
-
-          // Android config
-          showTitle: true,
-          enableDefaultShare: true,
-        });
-
-        StatusBar.popStackEntry(oldStatusBarStyle);
-      }
-    },
-    [],
-  );
-
-  const showTermsAndConditions = useCallback(
-    () => showAgreementDocsPage('termsConditions'),
-    [showAgreementDocsPage],
-  );
-
-  const showPrivacyPolicy = useCallback(
-    () => showAgreementDocsPage('privacyPolicy'),
-    [showAgreementDocsPage],
-  );
 
   return (
     <View>
@@ -148,12 +106,12 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
               <Text
                 key="termsConditions"
                 style={{ color: colors.primary }}
-                onPress={showTermsAndConditions}
+                onPress={showTermsAndConditionsModal}
               />,
               <Text
                 key="privacyPolicy"
                 style={{ color: colors.primary }}
-                onPress={showPrivacyPolicy}
+                onPress={showPrivacyPolicyModal}
               />,
             ]}
           />
