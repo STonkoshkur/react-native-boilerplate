@@ -163,13 +163,13 @@ brew install applesimutils
 Build:
 
 ```bash
-SIMULATOR_NAME="iPhone 12" yarn test:e2e-build-ios
+SIMULATOR_NAME="iPhone 12" node_modules/.bin/detox build --configuration ios
 ```
 
 Run:
 
 ```bash
-SIMULATOR_NAME="iPhone 12" yarn test:e2e-run-ios
+SIMULATOR_NAME="iPhone 12" node_modules/.bin/detox test --configuration ios
 ```
 
 ### Running Tests for Android
@@ -179,11 +179,11 @@ By default Detox will try run Android Simulator with name `Pixel_2_API_29`, but 
 Build:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" yarn test:e2e-build-android
+SIMULATOR_NAME="Pixel_2_API_29" node_modules/.bin/detox build --configuration android
 ```
 
 Run:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" yarn test:e2e-run-android
+SIMULATOR_NAME="Pixel_2_API_29" node_modules/.bin/detox test --configuration android
 ```
