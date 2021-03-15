@@ -99,7 +99,6 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
     <Text
       {...props}
       style={[
-        styles.general,
         currentVariant,
         !!weight && { fontWeight: TypographyWeights[weight] },
         { color: color ?? appearanceColor },
@@ -111,7 +110,6 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
 };
 
 export const styles = StyleSheet.create({
-  general: {},
   largeTitle: {
     color: Colors.black,
     fontSize: 33,
