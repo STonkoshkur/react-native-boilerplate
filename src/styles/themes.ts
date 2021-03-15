@@ -3,6 +3,7 @@ import {
   DarkTheme,
   DefaultTheme,
 } from '@react-navigation/native';
+import Colors from './colors';
 
 /*
  * Theming is based on react navigation themes.
@@ -16,11 +17,20 @@ import {
 
 // types
 
-type ThemeSchemaColors = NavigationTheme['colors'] & {
-  // Custom color properties can be defined here
-  error: string;
-  input: string;
-};
+/**
+ * Additional theme colors properties used to extend react-navigation themes.
+ * Another custom color can be added here.
+ */
+type ExtendedThemeSchemaColorsKeys =
+  | 'error'
+  | 'input'
+  | 'mutedText'
+  | 'alternativeText';
+
+type ThemeSchemaColors = NavigationTheme['colors'] &
+  {
+    [k in ExtendedThemeSchemaColorsKeys]: string;
+  };
 
 export type ThemeSchema = {
   dark: boolean;
@@ -33,8 +43,10 @@ export const darkTheme: ThemeSchema = {
   dark: true,
   colors: {
     ...DarkTheme.colors,
-    error: '#ff0000',
-    input: '#444444',
+    error: Colors.coralRed,
+    input: Colors.charcoalGray,
+    mutedText: Colors.suitGray,
+    alternativeText: Colors.black,
   },
 };
 
@@ -42,7 +54,9 @@ export const lightTheme: ThemeSchema = {
   dark: false,
   colors: {
     ...DefaultTheme.colors,
-    error: '#ff0000',
-    input: '#ffffff',
+    error: Colors.orangeRed,
+    input: Colors.white,
+    mutedText: Colors.suitGray,
+    alternativeText: Colors.white,
   },
 };
