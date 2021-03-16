@@ -24,9 +24,9 @@ module.exports = {
       type: 'ios.app',
       binaryPath:
         'ios/build/Build/Products/Debug-iphonesimulator/ReactNativeBoilerplate.app',
-      build: `xcodebuild -workspace ios/ReactNativeBoilerplate.xcworkspace -scheme ReactNativeBoilerplate -configuration Debug -destination 'platform=iOS Simulator,name=${
+      build: `set -o pipefail && xcodebuild -workspace ios/ReactNativeBoilerplate.xcworkspace -scheme ReactNativeBoilerplate -configuration Debug -destination id=$(applesimutils --byName "${
         simulatorName || iosSimulatorName
-      }' -derivedDataPath ios/build`,
+      }" --list | grep 'udid' | sed 's/.*:.*\\"\\(.*\\)\\",/\\1/') -derivedDataPath ios/build -quiet`,
     },
     'android.debug': {
       type: 'android.apk',
