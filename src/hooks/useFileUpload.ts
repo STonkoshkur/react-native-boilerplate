@@ -28,9 +28,6 @@ export const useFileUpload = () => {
       const uploadedFile = await api.files.upload(formData);
 
       return uploadedFile;
-    } catch (error) {
-      console.log(error, 'handleImageUpload error');
-      throw error;
     } finally {
       setIsUploading(false);
     }

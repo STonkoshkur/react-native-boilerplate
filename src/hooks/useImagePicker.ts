@@ -19,18 +19,20 @@ export const useImagePicker = (generalOptions: PickerOptions = {}) => {
     async (
       sourceMethod: 'openPicker' | 'openCamera',
       options: PickerOptions = {},
-    ) =>
-      await ImageCropPicker[sourceMethod]({
-        // TODO: move default values to const
-        width: 512,
-        height: 512,
-        cropping: true,
-        mediaType: 'photo',
-        forceJpg: true,
-        // multiple: true,
-        ...generalOptions,
-        ...options,
-      }),
+    ) => {
+      try {
+        return await ImageCropPicker[sourceMethod]({
+          // TODO: move default values to const
+          width: 512,
+          height: 512,
+          cropping: true,
+          mediaType: 'photo',
+          forceJpg: true,
+          ...generalOptions,
+          ...options,
+        });
+      } catch {}
+    },
     [generalOptions],
   );
 
@@ -50,24 +52,39 @@ export const useImagePicker = (generalOptions: PickerOptions = {}) => {
       // subtitle,
       pickerOptions,
     }: SelectImageSourceParams = {}) => {
-      // Alert.alert(
-      //   title ?? t('imagePicker:selectImage'),
-      //   subtitle ?? t('imagePicker:sourceMessage'),
-      //   [
-      //     { text: t('cancel'), style: 'cancel' },
-      //     {
-      //       text: t('imagePicker:chooseFromLibrary'),
-      //       onPress: () => pickImageFromLibrary(pickerOptions),
-      //     },
-      //     {
-      //       text: t('imagePicker:takePhoto'),
-      //       onPress: () => pickImageFromCamera(pickerOptions),
-      //     },
-      //   ],
+      // return new Promise((resolve, reject) =>
+      //   Alert.alert(
+      //     title ?? t('imagePicker:selectImage'),
+      //     subtitle ?? t('imagePicker:sourceMessage'),
+      //     [
+      //       {
+      //         text: t('cancel'),
+      //         style: 'cancel',
+      //         onPress: () => reject('File selection canceled'),
+      //       },
+      //       {
+      //         text: t('imagePicker:chooseFromLibrary'),
+      //         onPress: async () => {
+      //           const files = await pickImageFromLibrary(pickerOptions);
+
+      //           resolve(files);
+      //         },
+      //       },
+      //       {
+      //         text: t('imagePicker:takePhoto'),
+      //         // onPress: () => resolve(pickImageFromCamera(pickerOptions)),
+      //         onPress: async () => {
+      //           const files = await pickImageFromCamera(pickerOptions);
+
+      //           resolve(files);
+      //         },
+      //       },
+      //     ],
+      //   ),
       // );
 
-      // TODO: use alert modal insteal of TMP code
-      return pickImageFromLibrary(pickerOptions);
+      // TODO: add selection modal
+      return await pickImageFromLibrary(pickerOptions);
     },
     [pickImageFromCamera, pickImageFromLibrary, t],
   );

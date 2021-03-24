@@ -60,6 +60,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow access to the photo library to update user avatar</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow access to the camera to get new user avatar</string>
 	<key>UIAppFonts</key>
 	<array>
 		<!-- RN Vector Icons fonts -->

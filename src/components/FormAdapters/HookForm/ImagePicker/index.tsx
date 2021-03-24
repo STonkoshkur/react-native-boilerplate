@@ -5,8 +5,8 @@ import ImagePicker, { ImagePickerProps } from 'src/components/Form/ImagePicker';
 // entities
 import { FileEntity } from 'src/entities/FileEntity';
 
-type ImagePickerAdapterProps = Omit<ImagePickerProps, 'value' | 'onSelect'> & {
-  onSelect?: ImagePickerProps['onSelect'];
+type ImagePickerAdapterProps = Omit<ImagePickerProps, 'value' | 'onChange'> & {
+  onChange?: ImagePickerProps['onChange'];
   control: Control<FieldValues>;
   name: FieldName<FieldValues>;
   defaultValue: FileEntity | null;
@@ -16,7 +16,7 @@ const ImagePickerAdapter = ({
   control,
   name,
   defaultValue,
-  onSelect,
+  onChange: onChangeFromProps,
   children,
   ...props
 }: PropsWithChildren<ImagePickerAdapterProps>): ReactElement => (
@@ -28,9 +28,9 @@ const ImagePickerAdapter = ({
       <ImagePicker
         {...props}
         value={value}
-        onSelect={uploadedImage => {
+        onChange={uploadedImage => {
           onChange(uploadedImage);
-          onSelect?.(uploadedImage);
+          onChangeFromProps?.(uploadedImage);
         }}>
         {children}
       </ImagePicker>
