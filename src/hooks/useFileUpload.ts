@@ -1,43 +1,34 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 // services
 import api from 'src/services/api';
 // types
-import { Image } from 'src/components/Form/ImagePicker';
+import { PickerFileEntity } from 'src/components/Form/ImagePicker';
 
 export const useFileUpload = () => {
-  const [isUploading, setIsUploading] = useState(false);
+  const handleImageUpload = useCallback(async (file: PickerFileEntity) => {
+    const formData = new FormData();
+    const originalFilename = file.path.split('/').pop();
 
-  const handleImageUpload = useCallback(async (image: Image) => {
-    try {
-      setIsUploading(true);
-
-      const formData = new FormData();
-      const originalFilename = image.filename
-        ? image.filename
-        : image.path.split('/').pop();
-
-      formData.append('file', {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore Image from ImagePicker is not the Blob type. Well-known problem with FormData in RN.
-        uri: image.path,
-        name: originalFilename?.toLowerCase() ?? 'unnamed.jpg',
-        type: image.mime,
-        size: image.size,
-      });
-
-      const uploadedFile = await api.files.upload(formData);
-
-      return uploadedFile;
-    } finally {
-      setIsUploading(false);
+    if (!file.mime || !file.size || !originalFilename) {
+      throw new Error('Missing data for upload');
     }
+
+    formData.append('file', {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore Image from ImagePicker is not the Blob type. Well-known problem with FormData in RN.
+      uri: file.path,
+      name: originalFilename.toLowerCase(),
+      type: file.mime,
+      size: file.size,
+    });
+
+    return api.files.upload(formData);
   }, []);
 
   return useMemo(
     () => ({
-      isUploading,
       uploadImage: handleImageUpload,
     }),
-    [isUploading, handleImageUpload],
+    [handleImageUpload],
   );
 };

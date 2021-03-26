@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useForm, UseFormMethods } from 'react-hook-form';
 // types
 import { AuthRegistrationDto } from 'src/services/api/dtos/Auth';
+import { PickerFileEntity } from 'src/components/Form/ImagePicker';
 // validation
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaValidation } from './validation';
@@ -53,7 +54,6 @@ const SignUpForm: FC<SignUpFormProps> = props => {
         defaultValue={null}
         options={{
           cropperCircleOverlay: true,
-          // multiple: true,
         }}>
         {({ value, pickMediaFiles }) => {
           // console.log(
@@ -73,7 +73,11 @@ const SignUpForm: FC<SignUpFormProps> = props => {
               testID="editProfileImagePicker"
               activeOpacity={0.8}
               onPress={pickMediaFiles}>
-              <Avatar size="large" label="N/A" source={{ uri: value?.path }} />
+              <Avatar
+                size="large"
+                label="N/A"
+                source={{ uri: (value as PickerFileEntity)?.path }}
+              />
             </TouchableOpacity>
           );
         }}

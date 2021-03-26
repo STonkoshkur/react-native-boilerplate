@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback } from 'react';
+import { ReactElement, useCallback } from 'react';
 // components
 import {
   Options,
@@ -18,37 +18,36 @@ export type PickerFileEntity = {
   path: string;
   isLoading?: boolean;
   error?: string;
+  mime?: string;
+  size?: number;
 };
 
-export type PickerValue<O> = O extends { multiple: true }
-  ? PickerFileEntity[]
-  : PickerFileEntity;
-
-type ChildrenProps<O> = {
-  value: PickerValue<O> | null;
+type ChildrenProps = {
+  value: PickerFileEntity | PickerFileEntity[] | null;
   pickMediaFiles: () => void;
   deleteImage: (path: string) => void;
 };
 
-export type ImagePickerProps<O = Options> = {
-  options?: O;
-  value: PickerValue<O> | null;
-  onChange: (value: PickerValue<O> | null) => void;
-  children: (childrenProps: ChildrenProps<O>) => ReactElement;
+export type ImagePickerProps = {
+  options: Options;
+  value: PickerFileEntity | PickerFileEntity[] | null;
+  onChange: (value: PickerFileEntity | PickerFileEntity[] | null) => void;
+  children: (childrenProps: ChildrenProps) => ReactElement;
 };
 
-const ImagePicker: FC<ImagePickerProps> = ({
+function ImagePicker({
   value = null,
   onChange,
   options,
   children,
-}) => {
+}: ImagePickerProps) {
   const { selectImageSource } = useImagePicker(options);
   const { uploadImage } = useFileUpload();
 
   const pickMediaFiles = useCallback(
     async (pickerOptions?: SelectImageSourceParams) => {
-      const isMultiselect = options?.multiple ?? false;
+      const isMultiSelect =
+        pickerOptions?.pickerOptions?.multiple ?? options?.multiple ?? false;
 
       try {
         const selectedMedia = await selectImageSource(pickerOptions);
@@ -56,29 +55,28 @@ const ImagePicker: FC<ImagePickerProps> = ({
         if (selectedMedia !== undefined) {
           console.log('ImagePicker selectedMedia', selectedMedia);
 
-          const serializedSelectedFiles: PickerFileEntity[] = (Array.isArray(
-            selectedMedia,
-          )
+          const serializedSelectedFiles = (Array.isArray(selectedMedia)
             ? (selectedMedia as (Image | Video | ImageOrVideo)[])
             : [selectedMedia]
-          ).map(file => ({ ...file, path: file.path, isLoading: true }));
+          ).map(
+            file =>
+              ({
+                ...file,
+                path: file.path,
+                isLoading: true,
+              } as PickerFileEntity),
+          );
 
-          const valueToUpdate = isMultiselect
-            ? Array.isArray(value)
-              ? [...(value as PickerFileEntity[]), ...serializedSelectedFiles]
-              : [...serializedSelectedFiles]
-            : serializedSelectedFiles;
+          const valueToUpdate =
+            isMultiSelect && Array.isArray(value)
+              ? [...value, ...serializedSelectedFiles]
+              : serializedSelectedFiles;
 
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore types problems
-          onChange(isMultiselect ? valueToUpdate : valueToUpdate[0]);
+          onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
 
           await Promise.all(
             serializedSelectedFiles.map(async file => {
               try {
-                // TODO: fix
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore types problems
                 const uploadedFile = await uploadImage(file);
 
                 valueToUpdate.forEach(currentNewValueFile => {
@@ -89,11 +87,9 @@ const ImagePicker: FC<ImagePickerProps> = ({
                   }
                 });
 
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore types problems
-                onChange(isMultiselect ? valueToUpdate : valueToUpdate[0]);
+                onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
               } catch (e) {
-                let error = 'Unknown file uploading error';
+                let error = e.toString();
 
                 if (e.status === 422) {
                   error =
@@ -107,9 +103,7 @@ const ImagePicker: FC<ImagePickerProps> = ({
                   }
                 });
 
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore types problems
-                onChange(isMultiselect ? valueToUpdate : valueToUpdate[0]);
+                onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
               }
             }),
           );
@@ -124,10 +118,8 @@ const ImagePicker: FC<ImagePickerProps> = ({
   const deleteImage = useCallback(
     (pathToDelete: string) => () => {
       if (options?.multiple && Array.isArray(value)) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore types problems
         onChange(value.filter(item => item.path !== pathToDelete));
-      } else if (!options?.multiple && value?.path === pathToDelete) {
+      } else {
         onChange(null);
       }
     },
@@ -139,7 +131,7 @@ const ImagePicker: FC<ImagePickerProps> = ({
     pickMediaFiles,
     deleteImage,
   });
-};
+}
 
 export type { Image, Video, ImageOrVideo, Options };
 

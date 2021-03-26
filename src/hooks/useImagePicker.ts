@@ -1,48 +1,53 @@
 import { useCallback, useMemo } from 'react';
 // import { Alert } from 'react-native';
 import ImageCropPicker, {
-  Options as PickerOptions,
+  Image,
+  Video,
+  ImageOrVideo,
+  Options,
+  PossibleArray,
 } from 'react-native-image-crop-picker';
 // localization
 import { useTranslation } from 'react-i18next';
 
-export type SelectImageSourceParams = {
+export type SelectImageSourceParams<O extends Options = Options> = {
   title?: string;
   subtitle?: string;
-  pickerOptions?: PickerOptions;
+  pickerOptions?: O;
 };
 
-export const useImagePicker = (generalOptions: PickerOptions = {}) => {
+export type MediaType<O> = O extends { mediaType: 'photo' }
+  ? Image
+  : O extends { mediaType: 'video' }
+  ? Video
+  : ImageOrVideo;
+
+export const useImagePicker = <O extends Options>(generalOptions?: O) => {
   const { t } = useTranslation(['common', 'imagePicker']);
 
   const pickImageBySource = useCallback(
-    async (
-      sourceMethod: 'openPicker' | 'openCamera',
-      options: PickerOptions = {},
-    ) => {
-      try {
-        return await ImageCropPicker[sourceMethod]({
-          // TODO: move default values to const
-          width: 512,
-          height: 512,
-          cropping: true,
-          mediaType: 'photo',
-          forceJpg: true,
-          ...generalOptions,
-          ...options,
-        });
-      } catch {}
+    async (sourceMethod: 'openPicker' | 'openCamera', options?: O) => {
+      return ImageCropPicker[sourceMethod]({
+        // TODO: move default values to const
+        width: 512,
+        height: 512,
+        cropping: true,
+        mediaType: 'photo',
+        forceJpg: true,
+        ...generalOptions,
+        ...options,
+      }) as Promise<PossibleArray<O, MediaType<O>>>;
     },
     [generalOptions],
   );
 
   const pickImageFromCamera = useCallback(
-    (options?: PickerOptions) => pickImageBySource('openCamera', options),
+    (options?: O) => pickImageBySource('openCamera', options),
     [pickImageBySource],
   );
 
   const pickImageFromLibrary = useCallback(
-    (options?: PickerOptions) => pickImageBySource('openPicker', options),
+    (options?: O) => pickImageBySource('openPicker', options),
     [pickImageBySource],
   );
 
@@ -51,7 +56,7 @@ export const useImagePicker = (generalOptions: PickerOptions = {}) => {
       // title,
       // subtitle,
       pickerOptions,
-    }: SelectImageSourceParams = {}) => {
+    }: SelectImageSourceParams<O> = {}) => {
       // return new Promise((resolve, reject) =>
       //   Alert.alert(
       //     title ?? t('imagePicker:selectImage'),
