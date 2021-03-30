@@ -135,6 +135,14 @@ Shake your real device to open development menu. Use `CMD+D` or `CMD+CTRL+Z` to 
 
 For E2E testing used [Detox](https://github.com/wix/Detox).
 
+### Environment Setup
+
+#### Install Detox Command Line Tools (detox-cli)
+
+```sh
+npm install -g detox-cli
+```
+
 ### Running tests for iOS
 
 #### Install the latest version of [Homebrew](http://brew.sh)
@@ -148,12 +156,6 @@ xcode-select --install
 ```
 
 > Tip: Verify it works by typing in `brew -h` in a terminal to output list of available commands
-
-#### Install Detox Command Line Tools (detox-cli)
-
-```sh
-npm install -g detox-cli
-```
 
 #### Install [applesimutils](https://github.com/wix/AppleSimulatorUtils)
 
