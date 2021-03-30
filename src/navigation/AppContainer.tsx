@@ -71,7 +71,7 @@ const AppNavigationContainer: FC = (props) => {
     }
   }, [isRehydrated, bootstrap]);
 
-  if (isLoading && !isRehydrated) {
+  if (isLoading) {
     return <></>;
   }
 
