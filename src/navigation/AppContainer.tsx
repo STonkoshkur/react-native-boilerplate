@@ -66,8 +66,10 @@ const AppNavigationContainer: FC = (props) => {
   }, [token, dispatch]);
 
   useEffect(() => {
-    bootstrap();
-  }, [bootstrap]);
+    if (isRehydrated) {
+      bootstrap();
+    }
+  }, [isRehydrated, bootstrap]);
 
   if (isLoading && !isRehydrated) {
     return <></>;
