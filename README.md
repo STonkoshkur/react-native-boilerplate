@@ -149,6 +149,12 @@ xcode-select --install
 
 > Tip: Verify it works by typing in `brew -h` in a terminal to output list of available commands
 
+#### Install Detox Command Line Tools (detox-cli)
+
+```sh
+npm install -g detox-cli
+```
+
 #### Install [applesimutils](https://github.com/wix/AppleSimulatorUtils)
 
 A collection of utils for Apple simulators, Detox uses it to communicate with the simulator.
@@ -163,13 +169,13 @@ brew install applesimutils
 Build:
 
 ```bash
-SIMULATOR_NAME="iPhone 12" node_modules/.bin/detox build --configuration ios
+SIMULATOR_NAME="iPhone 12" detox build --configuration ios
 ```
 
 Run:
 
 ```bash
-SIMULATOR_NAME="iPhone 12" node_modules/.bin/detox test --configuration ios
+SIMULATOR_NAME="iPhone 12" detox test --configuration ios
 ```
 
 ### Running Tests for Android
@@ -179,11 +185,11 @@ By default Detox will try run Android Simulator with name `Pixel_2_API_29`, but 
 Build:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" node_modules/.bin/detox build --configuration android
+SIMULATOR_NAME="Pixel_2_API_29" detox build --configuration android
 ```
 
 Run:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" node_modules/.bin/detox test --configuration android
+SIMULATOR_NAME="Pixel_2_API_29" detox test --configuration android
 ```
