@@ -28,7 +28,7 @@ const ImagePickerAdapter = ({
       <ImagePicker
         {...props}
         value={value}
-        onChange={uploadedImage => {
+        onChange={(uploadedImage) => {
           onChange(uploadedImage);
           onChangeFromProps?.(uploadedImage);
         }}>

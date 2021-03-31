@@ -1,9 +1,8 @@
 import React, { FC, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useForm, UseFormMethods } from 'react-hook-form';
 // types
 import { AuthRegistrationDto } from 'src/services/api/dtos/Auth';
-import { PickerFileEntity } from 'src/components/Form/ImagePicker';
 // validation
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaValidation } from './validation';
@@ -18,17 +17,13 @@ import { useAgreementsModals } from 'src/hooks/useAgreementsModals';
 // styling
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 
-// tmp
-import ImagePicker from 'src/components/FormAdapters/HookForm/ImagePicker';
-import Avatar from 'src/components/Avatar';
-
 type SignUpFormProps = {
   onSubmit: (
     setError: UseFormMethods<AuthRegistrationDto>['setError'],
   ) => (data: AuthRegistrationDto) => Promise<void>;
 };
 
-const SignUpForm: FC<SignUpFormProps> = props => {
+const SignUpForm: FC<SignUpFormProps> = (props) => {
   const { t } = useTranslation();
   const { colors } = useThemeSchema();
   const {
@@ -48,41 +43,6 @@ const SignUpForm: FC<SignUpFormProps> = props => {
 
   return (
     <View>
-      <ImagePicker
-        name="photo"
-        control={control}
-        defaultValue={null}
-        options={{
-          cropperCircleOverlay: true,
-        }}>
-        {({ value, pickMediaFiles }) => {
-          // console.log(
-          //   Array.isArray(value)
-          //     ? value
-          //         .map(
-          //           ({ id, path, isLoading, error }) =>
-          //             `${id}: ${isLoading?.toString() ?? 'n/A'}, ${error}`,
-          //         )
-          //         .join('; === ;')
-          //     : value?.id,
-          //   'ImagePicker in Form render',
-          // );
-
-          return (
-            <TouchableOpacity
-              testID="editProfileImagePicker"
-              activeOpacity={0.8}
-              onPress={pickMediaFiles}>
-              <Avatar
-                size="large"
-                label="N/A"
-                source={{ uri: (value as PickerFileEntity)?.path }}
-              />
-            </TouchableOpacity>
-          );
-        }}
-      </ImagePicker>
-
       <Input
         testID="signUpEmail"
         label={t('common:email')}

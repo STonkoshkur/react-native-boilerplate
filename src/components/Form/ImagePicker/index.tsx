@@ -1,16 +1,13 @@
 import { ReactElement, useCallback } from 'react';
-// components
-import {
-  Options,
-  Image,
-  Video,
-  ImageOrVideo,
-} from 'react-native-image-crop-picker';
 // utils
 import { useFileUpload } from 'src/hooks/useFileUpload';
 import {
   useImagePicker,
   SelectImageSourceParams,
+  Options,
+  ImageOrVideo,
+  Video,
+  Image,
 } from 'src/hooks/useImagePicker';
 
 export type PickerFileEntity = {
@@ -45,24 +42,22 @@ function ImagePicker({
   const { uploadImage } = useFileUpload();
 
   const pickMediaFiles = useCallback(
-    async (pickerOptions?: SelectImageSourceParams) => {
+    async (config?: SelectImageSourceParams) => {
       const isMultiSelect =
-        pickerOptions?.pickerOptions?.multiple ?? options?.multiple ?? false;
+        config?.pickerOptions?.multiple ?? options?.multiple ?? false;
 
       try {
-        const selectedMedia = await selectImageSource(pickerOptions);
+        const selectedMedia = await selectImageSource(config);
 
         if (selectedMedia !== undefined) {
-          console.log('ImagePicker selectedMedia', selectedMedia);
-
           const serializedSelectedFiles = (Array.isArray(selectedMedia)
             ? (selectedMedia as (Image | Video | ImageOrVideo)[])
             : [selectedMedia]
           ).map(
-            file =>
+            (file) =>
               ({
                 ...file,
-                path: file.path,
+                path: file.path ?? file.sourceURL,
                 isLoading: true,
               } as PickerFileEntity),
           );
@@ -75,11 +70,11 @@ function ImagePicker({
           onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
 
           await Promise.all(
-            serializedSelectedFiles.map(async file => {
+            serializedSelectedFiles.map(async (file) => {
               try {
                 const uploadedFile = await uploadImage(file);
 
-                valueToUpdate.forEach(currentNewValueFile => {
+                valueToUpdate.forEach((currentNewValueFile) => {
                   if (currentNewValueFile.path === file.path) {
                     currentNewValueFile.id = uploadedFile.id;
                     currentNewValueFile.isLoading = false;
@@ -89,14 +84,14 @@ function ImagePicker({
 
                 onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
               } catch (e) {
-                let error = e.toString();
+                let error = e.data?.message ?? e.toString();
 
                 if (e.status === 422) {
                   error =
                     e.data?.errors?.file ?? 'Unknown file validation error';
                 }
 
-                valueToUpdate.forEach(currentNewValueFile => {
+                valueToUpdate.forEach((currentNewValueFile) => {
                   if (currentNewValueFile.path === file.path) {
                     currentNewValueFile.isLoading = false;
                     currentNewValueFile.error = error;
@@ -118,7 +113,7 @@ function ImagePicker({
   const deleteImage = useCallback(
     (pathToDelete: string) => () => {
       if (options?.multiple && Array.isArray(value)) {
-        onChange(value.filter(item => item.path !== pathToDelete));
+        onChange(value.filter((item) => item.path !== pathToDelete));
       } else {
         onChange(null);
       }
@@ -132,7 +127,5 @@ function ImagePicker({
     deleteImage,
   });
 }
-
-export type { Image, Video, ImageOrVideo, Options };
 
 export default ImagePicker;

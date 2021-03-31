@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-// import { Alert } from 'react-native';
+import { Alert } from 'react-native';
 import ImageCropPicker, {
   Image,
   Video,
@@ -10,6 +10,7 @@ import ImageCropPicker, {
 // localization
 import { useTranslation } from 'react-i18next';
 
+// types
 export type SelectImageSourceParams<O extends Options = Options> = {
   title?: string;
   subtitle?: string;
@@ -22,22 +23,24 @@ export type MediaType<O> = O extends { mediaType: 'photo' }
   ? Video
   : ImageOrVideo;
 
+export type { Image, Video, ImageOrVideo, Options, PossibleArray };
+
 export const useImagePicker = <O extends Options>(generalOptions?: O) => {
   const { t } = useTranslation(['common', 'imagePicker']);
 
   const pickImageBySource = useCallback(
-    async (sourceMethod: 'openPicker' | 'openCamera', options?: O) => {
-      return ImageCropPicker[sourceMethod]({
+    (sourceMethod: 'openPicker' | 'openCamera', options?: O) =>
+      ImageCropPicker[sourceMethod]({
         // TODO: move default values to const
-        width: 512,
-        height: 512,
+        width: 1024,
+        height: 1024,
         cropping: true,
         mediaType: 'photo',
         forceJpg: true,
+        compressImageQuality: 0.8,
         ...generalOptions,
         ...options,
-      }) as Promise<PossibleArray<O, MediaType<O>>>;
-    },
+      }) as Promise<PossibleArray<O, MediaType<O>>>,
     [generalOptions],
   );
 
@@ -52,44 +55,28 @@ export const useImagePicker = <O extends Options>(generalOptions?: O) => {
   );
 
   const selectImageSource = useCallback(
-    async ({
-      // title,
-      // subtitle,
-      pickerOptions,
-    }: SelectImageSourceParams<O> = {}) => {
-      // return new Promise((resolve, reject) =>
-      //   Alert.alert(
-      //     title ?? t('imagePicker:selectImage'),
-      //     subtitle ?? t('imagePicker:sourceMessage'),
-      //     [
-      //       {
-      //         text: t('cancel'),
-      //         style: 'cancel',
-      //         onPress: () => reject('File selection canceled'),
-      //       },
-      //       {
-      //         text: t('imagePicker:chooseFromLibrary'),
-      //         onPress: async () => {
-      //           const files = await pickImageFromLibrary(pickerOptions);
-
-      //           resolve(files);
-      //         },
-      //       },
-      //       {
-      //         text: t('imagePicker:takePhoto'),
-      //         // onPress: () => resolve(pickImageFromCamera(pickerOptions)),
-      //         onPress: async () => {
-      //           const files = await pickImageFromCamera(pickerOptions);
-
-      //           resolve(files);
-      //         },
-      //       },
-      //     ],
-      //   ),
-      // );
-
-      // TODO: add selection modal
-      return await pickImageFromLibrary(pickerOptions);
+    ({ title, subtitle, pickerOptions }: SelectImageSourceParams<O> = {}) => {
+      return new Promise<PossibleArray<O, MediaType<O>>>((resolve, reject) =>
+        Alert.alert(
+          title ?? t('imagePicker:selectImage'),
+          subtitle ?? t('imagePicker:sourceMessage'),
+          [
+            {
+              text: t('cancel'),
+              style: 'cancel',
+              onPress: () => reject('File selection canceled'),
+            },
+            {
+              text: t('imagePicker:chooseFromLibrary'),
+              onPress: () => resolve(pickImageFromLibrary(pickerOptions)),
+            },
+            {
+              text: t('imagePicker:takePhoto'),
+              onPress: () => resolve(pickImageFromCamera(pickerOptions)),
+            },
+          ],
+        ),
+      );
     },
     [pickImageFromCamera, pickImageFromLibrary, t],
   );

@@ -17,6 +17,7 @@ export default {
     forgotPasswordSuccessTitle: 'Éxito',
     forgotPasswordSuccessMessage:
       'Revise su correo electrónico para restablecer la contraseña',
+    cancel: 'Cancelar',
   },
   errors: {
     serverError: 'Error del Servidor',
@@ -30,5 +31,11 @@ export default {
     incorrectPassword: 'Contraseña incorrecta',
     emailAlreadyExists: 'El usuario con este correo electrónico ya existe',
     notFound: 'Extraviado',
+  },
+  imagePicker: {
+    selectImage: 'Seleccionar imagen',
+    sourceMessage: 'Seleccionar fuente de imagen',
+    chooseFromLibrary: 'Elige de la biblioteca',
+    takePhoto: 'Tomar foto',
   },
 } as const;

@@ -16,6 +16,7 @@ export default {
     submit: 'Submit',
     forgotPasswordSuccessTitle: 'Success',
     forgotPasswordSuccessMessage: 'Check you email for reset password',
+    cancel: 'Cancel',
   },
   errors: {
     serverError: 'Server Error',
@@ -29,5 +30,11 @@ export default {
     incorrectPassword: 'Wrong password',
     emailAlreadyExists: 'User with this email already exists',
     notFound: 'Not found',
+  },
+  imagePicker: {
+    selectImage: 'Select image',
+    sourceMessage: 'Select image source',
+    chooseFromLibrary: 'Choose from Library',
+    takePhoto: 'Take Photo',
   },
 } as const;
