@@ -17,6 +17,7 @@ import { updateAuthUser, clearAuth } from 'src/store/modules/auth';
 // styling
 import { useColorScheme } from 'react-native-appearance';
 import { darkTheme, lightTheme } from 'src/styles';
+import { getPersistRehydratedSelector } from 'src/store/modules/persist/selectors';
 
 const RootStack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const AppNavigationContainer: FC = props => {
   const dispatch = useDispatch();
   const token = useSelector(getAuthTokenSelector);
   const user = useSelector(getAuthUserSelector);
+  const isRehydrated = useSelector(getPersistRehydratedSelector);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -64,8 +66,10 @@ const AppNavigationContainer: FC = props => {
   }, [token, dispatch]);
 
   useEffect(() => {
-    bootstrap();
-  }, [bootstrap]);
+    if (isRehydrated) {
+      bootstrap();
+    }
+  }, [isRehydrated, bootstrap]);
 
   if (isLoading) {
     return <></>;

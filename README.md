@@ -135,6 +135,14 @@ Shake your real device to open development menu. Use `CMD+D` or `CMD+CTRL+Z` to 
 
 For E2E testing used [Detox](https://github.com/wix/Detox).
 
+### Environment Setup
+
+#### Install Detox Command Line Tools (detox-cli)
+
+```sh
+npm install -g detox-cli
+```
+
 ### Running tests for iOS
 
 #### Install the latest version of [Homebrew](http://brew.sh)
@@ -163,13 +171,13 @@ brew install applesimutils
 Build:
 
 ```bash
-SIMULATOR_NAME="iPhone 12" node_modules/.bin/detox build --configuration ios
+SIMULATOR_NAME="iPhone 12" detox build --configuration ios
 ```
 
 Run:
 
 ```bash
-SIMULATOR_NAME="iPhone 12" node_modules/.bin/detox test --configuration ios
+SIMULATOR_NAME="iPhone 12" detox test --configuration ios
 ```
 
 ### Running Tests for Android
@@ -179,11 +187,11 @@ By default Detox will try run Android Simulator with name `Pixel_2_API_29`, but 
 Build:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" node_modules/.bin/detox build --configuration android
+SIMULATOR_NAME="Pixel_2_API_29" detox build --configuration android
 ```
 
 Run:
 
 ```bash
-SIMULATOR_NAME="Pixel_2_API_29" node_modules/.bin/detox test --configuration android
+SIMULATOR_NAME="Pixel_2_API_29" detox test --configuration android
 ```
