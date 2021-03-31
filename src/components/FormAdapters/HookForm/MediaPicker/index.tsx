@@ -1,31 +1,31 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 import { Control, Controller, FieldName, FieldValues } from 'react-hook-form';
 // components
-import ImagePicker, { ImagePickerProps } from 'src/components/Form/ImagePicker';
+import MediaPicker, { MediaPickerProps } from 'src/components/Form/MediaPicker';
 // entities
 import { FileEntity } from 'src/entities/FileEntity';
 
-type ImagePickerAdapterProps = Omit<ImagePickerProps, 'value' | 'onChange'> & {
-  onChange?: ImagePickerProps['onChange'];
+type MediaPickerAdapterProps = Omit<MediaPickerProps, 'value' | 'onChange'> & {
+  onChange?: MediaPickerProps['onChange'];
   control: Control<FieldValues>;
   name: FieldName<FieldValues>;
   defaultValue: FileEntity | null;
 };
 
-const ImagePickerAdapter = ({
+const MediaPickerAdapter = ({
   control,
   name,
   defaultValue,
   onChange: onChangeFromProps,
   children,
   ...props
-}: PropsWithChildren<ImagePickerAdapterProps>): ReactElement => (
+}: PropsWithChildren<MediaPickerAdapterProps>): ReactElement => (
   <Controller
     name={name}
     control={control}
     defaultValue={defaultValue}
     render={({ onChange, value }): ReactElement => (
-      <ImagePicker
+      <MediaPicker
         {...props}
         value={value}
         onChange={(uploadedImage) => {
@@ -33,9 +33,9 @@ const ImagePickerAdapter = ({
           onChangeFromProps?.(uploadedImage);
         }}>
         {children}
-      </ImagePicker>
+      </MediaPicker>
     )}
   />
 );
 
-export default ImagePickerAdapter;
+export default MediaPickerAdapter;

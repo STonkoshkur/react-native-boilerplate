@@ -11,7 +11,7 @@ import ImageCropPicker, {
 import { useTranslation } from 'react-i18next';
 
 // types
-export type SelectImageSourceParams<O extends Options = Options> = {
+export type SelectMediaSourceParams<O extends Options = Options> = {
   title?: string;
   subtitle?: string;
   pickerOptions?: O;
@@ -25,10 +25,10 @@ export type MediaType<O> = O extends { mediaType: 'photo' }
 
 export type { Image, Video, ImageOrVideo, Options, PossibleArray };
 
-export const useImagePicker = <O extends Options>(generalOptions?: O) => {
+export const useMediaPicker = <O extends Options>(generalOptions?: O) => {
   const { t } = useTranslation(['common', 'imagePicker']);
 
-  const pickImageBySource = useCallback(
+  const pickMediaBySource = useCallback(
     (sourceMethod: 'openPicker' | 'openCamera', options?: O) =>
       ImageCropPicker[sourceMethod]({
         // TODO: move default values to const
@@ -44,18 +44,18 @@ export const useImagePicker = <O extends Options>(generalOptions?: O) => {
     [generalOptions],
   );
 
-  const pickImageFromCamera = useCallback(
-    (options?: O) => pickImageBySource('openCamera', options),
-    [pickImageBySource],
+  const pickMediaFromCamera = useCallback(
+    (options?: O) => pickMediaBySource('openCamera', options),
+    [pickMediaBySource],
   );
 
-  const pickImageFromLibrary = useCallback(
-    (options?: O) => pickImageBySource('openPicker', options),
-    [pickImageBySource],
+  const pickMediaFromLibrary = useCallback(
+    (options?: O) => pickMediaBySource('openPicker', options),
+    [pickMediaBySource],
   );
 
-  const selectImageSource = useCallback(
-    ({ title, subtitle, pickerOptions }: SelectImageSourceParams<O> = {}) => {
+  const selectMediaSource = useCallback(
+    ({ title, subtitle, pickerOptions }: SelectMediaSourceParams<O> = {}) => {
       return new Promise<PossibleArray<O, MediaType<O>>>((resolve, reject) =>
         Alert.alert(
           title ?? t('imagePicker:selectImage'),
@@ -68,25 +68,25 @@ export const useImagePicker = <O extends Options>(generalOptions?: O) => {
             },
             {
               text: t('imagePicker:chooseFromLibrary'),
-              onPress: () => resolve(pickImageFromLibrary(pickerOptions)),
+              onPress: () => resolve(pickMediaFromLibrary(pickerOptions)),
             },
             {
               text: t('imagePicker:takePhoto'),
-              onPress: () => resolve(pickImageFromCamera(pickerOptions)),
+              onPress: () => resolve(pickMediaFromCamera(pickerOptions)),
             },
           ],
         ),
       );
     },
-    [pickImageFromCamera, pickImageFromLibrary, t],
+    [pickMediaFromCamera, pickMediaFromLibrary, t],
   );
 
   return useMemo(
     () => ({
-      selectImageSource,
-      pickImageFromCamera,
-      pickImageFromLibrary,
+      selectMediaSource,
+      pickMediaFromCamera,
+      pickMediaFromLibrary,
     }),
-    [selectImageSource, pickImageFromCamera, pickImageFromLibrary],
+    [selectMediaSource, pickMediaFromCamera, pickMediaFromLibrary],
   );
 };

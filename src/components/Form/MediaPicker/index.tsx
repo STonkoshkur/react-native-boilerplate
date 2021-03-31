@@ -2,15 +2,15 @@ import { ReactElement, useCallback } from 'react';
 // utils
 import { useFileUpload } from 'src/hooks/useFileUpload';
 import {
-  useImagePicker,
-  SelectImageSourceParams,
+  useMediaPicker,
+  SelectMediaSourceParams,
   Options,
   ImageOrVideo,
   Video,
   Image,
-} from 'src/hooks/useImagePicker';
+} from 'src/hooks/useMediaPicker';
 
-export type PickerFileEntity = {
+export type MediaPickerFileEntity = {
   id?: string;
   path: string;
   isLoading?: boolean;
@@ -20,34 +20,36 @@ export type PickerFileEntity = {
 };
 
 type ChildrenProps = {
-  value: PickerFileEntity | PickerFileEntity[] | null;
+  value: MediaPickerFileEntity | MediaPickerFileEntity[] | null;
   pickMediaFiles: () => void;
   deleteImage: (path: string) => void;
 };
 
-export type ImagePickerProps = {
+export type MediaPickerProps = {
   options: Options;
-  value: PickerFileEntity | PickerFileEntity[] | null;
-  onChange: (value: PickerFileEntity | PickerFileEntity[] | null) => void;
+  value: MediaPickerFileEntity | MediaPickerFileEntity[] | null;
+  onChange: (
+    value: MediaPickerFileEntity | MediaPickerFileEntity[] | null,
+  ) => void;
   children: (childrenProps: ChildrenProps) => ReactElement;
 };
 
-function ImagePicker({
+function MediaPicker({
   value = null,
   onChange,
   options,
   children,
-}: ImagePickerProps) {
-  const { selectImageSource } = useImagePicker(options);
-  const { uploadImage } = useFileUpload();
+}: MediaPickerProps) {
+  const { selectMediaSource } = useMediaPicker(options);
+  const { uploadMedia } = useFileUpload();
 
   const pickMediaFiles = useCallback(
-    async (config?: SelectImageSourceParams) => {
+    async (config?: SelectMediaSourceParams) => {
       const isMultiSelect =
         config?.pickerOptions?.multiple ?? options?.multiple ?? false;
 
       try {
-        const selectedMedia = await selectImageSource(config);
+        const selectedMedia = await selectMediaSource(config);
 
         if (selectedMedia !== undefined) {
           const serializedSelectedFiles = (Array.isArray(selectedMedia)
@@ -59,7 +61,7 @@ function ImagePicker({
                 ...file,
                 path: file.path ?? file.sourceURL,
                 isLoading: true,
-              } as PickerFileEntity),
+              } as MediaPickerFileEntity),
           );
 
           const valueToUpdate =
@@ -72,7 +74,7 @@ function ImagePicker({
           await Promise.all(
             serializedSelectedFiles.map(async (file) => {
               try {
-                const uploadedFile = await uploadImage(file);
+                const uploadedFile = await uploadMedia(file);
 
                 valueToUpdate.forEach((currentNewValueFile) => {
                   if (currentNewValueFile.path === file.path) {
@@ -107,7 +109,7 @@ function ImagePicker({
         console.error(e, 'ImageCropPicker pickMediaFiles error');
       }
     },
-    [options?.multiple, value, onChange, uploadImage, selectImageSource],
+    [options?.multiple, value, onChange, uploadMedia, selectMediaSource],
   );
 
   const deleteImage = useCallback(
@@ -128,4 +130,4 @@ function ImagePicker({
   });
 }
 
-export default ImagePicker;
+export default MediaPicker;

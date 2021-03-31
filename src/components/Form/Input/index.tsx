@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
   TextInput,
   TextInputProps,
@@ -15,6 +15,8 @@ export type InputProps = TextInputProps & {
 };
 
 const Input: FC<InputProps> = ({ label, error, ...props }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
   const { colors } = useThemeSchema();
 
   return (
@@ -28,12 +30,28 @@ const Input: FC<InputProps> = ({ label, error, ...props }) => {
       <View>
         <TextInput
           {...props}
+          onFocus={(e) => {
+            setIsFocused(true);
+            props.onFocus?.(e);
+          }}
+          onBlur={(e) => {
+            setIsFocused(false);
+            props.onBlur?.(e);
+          }}
           style={[
             styles.input,
             {
-              borderColor: error ? colors.error : colors.border,
+              borderColor: error
+                ? colors.error
+                : isFocused
+                ? colors.primary
+                : colors.border,
               color: colors.text,
               backgroundColor: colors.input,
+            },
+            props.editable === false && {
+              ...styles.disabledInput,
+              backgroundColor: colors.background,
             },
             props.style,
           ]}
@@ -70,6 +88,10 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     paddingRight: 18,
     paddingTop: 14,
+  },
+  disabledInput: {
+    borderStyle: 'dashed',
+    opacity: 0.8,
   },
   errorContainer: {
     marginTop: 4,

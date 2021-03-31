@@ -2,10 +2,10 @@ import { useCallback, useMemo } from 'react';
 // services
 import api from 'src/services/api';
 // types
-import { PickerFileEntity } from 'src/components/Form/ImagePicker';
+import { MediaPickerFileEntity } from 'src/components/Form/MediaPicker';
 
 export const useFileUpload = () => {
-  const handleImageUpload = useCallback(async (file: PickerFileEntity) => {
+  const handleMediaUpload = useCallback(async (file: MediaPickerFileEntity) => {
     const formData = new FormData();
     const originalFilename = file.path.split('/').pop();
 
@@ -27,8 +27,8 @@ export const useFileUpload = () => {
 
   return useMemo(
     () => ({
-      uploadImage: handleImageUpload,
+      uploadMedia: handleMediaUpload,
     }),
-    [handleImageUpload],
+    [handleMediaUpload],
   );
 };
