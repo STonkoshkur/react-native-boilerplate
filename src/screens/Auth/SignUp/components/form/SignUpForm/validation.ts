@@ -20,14 +20,5 @@ export const schemaValidation = yup
       ),
     firstName: yup.string().required(i18n.t('validation:required')),
     lastName: yup.string().required(i18n.t('validation:required')),
-
-    //tmp
-    photo: yup
-      .object({
-        id: yup.string().required(i18n.t('validation:required')),
-        path: yup.string().required(i18n.t('validation:required')),
-      })
-      .defined()
-      .nullable(),
   })
   .defined();
