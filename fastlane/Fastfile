@@ -1,0 +1,105 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  lane :bump_version_code do
+    path = '../android/app/build.gradle'
+    re = /versionCode\s+(\d+)/
+
+    s = File.read(path)
+    versionCode = s[re, 1].to_i
+    s[re, 1] = (versionCode + 1).to_s
+
+    f = File.new(path, 'w')
+    f.write(s)
+    f.close
+  end
+
+  lane :e2e do
+    Dir.chdir ".." do # Navigate to the root of the project where the Detox files are placed.
+      sh "emulator -list-avds"
+      emulator = prompt(text: "Enter emulator's name: ")
+
+      sh "emulator -avd #{emulator} > /dev/null 2>&1 &"
+      sh "react-native run-android"
+      sh "SIMULATOR_NAME='#{emulator}' yarn test:e2e-build-android"
+      sh "SIMULATOR_NAME='#{emulator}' yarn test:e2e-run-android"
+    end
+  end
+
+  lane :beta do
+    ensure_git_status_clean
+
+    e2e
+
+    # Bump version code for uploading
+    bump_version_code
+
+    store_password = prompt(text: "Signing Store Password: ", secure_text: true)
+    key_password = prompt(text: "Alias Key Password: ", secure_text: true)
+    releaseFilePath = File.join(Dir.pwd, "..", "android/my-upload-key.keystore")
+    gradle(task: 'clean', project_dir: './android')
+    gradle(
+      task: 'bundle',
+      project_dir: './android',
+      build_type: 'Release',
+      print_command: false,
+      properties: {
+        "android.injected.signing.store.file" => releaseFilePath,
+        "android.injected.signing.store.password" => store_password,
+        "android.injected.signing.key.alias" => "my-key-alias",
+        "android.injected.signing.key.password" => key_password,
+      }
+    )
+    supply(track: 'internal')
+
+    git_commit(message: "Bump Version")
+    push_to_git_remote
+  end
+end
+
+platform :ios do
+  lane :e2e do
+    Dir.chdir ".." do # Navigate to the root of the project where the Detox files are placed.
+      emulator = prompt(text: "Enter emulator's name: ")
+
+      sh "react-native run-ios --simulator='#{emulator}'"
+      sh "SIMULATOR_NAME='#{emulator}' yarn test:e2e-build-ios"
+      sh "SIMULATOR_NAME='#{emulator}' yarn test:e2e-run-ios"
+    end
+  end
+
+  desc "Push a new production build to TestFlight"
+  lane :beta do |options|
+    ensure_git_status_clean
+
+    e2e
+
+    increment_build_number(xcodeproj: "./ios/ReactNativeBoilerplate.xcodeproj")
+
+    if options[:version]
+      set_info_plist_value(path: "./ios/Info.plist", key: "CFBundleShortVersionString", value: options[:version])
+    end
+
+    build_app(workspace: "./ios/ReactNativeBoilerplate.xcworkspace", scheme: "ReactNativeBoilerplate")
+
+    upload_to_testflight
+
+    git_commit(path: "./ios/Info.plist", message: "Bump Version")
+    push_to_git_remote
+  end
+end

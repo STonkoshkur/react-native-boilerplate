@@ -195,3 +195,7 @@ Run:
 ```bash
 SIMULATOR_NAME="Pixel_2_API_29" detox test --configuration android
 ```
+
+## Distributing beta builds
+
+For distributing beta builds used [Fastlane](https://docs.fastlane.tools). Available actions wrote [here](https://github.com/STonkoshkur/react-native-boilerplate/tree/master/fastlane)
