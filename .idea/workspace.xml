@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="820b5fba-deb7-4a45-a2c4-049f3ea48d29" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__tests__/cli-integration.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/bro-cli" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.buckconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.github/dependabot.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.github/workflows/ios.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.husky/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.husky/pre-commit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.prettierrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/.watchmanconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/__mocks__/react-native-config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/__mocks__/react-native-localize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/__mocks__/svgMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/__tests__/App-test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/_editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/_BUCK" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/build_defs.bzl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/debug.keystore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/google-services.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/androidTest/java/com/company/rnboilerplate/DetoxTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/debug/java/com/company/rnboilerplate/ReactNativeFlipper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/java/com/company/rnboilerplate/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/java/com/company/rnboilerplate/MainApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/declarations.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/detox.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/e2e/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/e2e/environment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/e2e/flows/auth/ForgotPassword.e2e.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/e2e/flows/auth/SignIn.e2e.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/e2e/flows/auth/SignUp.e2e.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/Config.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/File.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/GoogleService-Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/Podfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/Podfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate-Bridging-Header.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate.xcodeproj/xcshareddata/xcschemes/ReactNativeBoilerplate.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/AppDelegate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/AppDelegate.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-1024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-20@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-20@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-29@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-29@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-40@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-40@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-60@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-60@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-76@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/AppIcon.appiconset/boilerplate-app-icon-83.5@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Images.xcassets/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/LaunchScreen.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/ReactNativeBoilerplate.entitlements" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplate/main.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplateTests/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/ios/ReactNativeBoilerplateTests/ReactNativeBoilerplateTests.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/metro.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/App.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/assets/localization/en.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/assets/localization/es.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/assets/vector/DetailsInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/assets/vector/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/Avatar/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/Button/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/Form/Input/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/Form/MediaPicker/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/FormAdapters/HookForm/Input/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/FormAdapters/HookForm/MediaPicker/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/KeyboardView/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/ListItem/Content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/ListItem/Icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/ListItem/Subtitle.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/ListItem/Title.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/ListItem/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/components/Typography/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/entities/FileEntity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/entities/Role.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/entities/Status.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/entities/User.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/enums/SocialEnum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/hooks/useAgreementsModals.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/hooks/useFileUpload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/hooks/useMediaPicker.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/hooks/useThemeShema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/AppContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/navigators/AuthStack/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/navigators/AuthStack/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/navigators/ExampleStack/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/navigators/ExampleStack/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/navigators/HomeTabs/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/navigators/HomeTabs/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/navigation/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/ForgotPassword/components/form/ForgotPasswordForm/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/ForgotPassword/components/form/ForgotPasswordForm/validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/ForgotPassword/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/SignIn/components/form/SignInForm/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/SignIn/components/form/SignInForm/validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/SignIn/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/SignUp/components/form/SignUpForm/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/SignUp/components/form/SignUpForm/validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/SignUp/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/Auth/components/SocialAuthBar/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/TMP/Index/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/screens/TMP/Nested/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/api/axios/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/api/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/api/dtos/Auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/api/endpoints/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/api/endpoints/files.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/localization/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/storage/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/services/utils/transformErrors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/store/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/store/modules/auth/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/store/modules/auth/selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/store/modules/persist/selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/store/rootReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/styles/colors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/styles/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/styles/spacing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/src/styles/themes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boilerplate/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/commands.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/plugins.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commands/bro-cli.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commands/generate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commands/new.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/extensions/cli-extension.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/model.ts.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tamplate.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qk1eZitLCXsA1yMwpnaRqoAZyb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/boilerplate" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="820b5fba-deb7-4a45-a2c4-049f3ea48d29" name="Default Changelist" comment="" />
+      <created>1617608870024</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617608870024</updated>
+      <workItem from="1617608871096" duration="4187000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="created cli" />
+    <option name="LAST_COMMIT_MESSAGE" value="created cli" />
+  </component>
+</project>

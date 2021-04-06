@@ -1,0 +1,81 @@
+name: iOS
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macos-11.0
+
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12.3.app
+
+    steps:
+      - run: brew tap wix/brew
+      - run: brew install applesimutils
+      - run: npm install -g detox-cli
+
+      - name: Sun iOS simulator
+        run: open -a /Applications/Xcode_12.3.app/Contents/Developer/Applications/Simulator.app --args -CurrentDeviceUDID $(applesimutils --byName "iPhone 12" --list | grep 'udid' | sed 's/.*:.*\"\(.*\)\",/\1/')
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache App Dependencies
+        id: cache-node-modules-app
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: cache-node-modules-app-${{ hashFiles('yarn.lock') }}
+
+      - name: Copy ENV file
+        run: cp .env.example .env
+
+      - name: Install Dependencies
+        if: steps.cache-node-modules-app.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Update Pods
+        run: gem update cocoapods xcodeproj
+
+      - name: Cache Pods App
+        id: cache-pods-app
+        uses: actions/cache@v2
+        with:
+          path: ios/Pods
+          key: cache-pods-app-${{ hashFiles('ios/Podfile.lock') }}
+
+      - name: Install Dependencies
+        if: steps.cache-pods-app.outputs.cache-hit != 'true'
+        run: npx pod-install
+
+      - run: yarn start &
+
+      - name: Cache Build App
+        id: cache-build-app
+        uses: actions/cache@v2
+        with:
+          path: ios/build
+          key: cache-build-app-${{ hashFiles('yarn.lock') }}
+
+      - name: Create artifact downloads folder
+        run: mkdir downloads
+
+      - run: detox clean-framework-cache && detox build-framework-cache
+
+      - name: Build app for tests
+        if: steps.cache-build-app.outputs.cache-hit != 'true'
+        run: SIMULATOR_NAME="iPhone 12" detox build --configuration ios
+
+      - run: SIMULATOR_NAME="iPhone 12" detox test --configuration ios --cleanup --debug-synchronization 500 --take-screenshots failing --artifacts-location ./downloads
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: assets-for-download
+          path: downloads
+          retention-days: 2
