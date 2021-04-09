@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { useForm, UseFormMethods } from 'react-hook-form';
+import { useForm, UseFormReturn } from 'react-hook-form';
 // types
 import { AuthRegistrationDto } from 'src/services/api/dtos/Auth';
 // validation
@@ -19,7 +19,7 @@ import { useThemeSchema } from 'src/hooks/useThemeShema';
 
 type SignUpFormProps = {
   onSubmit: (
-    setError: UseFormMethods<AuthRegistrationDto>['setError'],
+    setError: UseFormReturn<AuthRegistrationDto>['setError'],
   ) => (data: AuthRegistrationDto) => Promise<void>;
 };
 
@@ -29,7 +29,7 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
   const {
     control,
     handleSubmit,
-    errors,
+    formState: { errors },
     setError,
   } = useForm<AuthRegistrationDto>({
     resolver: yupResolver(schemaValidation),

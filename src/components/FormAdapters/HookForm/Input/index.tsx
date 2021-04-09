@@ -1,35 +1,38 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
-import { Control, Controller, FieldName, FieldValues } from 'react-hook-form';
+import { Control, Controller, Path } from 'react-hook-form';
 // components
 import Input, { InputProps } from 'src/components/Form/Input';
 
-type InputAdapterProps = InputProps & {
-  control: Control<FieldValues>;
-  name: FieldName<FieldValues>;
-  defaultValue: unknown;
+type InputAdapterProps<T> = InputProps & {
+  control: Control<T>;
+  name: Path<T>;
+  defaultValue: string;
 };
 
-const InputAdapter = ({
+function InputAdapter<T>({
   control,
   name,
   defaultValue,
   ...props
-}: PropsWithChildren<InputAdapterProps>): ReactElement => {
+}: PropsWithChildren<InputAdapterProps<T>>): ReactElement {
   return (
     <Controller
       control={control}
-      render={({ onChange, onBlur, value }): ReactElement => (
-        <Input
-          {...props}
-          onBlur={onBlur}
-          onChangeText={(textValue): void => onChange(textValue)}
-          value={value}
-        />
-      )}
+      render={({ field: { onChange, onBlur, value } }): ReactElement => {
+        console.log(value);
+        return (
+          <Input
+            {...props}
+            onBlur={onBlur}
+            onChangeText={(textValue): void => onChange(textValue)}
+            value={value as string}
+          />
+        );
+      }}
       name={name}
       defaultValue={defaultValue}
     />
   );
-};
+}
 
 export default InputAdapter;

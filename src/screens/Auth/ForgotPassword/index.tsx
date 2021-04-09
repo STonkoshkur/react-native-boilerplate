@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView, Alert } from 'react-native';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 // navigation
 import { StackScreenProps } from '@react-navigation/stack';
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
@@ -31,7 +31,7 @@ const ForgotPasswordScreen: FC<ForgotPaaswordScreenProps> = ({
 
   const onSubmit = useCallback(
     <T extends AuthForgotPasswordDto>(
-      setError: UseFormMethods<T>['setError'],
+      setError: UseFormReturn<T>['setError'],
     ) => async (data: T): Promise<void> => {
       try {
         await api.auth.forgotPassword(data);
