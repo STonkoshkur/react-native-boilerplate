@@ -19,7 +19,6 @@ function InputAdapter<T>({
     <Controller
       control={control}
       render={({ field: { onChange, onBlur, value } }): ReactElement => {
-        console.log(value);
         return (
           <Input
             {...props}
