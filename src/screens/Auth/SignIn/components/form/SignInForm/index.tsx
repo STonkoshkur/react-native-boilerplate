@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { useForm, UseFormMethods } from 'react-hook-form';
+import { useForm, UseFormReturn } from 'react-hook-form';
 // types
 import { AuthEmailSignInDto } from 'src/services/api/dtos/Auth';
 // validation
@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next';
 
 type SignInFormProps = {
   onSubmit: (
-    setError: UseFormMethods<AuthEmailSignInDto>['setError'],
+    setError: UseFormReturn<AuthEmailSignInDto>['setError'],
   ) => (data: AuthEmailSignInDto) => Promise<void>;
 };
 
@@ -24,7 +24,7 @@ const SignInForm: FC<SignInFormProps> = (props) => {
   const {
     control,
     handleSubmit,
-    errors,
+    formState: { errors },
     setError,
   } = useForm<AuthEmailSignInDto>({
     resolver: yupResolver(schemaValidation),

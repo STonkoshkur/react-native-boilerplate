@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { useForm, UseFormMethods } from 'react-hook-form';
+import { useForm, UseFormReturn } from 'react-hook-form';
 // types
 import { AuthForgotPasswordDto } from 'src/services/api/dtos/Auth';
 // validation
@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 
 type ForgotPasswordFormProps = {
   onSubmit: (
-    setError: UseFormMethods<AuthForgotPasswordDto>['setError'],
+    setError: UseFormReturn<AuthForgotPasswordDto>['setError'],
   ) => (data: AuthForgotPasswordDto) => Promise<void>;
 };
 
@@ -23,7 +23,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = (props) => {
   const {
     control,
     handleSubmit,
-    errors,
+    formState: { errors },
     setError,
   } = useForm<AuthForgotPasswordDto>({
     resolver: yupResolver(schemaValidation),

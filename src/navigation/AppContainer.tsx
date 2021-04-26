@@ -21,7 +21,7 @@ import { getPersistRehydratedSelector } from 'src/store/modules/persist/selector
 
 const RootStack = createStackNavigator();
 
-const AppNavigationContainer: FC = props => {
+const AppNavigationContainer: FC = (props) => {
   const colorScheme = useColorScheme();
   const dispatch = useDispatch();
   const token = useSelector(getAuthTokenSelector);
