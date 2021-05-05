@@ -1,18 +1,35 @@
 import React, { FC, ReactNode } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+// components
 import Icon from 'react-native-vector-icons/Ionicons';
+import AppBarAction from 'src/components/AppBar/Action';
 // navigation
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
+import SettingsStackNavigator from 'src/navigation/navigators/SettingsStack';
 import ExmapleStackNavigator from 'src/navigation/navigators/ExampleStack';
+// screens
+import EditProfile from 'src/screens/Settings/EditProfile';
+import ChangePasswordScreen from 'src/screens/Settings/ChangePassword';
 // localization
 import { useTranslation } from 'react-i18next';
 
 /*
  * Bottom Tabs navigator
+ *
  * Guide: https://reactnavigation.org/docs/tab-based-navigation
  * Docs: https://reactnavigation.org/docs/bottom-tab-navigator
  */
 const Tab = createBottomTabNavigator<RootNavigationStackParamsList>();
+
+/*
+ * Root stack navigator
+ * Used to create full-screen modal pages
+ *
+ * Guide: https://reactnavigation.org/docs/modal
+ * Docs: https://reactnavigation.org/docs/stack-navigator
+ */
+const Stack = createStackNavigator<RootNavigationStackParamsList>();
 
 const HomeTabsNavigator: FC = () => {
   const { t } = useTranslation();
@@ -40,11 +57,11 @@ const HomeTabsNavigator: FC = () => {
         }}
       />
       <Tab.Screen
-        name={Routes.Tab3}
-        component={ExmapleStackNavigator}
+        name={Routes.SettingsTab}
+        component={SettingsStackNavigator}
         options={{
           tabBarIcon: ({ focused, ...props }): ReactNode => (
-            <Icon name={focused ? 'settings' : 'settings-outline'} {...props} />
+            <Icon name={focused ? 'person' : 'person-outline'} {...props} />
           ),
           tabBarLabel: t('common:settings'),
         }}
@@ -53,4 +70,41 @@ const HomeTabsNavigator: FC = () => {
   );
 };
 
-export default HomeTabsNavigator;
+const MainStack = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Stack.Navigator mode="modal">
+      <Stack.Screen
+        name={Routes.Main}
+        component={HomeTabsNavigator}
+        options={{ headerShown: false }}
+      />
+
+      {/* Settings forms screens */}
+      <Stack.Screen
+        name={Routes.SettingsProfile}
+        component={EditProfile}
+        options={({ navigation }) => ({
+          title: t('settings:editProfile'),
+          gestureEnabled: false,
+          headerLeft: () => (
+            <AppBarAction icon="close-outline" onPress={navigation.goBack} />
+          ),
+        })}
+      />
+      <Stack.Screen
+        name={Routes.SettingsChangePassword}
+        component={ChangePasswordScreen}
+        options={() => ({
+          title: t('settings:changePassword'),
+          gestureEnabled: false,
+        })}
+      />
+
+      {/* Add screens that should open as full-screen modal here */}
+    </Stack.Navigator>
+  );
+};
+
+export default MainStack;

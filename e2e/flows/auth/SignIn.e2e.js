@@ -5,6 +5,7 @@ describe('Sign in flow', () => {
   beforeEach(async () => {
     await device.launchApp();
   });
+
   it('should sign in successfully', async () => {
     await waitFor(element(by.id('signInPassword')))
       .toBeVisible()
@@ -26,7 +27,8 @@ describe('Sign in flow', () => {
 
     await expect(element(by.text('Welcome!'))).toBeVisible();
   });
-  it('social auth buttons should be shown', async () => {
+
+  it('social auth buttons should be shown on sign-in page', async () => {
     await waitFor(element(by.id('googleSignInButton'))).toBeVisible();
     await waitFor(element(by.id('facebookSignInButton'))).toBeVisible();
     await waitFor(element(by.id('appleSignInButton'))).toBeVisible();

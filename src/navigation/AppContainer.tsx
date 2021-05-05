@@ -1,5 +1,8 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { StatusBar, Platform } from 'react-native';
+import { StatusBar, Platform, useColorScheme } from 'react-native';
+import ToastProvider from 'src/components/Toast/Context';
+// components
+import Toast from 'src/components/Toast';
 // navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,18 +18,23 @@ import {
 } from 'src/store/modules/auth/selectors';
 import { updateAuthUser, clearAuth } from 'src/store/modules/auth';
 // styling
-import { useColorScheme } from 'react-native-appearance';
 import { darkTheme, lightTheme } from 'src/styles';
 import { getPersistRehydratedSelector } from 'src/store/modules/persist/selectors';
 
 const RootStack = createStackNavigator();
 
 const AppNavigationContainer: FC = (props) => {
-  const colorScheme = useColorScheme();
   const dispatch = useDispatch();
   const token = useSelector(getAuthTokenSelector);
   const user = useSelector(getAuthUserSelector);
   const isRehydrated = useSelector(getPersistRehydratedSelector);
+
+  /*
+   * getColorScheme() will always return light when debugging with Chrome
+   *
+   * https://reactnative.dev/docs/appearance#getcolorscheme
+   */
+  const colorScheme = useColorScheme();
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -87,13 +95,23 @@ const AppNavigationContainer: FC = (props) => {
       <NavigationContainer
         {...props}
         theme={isDarkModeEnabled ? darkTheme : lightTheme}>
-        <RootStack.Navigator screenOptions={{ headerShown: false }}>
-          {user ? (
-            <RootStack.Screen name="HomeNavigator" component={HomeNavigator} />
-          ) : (
-            <RootStack.Screen name="AuthNavigator" component={AuthNavigator} />
-          )}
-        </RootStack.Navigator>
+        <ToastProvider>
+          <RootStack.Navigator screenOptions={{ headerShown: false }}>
+            {user ? (
+              <RootStack.Screen
+                name="HomeNavigator"
+                component={HomeNavigator}
+              />
+            ) : (
+              <RootStack.Screen
+                name="AuthNavigator"
+                component={AuthNavigator}
+              />
+            )}
+          </RootStack.Navigator>
+
+          <Toast />
+        </ToastProvider>
       </NavigationContainer>
     </>
   );
