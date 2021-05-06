@@ -38,3 +38,11 @@ export type AuthRessetPasswordDto = {
   password: string;
   hash: string;
 };
+
+export type ProfileUpdateDto = Pick<User, 'firstName' | 'lastName' | 'photo'>;
+
+export type ProfileUpdatePasswordDto = {
+  oldPassword: string;
+  password: string;
+  passwordConfirmation?: string;
+};

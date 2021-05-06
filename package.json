@@ -37,7 +37,6 @@
     "react-hook-form": "^7.2.3",
     "react-i18next": "^11.8.13",
     "react-native": "^0.64.0",
-    "react-native-appearance": "^0.3.4",
     "react-native-config": "^1.4.1",
     "react-native-fbsdk": "^3.0.0",
     "react-native-gesture-handler": "^1.10.3",

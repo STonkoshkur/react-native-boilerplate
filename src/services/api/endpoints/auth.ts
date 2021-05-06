@@ -7,6 +7,8 @@ import {
   AuthSocialSignInDto,
   AuthRegistrationDto,
   AuthForgotPasswordDto,
+  ProfileUpdateDto,
+  ProfileUpdatePasswordDto,
 } from 'src/services/api/dtos/Auth';
 // entities
 import { User } from 'src/entities/User';
@@ -21,6 +23,8 @@ export default {
   forgotPassword: (data: AuthForgotPasswordDto): Promise<void> =>
     axios.post('auth/forgot/password', data),
   getProfile: (): Promise<User> => axios.get('/auth/me'),
-  update: (data: Partial<User>): Promise<User> => axios.patch('/auth/me', data),
+  updateProfile: (
+    data: ProfileUpdateDto | ProfileUpdatePasswordDto,
+  ): Promise<User> => axios.patch('/auth/me', data),
   delete: (): Promise<void> => axios.delete('/auth/me'),
 };

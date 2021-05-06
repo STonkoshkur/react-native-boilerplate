@@ -6,6 +6,12 @@ enum Routes {
   SignUp = 'SignUp',
   ForgotPassword = 'ForgotPassword',
 
+  // settings stack
+  SettingsTab = 'SettingsTab',
+  SettingsIndex = 'SettingsIndex',
+  SettingsProfile = 'SettingsProfile',
+  SettingsChangePassword = 'SettingsChangePassword',
+
   // tmp example
   Tab1 = 'Tab1',
   Tab2 = 'Tab2',
