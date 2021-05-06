@@ -1,9 +1,16 @@
-const email = `e2e.user.${Date.now()}@example.com`;
-const password = 'secret';
-const firstName = 'User';
-const lastName = `For testing ${Date.now()}`;
+const getRegistrationUserData = () => ({
+  email: `e2e.user.${Date.now()}@example.com`,
+  password: 'secret',
+  firstName: 'User',
+  lastName: `For testing ${Date.now()}`,
+});
 
-const registerUser = async () => {
+const registerUser = async (userData = {}) => {
+  const { email, password, firstName, lastName } = {
+    ...getRegistrationUserData(),
+    ...(userData || {}),
+  };
+
   await element(by.id('signUpButtonScreen')).tap();
   await waitFor(element(by.id('signUpEmail')))
     .toBeVisible()
@@ -46,4 +53,4 @@ const registerUser = async () => {
   await element(by.id('signUpButton')).tap();
 };
 
-export { email, password, firstName, lastName, registerUser };
+export { getRegistrationUserData, registerUser };

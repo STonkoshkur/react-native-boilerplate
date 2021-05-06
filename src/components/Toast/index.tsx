@@ -11,6 +11,8 @@ import { useToast } from 'src/hooks/useToast';
 import { Colors, Spacing } from 'src/styles';
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 
+export const TOAST_ICON_CIRCLE_SIZE_COEFICIENT = 1.5;
+
 const Toast: FC = () => {
   const { toastConfig, hideToast } = useToast();
   const { colors } = useThemeSchema();
@@ -124,9 +126,9 @@ const Toast: FC = () => {
             styles.iconWrapper,
             {
               backgroundColor: iconBackgroundColor,
-              width: iconSize * 1.5,
-              height: iconSize * 1.5,
-              borderRadius: (iconSize * 1.5) / 2,
+              width: iconSize * TOAST_ICON_CIRCLE_SIZE_COEFICIENT,
+              height: iconSize * TOAST_ICON_CIRCLE_SIZE_COEFICIENT,
+              borderRadius: (iconSize * TOAST_ICON_CIRCLE_SIZE_COEFICIENT) / 2,
             },
           ]}>
           <Icon name={iconName} size={iconSize} color={iconColor} />

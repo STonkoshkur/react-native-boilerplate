@@ -13,9 +13,7 @@ type UnsavedFormChangesCancellationParams = {
   onDiscardChanges?: () => void;
 };
 
-export const useUnsavedFormChangesAlert = (
-  doesFormHasUnsavedChanges: boolean,
-) => {
+export const useUnsavedFormChangesAlert = (hasFormUnsavedChanges: boolean) => {
   const navigation = useNavigation();
   const { t } = useTranslation(['common']);
 
@@ -32,7 +30,7 @@ export const useUnsavedFormChangesAlert = (
         t('common:unsavedFormChanges'),
         't handleUnsavedFormChangesCancellation',
       );
-      if (doesFormHasUnsavedChanges) {
+      if (hasFormUnsavedChanges) {
         Alert.alert(
           title ?? t('common:unsavedFormChanges'),
           description ?? t('common:unsavedFormChangesDescription'),
@@ -52,7 +50,7 @@ export const useUnsavedFormChangesAlert = (
         navigation.goBack();
       }
     },
-    [doesFormHasUnsavedChanges, navigation, t],
+    [hasFormUnsavedChanges, navigation, t],
   );
 
   return useMemo(

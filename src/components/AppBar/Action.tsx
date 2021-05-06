@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react';
 import {
+  View,
   TouchableOpacity,
   StyleProp,
   ViewStyle,
@@ -48,16 +49,25 @@ const AppBarAction: FC<AppBarActionProps> = ({
       style={[
         styles.container,
         !!horizontalSpacing && { paddingHorizontal: horizontalSpacing },
-        { minWidth: size + horizontalSpacing * 2 },
         style,
       ]}
       activeOpacity={activeOpacity}
       disabled={!!disabled}>
-      {isLoading ? (
-        <ActivityIndicator size="small" color={defaultColor} />
-      ) : (
-        <Icon name={icon} size={size} color={defaultColor} />
+      {!!isLoading && (
+        <View style={styles.loadingIndicatorWrapper}>
+          <ActivityIndicator size="small" color={defaultColor} />
+        </View>
       )}
+
+      <Icon
+        name={icon}
+        size={size}
+        color={defaultColor}
+        style={[
+          !!disabled && styles.disabledOpacity,
+          !!isLoading && styles.iconWhileLoading,
+        ]}
+      />
     </TouchableOpacity>
   );
 };
@@ -69,6 +79,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: Spacing.double,
     paddingVertical: Spacing.tiny,
+  },
+  loadingIndicatorWrapper: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconWhileLoading: {
+    opacity: 0,
+  },
+  disabledOpacity: {
+    opacity: 0.4,
   },
 });
 

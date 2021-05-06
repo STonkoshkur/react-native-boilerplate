@@ -1,18 +1,23 @@
 // utils
 import {
-  email,
-  password,
-  firstName,
-  lastName,
+  getRegistrationUserData,
   registerUser,
 } from '../../../e2e/common/userRegistration';
 import { loginUser } from '../../../e2e/common/userLogin';
+// localization
 import localeStrings from '../../../src/assets/localization/en';
+
+const { email, firstName, lastName, password } = getRegistrationUserData();
 
 describe('Manage user profile', () => {
   beforeAll(async () => {
     await device.launchApp();
-    await registerUser();
+    await registerUser({
+      email,
+      firstName,
+      lastName,
+      password,
+    });
   });
 
   it('"Settings" tab should be shown after user sign up', async () => {

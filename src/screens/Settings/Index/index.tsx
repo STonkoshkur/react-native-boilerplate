@@ -45,9 +45,7 @@ const SettingsIndex: FC<SettingsIndexProps> = ({ navigation }) => {
   const dispatch = useDispatch();
   const authProfile = useSelector(getAuthUserSelector);
 
-  const authProviderName = useMemo(() => authProfile?.provider, [
-    authProfile?.provider,
-  ]);
+  const authProviderName = authProfile?.provider;
 
   // Fetch data and update storred profile
   const refreshAuthProfile = useCallback(async () => {
