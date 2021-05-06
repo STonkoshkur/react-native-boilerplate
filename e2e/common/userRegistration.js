@@ -1,4 +1,4 @@
-const getRegistrationUserData = () => ({
+const generateNewRegistrationUserData = () => ({
   email: `e2e.user.${Date.now()}@example.com`,
   password: 'secret',
   firstName: 'User',
@@ -7,8 +7,8 @@ const getRegistrationUserData = () => ({
 
 const registerUser = async (userData = {}) => {
   const { email, password, firstName, lastName } = {
-    ...getRegistrationUserData(),
-    ...(userData || {}),
+    ...generateNewRegistrationUserData(),
+    ...userData,
   };
 
   await element(by.id('signUpButtonScreen')).tap();
@@ -53,4 +53,4 @@ const registerUser = async (userData = {}) => {
   await element(by.id('signUpButton')).tap();
 };
 
-export { getRegistrationUserData, registerUser };
+export { generateNewRegistrationUserData, registerUser };

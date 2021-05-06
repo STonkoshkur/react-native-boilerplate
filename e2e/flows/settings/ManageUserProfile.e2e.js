@@ -1,13 +1,13 @@
 // utils
 import {
-  getRegistrationUserData,
+  generateNewRegistrationUserData,
   registerUser,
 } from '../../../e2e/common/userRegistration';
 import { loginUser } from '../../../e2e/common/userLogin';
 // localization
 import localeStrings from '../../../src/assets/localization/en';
 
-const { email, firstName, lastName, password } = getRegistrationUserData();
+const { email, firstName, lastName, password } = generateNewRegistrationUserData();
 
 describe('Manage user profile', () => {
   beforeAll(async () => {
