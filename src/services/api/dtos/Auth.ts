@@ -1,5 +1,3 @@
-// enums
-import { SocialEnum } from 'src/enums/SocialEnum';
 // entities
 import { User } from 'src/entities/User';
 
@@ -20,14 +18,18 @@ export type AuthEmailSignInDto = {
   password: string;
 };
 
-export type AuthSocialSignInDto = {
-  tokens: {
-    token1: Token;
-    token2?: Token;
-  };
-  socialType: SocialEnum;
+export type AuthAppleSignInDto = {
+  idToken: Token;
   firstName?: User['firstName'] | null;
   lastName?: User['lastName'] | null;
+};
+
+export type AuthFacebookSignInDto = {
+  accessToken: Token;
+};
+
+export type AuthGoogleSignInDto = {
+  idToken: Token;
 };
 
 export type AuthForgotPasswordDto = {
