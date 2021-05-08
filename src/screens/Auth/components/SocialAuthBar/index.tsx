@@ -23,8 +23,6 @@ import {
   appleAuthAndroid,
   appleAuth,
 } from '@invertase/react-native-apple-authentication';
-// types
-import { SocialEnum } from 'src/enums/SocialEnum';
 // utils
 import { v4 as uuid } from 'uuid';
 import EnvConfig from 'react-native-config';
@@ -83,11 +81,8 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
       await GoogleSignin.signIn();
       const { idToken } = await GoogleSignin.getTokens();
 
-      const loginData = await api.auth.socialSignIn({
-        tokens: {
-          token1: idToken,
-        },
-        socialType: SocialEnum.Google,
+      const loginData = await api.auth.googleSignIn({
+        idToken,
       });
 
       dispatch(updateAuthToken(loginData.token));
@@ -121,11 +116,8 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
         const accessData = await AccessToken.getCurrentAccessToken();
 
         if (accessData) {
-          const loginData = await api.auth.socialSignIn({
-            tokens: {
-              token1: accessData.accessToken,
-            },
-            socialType: SocialEnum.Facebook,
+          const loginData = await api.auth.facebookSignIn({
+            accessToken: accessData.accessToken,
           });
 
           dispatch(updateAuthToken(loginData.token));
@@ -156,11 +148,8 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
       if (credentialState === appleAuth.State.AUTHORIZED) {
         const { identityToken, fullName } = appleAuthRequestResponse;
 
-        const loginData = await api.auth.socialSignIn({
-          tokens: {
-            token1: identityToken,
-          },
-          socialType: SocialEnum.Apple,
+        const loginData = await api.auth.appleSignIn({
+          idToken: identityToken,
           firstName: fullName?.givenName ?? null,
           lastName: fullName?.familyName ?? null,
         });
@@ -199,11 +188,8 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
         const authResponse = await appleAuthAndroid.signIn();
 
         if (authResponse.id_token) {
-          const loginData = await api.auth.socialSignIn({
-            tokens: {
-              token1: authResponse.id_token,
-            },
-            socialType: SocialEnum.Apple,
+          const loginData = await api.auth.appleSignIn({
+            idToken: authResponse.id_token,
             firstName: authResponse.user?.name?.firstName ?? null,
             lastName: authResponse.user?.name?.lastName ?? null,
           });
