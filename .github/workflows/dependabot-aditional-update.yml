@@ -1,0 +1,57 @@
+# This adds react-native support to dependabot by automatically running pod install after dependabot upgrades an npm/yarn package.
+# Dependabot open issue: https://github.com/dependabot/dependabot-core/issues/935#issuecomment-698481919
+name: Update Cocoapods
+on:
+  push:
+    branches:
+      - dependabot/npm_and_yarn/**
+  pull_request:
+    branches:
+      - dependabot/npm_and_yarn/**
+
+jobs:
+  run:
+    name: Run pod install
+    runs-on: macos-11.0
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-yarn-
+
+      - name: Install Packages
+        run: yarn install --frozen-lockfile
+
+      - name: Cache pods
+        uses: actions/cache@v2
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: Install Cocoapods Packages
+        run: pushd ios && pod install --verbose && popd
+
+      - name: Generate Commit Message
+        id: generate_commit_message
+        # eg: ⬆️ Bump Cocoapods Packages for apple-signin-auth-1.4.0
+        run: |
+          branch=${GITHUB_REF#refs/heads/}
+          # add `[dependabot skip]` prefix so Dependabot force pushes any rebases over our changes triggering the action again
+          commit_message="Bump ${branch//dependabot\/npm_and_yarn\// } cocoapods packages%0A%0A[dependabot skip]"
+          echo ::set-output name=commit_message::$commit_message
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: ${{ github.head_ref }}
+          commit_message: ${{ steps.generate_commit_message.outputs.commit_message }}
