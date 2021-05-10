@@ -11,10 +11,12 @@ import { useThemeSchema } from 'src/hooks/useThemeShema';
 
 export type InputProps = TextInputProps & {
   label: string;
-  error?: string;
+  error?: string | string[];
 };
 
 const Input: FC<InputProps> = ({ label, error, ...props }) => {
+  error = Array.isArray(error) ? error.join(', ') : error;
+
   const [isFocused, setIsFocused] = useState(false);
 
   const { colors } = useThemeSchema();
