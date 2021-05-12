@@ -15,7 +15,7 @@ export type InputProps = TextInputProps & {
 };
 
 const Input: FC<InputProps> = ({ label, error, ...props }) => {
-  error = Array.isArray(error) ? error.join(', ') : error;
+  const errorToDisplay = Array.isArray(error) ? error.join(', ') : error;
 
   const [isFocused, setIsFocused] = useState(false);
 
@@ -25,7 +25,10 @@ const Input: FC<InputProps> = ({ label, error, ...props }) => {
     <View style={styles.container}>
       <View style={styles.labelContainer}>
         <Text
-          style={[styles.label, { color: error ? colors.error : colors.text }]}>
+          style={[
+            styles.label,
+            { color: errorToDisplay ? colors.error : colors.text },
+          ]}>
           {label}
         </Text>
       </View>
@@ -43,7 +46,7 @@ const Input: FC<InputProps> = ({ label, error, ...props }) => {
           style={[
             styles.input,
             {
-              borderColor: error
+              borderColor: errorToDisplay
                 ? colors.error
                 : isFocused
                 ? colors.primary
@@ -60,8 +63,10 @@ const Input: FC<InputProps> = ({ label, error, ...props }) => {
         />
       </View>
       <View style={styles.errorContainer}>
-        {Boolean(error) && (
-          <Text style={[styles.error, { color: colors.error }]}>{error}</Text>
+        {Boolean(errorToDisplay) && (
+          <Text style={[styles.error, { color: colors.error }]}>
+            {errorToDisplay}
+          </Text>
         )}
       </View>
     </View>
