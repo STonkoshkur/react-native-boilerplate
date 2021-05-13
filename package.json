@@ -1,5 +1,5 @@
 {
-  "name": "ReactNativeBoilerplate",
+  "name": "react-native-boilerplate",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "test:e2e-run-android": "detox test --configuration android",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "ts-compile-check": "tsc -p tsconfig.json --noEmit --skipLibCheck",
+    "rename": "sh ./scripts/rename.sh",
     "prepare": "is-ci || husky install"
   },
   "dependencies": {
