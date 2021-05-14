@@ -40,43 +40,51 @@ React Native boilerplate with mostly used features.
 
 ## To do features
 
-- [ ] Predefined commands on package.json for dependencies instalment
+- [ ] Firebase push-notifications
 - [ ] Integration with RN CLI
 
 ## Predefined commands on package.json
 
 - `yarn lint` Runs eslint checks;
 - `yarn ts-compile-check` Runs TS compiling checks;
-- `yarn rename "New App Title" com.new.appname` Rename application and change package/bundle ids;
+- `yarn rename` Rename application and change package/bundle ids;
 
 ## Getting Started
 
 0. Environment requirements:
-    - NodeJS
-    - Yarn
+    - [Node (v12 or newer)](https://nodejs.org/en/)
+    - [Yarn](https://yarnpkg.com/). Also, you can use `npm` instead.
     - [Npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner)
+    - [Watchman](https://facebook.github.io/watchman/)
     - [CocoaPods](https://cocoapods.org/)
+
+    For more details, see the [setting up the RN development environment doc](https://reactnative.dev/docs/environment-setup)
 
 1. Clone the repository and create the .env file:
 
     ```bash
-    git clone https://github.com/STonkoshkur/react-native-boilerplate.git
+    git clone --depth 1 https://github.com/STonkoshkur/react-native-boilerplate.git
     cd react-native-boilerplate/
     cp .env.example .env
     ```
 
-2. Rename application and package/bundle IDs using `yarn rename` command. Example (use your own app title and bundle ID):
+2. Rename application and package/bundle IDs using `yarn rename` command. Example (use your own title and bundle ID):
 
     ```bash
     yarn rename "App Title" com.appname
     ```
 
-3. After all install the dependencies (npm packages and Pods):
+3. Install the dependencies (npm packages and Pods):
 
     ```bash
     yarn && npx pod-install
     ```
-4. That's all.
+4. Change git remote-url using `git remote set-url <remote_name> <remote_url>` command, like:
+    ```bash
+    git remote set-url origin https://github.com/Username/project-repo.git
+    ```
+
+5. That's all.
 
 ## Development
 
