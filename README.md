@@ -47,24 +47,36 @@ React Native boilerplate with mostly used features.
 
 - `yarn lint` Runs eslint checks;
 - `yarn ts-compile-check` Runs TS compiling checks;
+- `yarn rename "New App Title" com.new.appname` Rename application and change package/bundle ids;
 
 ## Getting Started
 
-Environment requirements:
+0. Environment requirements:
+    - NodeJS
+    - Yarn
+    - [Npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner)
+    - [CocoaPods](https://cocoapods.org/)
 
-- NodeJS
-- Yarn
-- [Npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner)
-- [CocoaPods](https://cocoapods.org/)
+1. Clone the repository and create the .env file:
 
-Clone the repository and install the dependencies:
+    ```bash
+    git clone https://github.com/STonkoshkur/react-native-boilerplate.git
+    cd react-native-boilerplate/
+    cp .env.example .env
+    ```
 
-```bash
-git clone https://github.com/STonkoshkur/react-native-boilerplate.git
-cd react-native-boilerplate/
-cp .env.example .env
-yarn && npx pod-install
-```
+2. Rename application and package/bundle IDs using `yarn rename` command. Example (use your own app title and bundle ID):
+
+    ```bash
+    yarn rename "App Title" com.appname
+    ```
+
+3. After all install the dependencies (npm packages and Pods):
+
+    ```bash
+    yarn && npx pod-install
+    ```
+4. That's all.
 
 ## Development
 
