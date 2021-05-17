@@ -17,7 +17,7 @@
     "prepare": "is-ci || husky install"
   },
   "dependencies": {
-    "@hookform/resolvers": "^2.4.0",
+    "@hookform/resolvers": "^2.5.1",
     "@invertase/react-native-apple-authentication": "^2.1.2",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/checkbox": "^0.5.7",
