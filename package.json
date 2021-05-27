@@ -35,7 +35,7 @@
     "is-ci": "^3.0.0",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
-    "react-hook-form": "^7.5.0",
+    "react-hook-form": "^7.6.6",
     "react-i18next": "^11.8.15",
     "react-native": "0.64.1",
     "react-native-config": "^1.4.1",
