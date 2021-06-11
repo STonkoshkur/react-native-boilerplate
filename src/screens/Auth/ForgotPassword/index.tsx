@@ -30,30 +30,29 @@ const ForgotPasswordScreen: FC<ForgotPaaswordScreenProps> = ({
   const { t } = useTranslation();
 
   const onSubmit = useCallback(
-    <T extends AuthForgotPasswordDto>(
-      setError: UseFormReturn<T>['setError'],
-    ) => async (data: T): Promise<void> => {
-      try {
-        await api.auth.forgotPassword(data);
+    <T extends AuthForgotPasswordDto>(setError: UseFormReturn<T>['setError']) =>
+      async (data: T): Promise<void> => {
+        try {
+          await api.auth.forgotPassword(data);
 
-        Alert.alert(
-          t('common:forgotPasswordSuccessTitle'),
-          t('common:forgotPasswordSuccessMessage'),
-          [{ text: 'OK' }],
-          {
-            cancelable: false,
-          },
-        );
+          Alert.alert(
+            t('common:forgotPasswordSuccessTitle'),
+            t('common:forgotPasswordSuccessMessage'),
+            [{ text: 'OK' }],
+            {
+              cancelable: false,
+            },
+          );
 
-        navigation.goBack();
-      } catch (e) {
-        if (e.status === 422) {
-          transformErrors<T>(e.data.errors).forEach((formError) => {
-            setError(formError.name, formError.error);
-          });
+          navigation.goBack();
+        } catch (e) {
+          if (e.status === 422) {
+            transformErrors<T>(e.data.errors).forEach((formError) => {
+              setError(formError.name, formError.error);
+            });
+          }
         }
-      }
-    },
+      },
     [t, navigation],
   );
 

@@ -37,10 +37,8 @@ type SettingsIndexProps = StackScreenProps<
 const SettingsIndex: FC<SettingsIndexProps> = ({ navigation }) => {
   const { t } = useTranslation();
   const { colors } = useThemeSchema();
-  const {
-    showPrivacyPolicyModal,
-    showTermsAndConditionsModal,
-  } = useAgreementsModals();
+  const { showPrivacyPolicyModal, showTermsAndConditionsModal } =
+    useAgreementsModals();
 
   const dispatch = useDispatch();
   const authProfile = useSelector(getAuthUserSelector);

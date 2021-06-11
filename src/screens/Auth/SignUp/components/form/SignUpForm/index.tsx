@@ -34,10 +34,8 @@ const SignUpForm: FC<SignUpFormProps> = (props) => {
   } = useForm<AuthRegistrationDto>({
     resolver: yupResolver(schemaValidation),
   });
-  const {
-    showPrivacyPolicyModal,
-    showTermsAndConditionsModal,
-  } = useAgreementsModals();
+  const { showPrivacyPolicyModal, showTermsAndConditionsModal } =
+    useAgreementsModals();
 
   const [isAgreed, setIsAgreed] = useState(false);
 

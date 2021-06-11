@@ -52,9 +52,10 @@ function MediaPicker({
         const selectedMedia = await selectMediaSource(config);
 
         if (selectedMedia !== undefined) {
-          const serializedSelectedFiles = (Array.isArray(selectedMedia)
-            ? (selectedMedia as (Image | Video | ImageOrVideo)[])
-            : [selectedMedia]
+          const serializedSelectedFiles = (
+            Array.isArray(selectedMedia)
+              ? (selectedMedia as (Image | Video | ImageOrVideo)[])
+              : [selectedMedia]
           ).map(
             (file) =>
               ({

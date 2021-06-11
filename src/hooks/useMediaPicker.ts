@@ -34,9 +34,9 @@ export const useMediaPicker = <O extends Options>(generalOptions?: O) => {
         // TODO: move default values to const
         width: 1024,
         height: 1024,
-        cropping: true,
+        cropping: true as boolean,
         mediaType: 'photo',
-        forceJpg: true,
+        forceJpg: true as boolean,
         compressImageQuality: 0.8,
         ...generalOptions,
         ...options,
