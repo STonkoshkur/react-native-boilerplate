@@ -36,50 +36,50 @@ export type ListItemSubcomponents = {
   Icon: typeof ListItemIcon;
 };
 
-const ListItem: FC<PropsWithChildren<ListItemProps>> &
-  ListItemSubcomponents = ({
-  topDivider = false,
-  bottomDivider = false,
-  disabled = false,
-  onLongPress,
-  onPress,
-  style,
-  disabledStyle,
-  children,
-  ...props
-}) => {
-  const { colors } = useThemeSchema();
+const ListItem: FC<PropsWithChildren<ListItemProps>> & ListItemSubcomponents =
+  ({
+    topDivider = false,
+    bottomDivider = false,
+    disabled = false,
+    onLongPress,
+    onPress,
+    style,
+    disabledStyle,
+    children,
+    ...props
+  }) => {
+    const { colors } = useThemeSchema();
 
-  return (
-    <TouchableHighlight
-      {...props}
-      onPress={onPress}
-      onLongPress={onLongPress}
-      disabled={!!disabled}
-      // TODO: refactor underlayColor
-      underlayColor={ColorUtil(colors.border).alpha(0.6).rgb().string()}
-      style={[
-        StyleSheet.flatten([
-          styles.listItemWraper,
-          { backgroundColor: colors.card },
-        ]),
-        !!topDivider &&
+    return (
+      <TouchableHighlight
+        {...props}
+        onPress={onPress}
+        onLongPress={onLongPress}
+        disabled={!!disabled}
+        // TODO: refactor underlayColor
+        underlayColor={ColorUtil(colors.border).alpha(0.6).rgb().string()}
+        style={[
           StyleSheet.flatten([
-            styles.topDivider,
-            { borderTopColor: colors.border },
+            styles.listItemWraper,
+            { backgroundColor: colors.card },
           ]),
-        !!bottomDivider &&
-          StyleSheet.flatten([
-            styles.bottomDivider,
-            { borderBottomColor: colors.border },
-          ]),
-        style,
-        !!disabled && disabledStyle,
-      ]}>
-      <>{children}</>
-    </TouchableHighlight>
-  );
-};
+          !!topDivider &&
+            StyleSheet.flatten([
+              styles.topDivider,
+              { borderTopColor: colors.border },
+            ]),
+          !!bottomDivider &&
+            StyleSheet.flatten([
+              styles.bottomDivider,
+              { borderBottomColor: colors.border },
+            ]),
+          style,
+          !!disabled && disabledStyle,
+        ]}>
+        <>{children}</>
+      </TouchableHighlight>
+    );
+  };
 
 // styles
 const styles = StyleSheet.create({

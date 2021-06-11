@@ -38,31 +38,32 @@ const ChangePasswordScreen: FC<ChangePasswordScreenProps> = ({
 
   const onSubmit = useCallback(
     <T extends ProfileUpdatePasswordDto>(
-      setError: UseFormReturn<T>['setError'],
-    ) => async (data: T): Promise<void> => {
-      try {
-        const updatedProfile = await api.auth.updateProfile(data);
+        setError: UseFormReturn<T>['setError'],
+      ) =>
+      async (data: T): Promise<void> => {
+        try {
+          const updatedProfile = await api.auth.updateProfile(data);
 
-        dispatch(updateAuthUser(updatedProfile));
-        showToast(t('settings:passwordUpdated'), {
-          type: 'success',
-        });
-
-        if (navigation.canGoBack()) {
-          navigation.goBack();
-        }
-      } catch (e) {
-        showToast(t('settings:passwordUpdatingError'), {
-          type: 'error',
-        });
-
-        if (e.status === 422) {
-          transformErrors<T>(e.data.errors).forEach((formError) => {
-            setError(formError.name, formError.error);
+          dispatch(updateAuthUser(updatedProfile));
+          showToast(t('settings:passwordUpdated'), {
+            type: 'success',
           });
+
+          if (navigation.canGoBack()) {
+            navigation.goBack();
+          }
+        } catch (e) {
+          showToast(t('settings:passwordUpdatingError'), {
+            type: 'error',
+          });
+
+          if (e.status === 422) {
+            transformErrors<T>(e.data.errors).forEach((formError) => {
+              setError(formError.name, formError.error);
+            });
+          }
         }
-      }
-    },
+      },
     [showToast, navigation, t],
   );
 

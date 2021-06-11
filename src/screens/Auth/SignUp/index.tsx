@@ -29,22 +29,21 @@ const SignInScreen: FC<SignInScreenProps> = () => {
   const dispatch = useDispatch();
 
   const onSubmit = useCallback(
-    <T extends AuthRegistrationDto>(
-      setError: UseFormReturn<T>['setError'],
-    ) => async (data: T): Promise<void> => {
-      try {
-        await api.auth.signUp(data);
-        const loginData = await api.auth.signIn(data);
+    <T extends AuthRegistrationDto>(setError: UseFormReturn<T>['setError']) =>
+      async (data: T): Promise<void> => {
+        try {
+          await api.auth.signUp(data);
+          const loginData = await api.auth.signIn(data);
 
-        dispatch(updateAuthToken(loginData.token));
-      } catch (e) {
-        if (e.status === 422) {
-          transformErrors<T>(e.data.errors).forEach((formError) => {
-            setError(formError.name, formError.error);
-          });
+          dispatch(updateAuthToken(loginData.token));
+        } catch (e) {
+          if (e.status === 422) {
+            transformErrors<T>(e.data.errors).forEach((formError) => {
+              setError(formError.name, formError.error);
+            });
+          }
         }
-      }
-    },
+      },
     [dispatch],
   );
 

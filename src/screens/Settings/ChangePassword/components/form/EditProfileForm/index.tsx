@@ -28,12 +28,13 @@ type ChangePasswordFormProps = {
 const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation();
 
-  const navigation = useNavigation<
-    StackNavigationProp<
-      SettingsNavigationStackParamsList,
-      Routes.SettingsChangePassword
-    >
-  >();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<
+        SettingsNavigationStackParamsList,
+        Routes.SettingsChangePassword
+      >
+    >();
 
   const {
     control,
@@ -49,9 +50,8 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onSubmit }) => {
     },
   });
 
-  const { handleUnsavedFormChangesCancellation } = useUnsavedFormChangesAlert(
-    isDirty,
-  );
+  const { handleUnsavedFormChangesCancellation } =
+    useUnsavedFormChangesAlert(isDirty);
 
   useEffect(() => {
     navigation.setOptions({

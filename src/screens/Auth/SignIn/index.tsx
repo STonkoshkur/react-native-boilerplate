@@ -41,21 +41,20 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   }, [navigation]);
 
   const onSubmit = useCallback(
-    <T extends AuthEmailSignInDto>(
-      setError: UseFormReturn<T>['setError'],
-    ) => async (data: T): Promise<void> => {
-      try {
-        const loginData = await api.auth.signIn(data);
+    <T extends AuthEmailSignInDto>(setError: UseFormReturn<T>['setError']) =>
+      async (data: T): Promise<void> => {
+        try {
+          const loginData = await api.auth.signIn(data);
 
-        dispatch(updateAuthToken(loginData.token));
-      } catch (e) {
-        if (e.status === 422) {
-          transformErrors<T>(e.data.errors).forEach((formError) => {
-            setError(formError.name, formError.error);
-          });
+          dispatch(updateAuthToken(loginData.token));
+        } catch (e) {
+          if (e.status === 422) {
+            transformErrors<T>(e.data.errors).forEach((formError) => {
+              setError(formError.name, formError.error);
+            });
+          }
         }
-      }
-    },
+      },
     [dispatch],
   );
 

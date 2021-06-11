@@ -34,32 +34,31 @@ const ProfileEditScreen: FC<ProfileEditScreenProps> = ({ navigation }) => {
   const { showToast } = useToast();
 
   const onSubmit = useCallback(
-    <T extends ProfileUpdateDto>(
-      setError: UseFormReturn<T>['setError'],
-    ) => async (data: T): Promise<void> => {
-      try {
-        const updatedProfile = await api.auth.updateProfile(data);
+    <T extends ProfileUpdateDto>(setError: UseFormReturn<T>['setError']) =>
+      async (data: T): Promise<void> => {
+        try {
+          const updatedProfile = await api.auth.updateProfile(data);
 
-        dispatch(updateAuthUser(updatedProfile));
-        showToast(t('settings:profileUpdated'), {
-          type: 'success',
-        });
-
-        if (navigation.canGoBack()) {
-          navigation.goBack();
-        }
-      } catch (e) {
-        showToast(t('settings:profileUpdatingError'), {
-          type: 'error',
-        });
-
-        if (e.status === 422) {
-          transformErrors<T>(e.data.errors).forEach((formError) => {
-            setError(formError.name, formError.error);
+          dispatch(updateAuthUser(updatedProfile));
+          showToast(t('settings:profileUpdated'), {
+            type: 'success',
           });
+
+          if (navigation.canGoBack()) {
+            navigation.goBack();
+          }
+        } catch (e) {
+          showToast(t('settings:profileUpdatingError'), {
+            type: 'error',
+          });
+
+          if (e.status === 422) {
+            transformErrors<T>(e.data.errors).forEach((formError) => {
+              setError(formError.name, formError.error);
+            });
+          }
         }
-      }
-    },
+      },
     [showToast, navigation, t],
   );
 

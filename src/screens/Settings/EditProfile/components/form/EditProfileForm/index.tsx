@@ -33,12 +33,13 @@ export type EditProfileFormProps = {
 };
 
 const EditProfileForm: FC<EditProfileFormProps> = ({ onSubmit }) => {
-  const navigation = useNavigation<
-    StackNavigationProp<
-      SettingsNavigationStackParamsList,
-      Routes.SettingsProfile
-    >
-  >();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<
+        SettingsNavigationStackParamsList,
+        Routes.SettingsProfile
+      >
+    >();
   const { t } = useTranslation(['common', 'settings']);
   const authProfile = useSelector(getAuthUserSelector);
 
@@ -56,9 +57,8 @@ const EditProfileForm: FC<EditProfileFormProps> = ({ onSubmit }) => {
     },
   });
 
-  const { handleUnsavedFormChangesCancellation } = useUnsavedFormChangesAlert(
-    isDirty,
-  );
+  const { handleUnsavedFormChangesCancellation } =
+    useUnsavedFormChangesAlert(isDirty);
 
   useEffect(() => {
     navigation.setOptions({

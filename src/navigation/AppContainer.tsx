@@ -38,9 +38,10 @@ const AppNavigationContainer: FC = (props) => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const isDarkModeEnabled = useMemo(() => colorScheme === 'dark', [
-    colorScheme,
-  ]);
+  const isDarkModeEnabled = useMemo(
+    () => colorScheme === 'dark',
+    [colorScheme],
+  );
 
   const barStyle = useMemo(() => {
     /*
