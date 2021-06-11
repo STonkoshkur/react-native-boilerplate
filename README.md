@@ -20,21 +20,21 @@ React Native boilerplate with mostly used features.
 
 ## Implemented features
 
-- [x] TS template
-- [x] ESlint and Prettier integration
-- [x] Pre-commit hook with eslint and TS compiling checks
-- [x] Environment variables support ([react-native-config](https://github.com/luggit/react-native-config))
+- [x] Auth flow: sign in, sign up, reset password, log out
+- [x] Social sign-in ([Google](https://github.com/react-native-google-signin/google-signin), [Facebook](https://github.com/facebook/react-native-fbsdk), [Apple](https://github.com/invertase/react-native-apple-authentication) for iOS and Android)
 - [x] React navigation: bottoms tabs and nested stack navigators with TS support
+- [x] [Hook-forms](https://react-hook-form.com/) integration with TS types and validation examples
+- [x] Mostly-used components example implementation (avatar, typography, media picker, form controls)
 - [x] RN vector icons
 - [x] SVG support ([react-native-svg](https://github.com/react-native-svg/react-native-svg), [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer))
+- [x] Basic settings page with profile management functionality: view, edit, remove profile; change password
 - [x] Style theming with dark-mode support based on system theme settings ([reactnavigation themes](https://reactnavigation.org/docs/themes), [useColorScheme](https://reactnative.dev/docs/usecolorscheme))
 - [x] Multi-language localization ([i18next](https://www.i18next.com), [react-native-localize](https://github.com/zoontek/react-native-localize)). Added english and spanish translations
 - [x] Redux-toolkit auth module with redux-persist integration
-- [x] [Hook-forms](https://react-hook-form.com/) integration with TS types and validation examples
-- [x] Auth flow: sign in, sign up, reset password, log out
-- [x] Social sign-in ([Google](https://github.com/react-native-google-signin/google-signin), [Facebook](https://github.com/facebook/react-native-fbsdk), [Apple](https://github.com/invertase/react-native-apple-authentication) for iOS and Android)
-- [x] Mostly-used components example implementation (avatar, typography, media picker, form controls)
-- [x] Basic settings page with profile management functionality: view, edit, remove profile; change password
+- [x] Environment variables support ([react-native-config](https://github.com/luggit/react-native-config))
+- [x] TS template
+- [x] ESlint and Prettier integration
+- [x] Pre-commit hook with eslint and TS compiling checks
 - [x] E2E tests via [Detox](https://github.com/wix/Detox)
 - [x] [GithubActions CI](https://github.com/features/actions) integration
 
@@ -52,37 +52,40 @@ React Native boilerplate with mostly used features.
 ## Getting Started
 
 0. Environment requirements:
-    - [Node (v12 or newer)](https://nodejs.org/en/)
-    - [Yarn](https://yarnpkg.com/). Also, you can use `npm` instead.
-    - [Npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner)
-    - [Watchman](https://facebook.github.io/watchman/)
-    - [CocoaPods](https://cocoapods.org/)
 
-    For more details, see the [setting up the RN development environment doc](https://reactnative.dev/docs/environment-setup)
+   - [Node (v12 or newer)](https://nodejs.org/en/)
+   - [Yarn](https://yarnpkg.com/). Also, you can use `npm` instead.
+   - [Npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner)
+   - [Watchman](https://facebook.github.io/watchman/)
+   - [CocoaPods](https://cocoapods.org/)
+
+   For more details, see the [setting up the RN development environment doc](https://reactnative.dev/docs/environment-setup)
 
 1. Clone the repository and create the .env file:
 
-    ```bash
-    git clone --depth 1 https://github.com/STonkoshkur/react-native-boilerplate.git
-    cd react-native-boilerplate/
-    cp .env.example .env
-    ```
+   ```bash
+   git clone --depth 1 https://github.com/STonkoshkur/react-native-boilerplate.git
+   cd react-native-boilerplate/
+   cp .env.example .env
+   ```
 
 2. Rename application and package/bundle IDs using `yarn rename` command. Example (use your own title and bundle ID):
 
-    ```bash
-    yarn rename "App Title" com.appname
-    ```
+   ```bash
+   yarn rename "App Title" com.appname
+   ```
 
 3. Install the dependencies (npm packages and Pods):
 
-    ```bash
-    yarn && npx pod-install
-    ```
+   ```bash
+   yarn && npx pod-install
+   ```
+
 4. Change git remote-url using `git remote set-url <remote_name> <remote_url>` command, like:
-    ```bash
-    git remote set-url origin https://github.com/Username/project-repo.git
-    ```
+
+   ```bash
+   git remote set-url origin https://github.com/Username/project-repo.git
+   ```
 
 5. That's all.
 
