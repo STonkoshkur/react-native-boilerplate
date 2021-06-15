@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
 // components
+import Icon from 'src/components/Icon';
 import Typography from 'src/components/Typography';
-import Icon from 'react-native-vector-icons/Ionicons';
 // navigation
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 // hooks
@@ -131,7 +131,12 @@ const Toast: FC = () => {
               borderRadius: (iconSize * TOAST_ICON_CIRCLE_SIZE_COEFICIENT) / 2,
             },
           ]}>
-          <Icon name={iconName} size={iconSize} color={iconColor} />
+          <Icon
+            name={iconName}
+            size={iconSize}
+            color={iconColor}
+            fontFamily="Ionicons"
+          />
         </View>
         <Typography numberOfLines={2} ellipsizeMode="tail">
           {message}

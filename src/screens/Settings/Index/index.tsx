@@ -216,11 +216,14 @@ const SettingsIndex: FC<SettingsIndexProps> = ({ navigation }) => {
                       testID={itemKey}
                       onPress={onPress}
                       bottomDivider={index !== settingsItems.length - 1}>
-                      <ListItem.Icon name={icon} />
+                      <ListItem.Icon name={icon} fontFamily="Ionicons" />
                       <ListItem.Content>
                         <ListItem.Title>{title}</ListItem.Title>
                       </ListItem.Content>
-                      <ListItem.Icon name="chevron-forward" />
+                      <ListItem.Icon
+                        name="chevron-forward"
+                        fontFamily="Ionicons"
+                      />
                     </ListItem>
                   ),
                 )}
@@ -231,7 +234,11 @@ const SettingsIndex: FC<SettingsIndexProps> = ({ navigation }) => {
 
         <Card style={styles.sectionWrapper}>
           <ListItem testID="removeAccountButton" onPress={onAccountRemovePress}>
-            <ListItem.Icon name="person-remove-outline" color={colors.error} />
+            <ListItem.Icon
+              name="person-remove-outline"
+              fontFamily="Ionicons"
+              color={colors.error}
+            />
             <ListItem.Content>
               <ListItem.Title color={colors.error}>
                 {t('settings:removeAccount')}
@@ -242,7 +249,11 @@ const SettingsIndex: FC<SettingsIndexProps> = ({ navigation }) => {
 
         <Card style={styles.sectionWrapper}>
           <ListItem testID="logoutButton" onPress={onLogout}>
-            <ListItem.Icon name="exit-outline" color={colors.error} />
+            <ListItem.Icon
+              name="exit-outline"
+              fontFamily="Ionicons"
+              color={colors.error}
+            />
             <ListItem.Content>
               <ListItem.Title color={colors.error}>
                 {t('common:logout')}

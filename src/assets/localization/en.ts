@@ -22,6 +22,7 @@ export default {
       'The changes you made will be lost if you navigate away from this page.\n\nAre you sure you want to leave this page?',
     stayOnPage: 'Stay on this page',
     leavePage: 'Leave this page',
+    denied: 'Denied',
   },
   settings: {
     settings: 'Settings',

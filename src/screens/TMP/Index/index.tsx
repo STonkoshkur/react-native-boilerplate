@@ -1,11 +1,8 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC } from 'react';
 import { Text, StyleSheet, SafeAreaView, Button } from 'react-native';
 // navigation
 import { StackScreenProps } from '@react-navigation/stack';
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
-// store
-import { useDispatch } from 'react-redux';
-import { clearAuth } from 'src/store/modules/auth';
 // localization
 import { useTranslation } from 'react-i18next';
 // styling
@@ -19,11 +16,6 @@ type TmpIndexScreenProps = StackScreenProps<
 const TmpIndexScreen: FC<TmpIndexScreenProps> = ({ navigation, route }) => {
   const { t } = useTranslation();
   const { colors } = useThemeSchema();
-  const dispatch = useDispatch();
-
-  const onLogout = useCallback((): void => {
-    dispatch(clearAuth());
-  }, [dispatch]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,7 +32,6 @@ const TmpIndexScreen: FC<TmpIndexScreenProps> = ({ navigation, route }) => {
           });
         }}
       />
-      <Button title={t('common:logout')} onPress={onLogout} />
     </SafeAreaView>
   );
 };

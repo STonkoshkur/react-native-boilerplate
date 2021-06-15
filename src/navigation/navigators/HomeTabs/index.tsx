@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 // components
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'src/components/Icon';
 import AppBarAction from 'src/components/AppBar/Action';
 // navigation
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
@@ -41,7 +41,11 @@ const HomeTabsNavigator: FC = () => {
         component={ExmapleStackNavigator}
         options={{
           tabBarIcon: ({ focused, ...props }): ReactNode => (
-            <Icon name={focused ? 'home' : 'home-outline'} {...props} />
+            <Icon
+              name={focused ? 'home' : 'home-outline'}
+              fontFamily="Ionicons"
+              {...props}
+            />
           ),
           tabBarLabel: t('common:home'),
         }}
@@ -51,7 +55,11 @@ const HomeTabsNavigator: FC = () => {
         component={ExmapleStackNavigator}
         options={{
           tabBarIcon: ({ focused, ...props }): ReactNode => (
-            <Icon name={focused ? 'planet' : 'planet-outline'} {...props} />
+            <Icon
+              name={focused ? 'planet' : 'planet-outline'}
+              fontFamily="Ionicons"
+              {...props}
+            />
           ),
           tabBarLabel: 'WoW',
         }}
@@ -61,7 +69,11 @@ const HomeTabsNavigator: FC = () => {
         component={SettingsStackNavigator}
         options={{
           tabBarIcon: ({ focused, ...props }): ReactNode => (
-            <Icon name={focused ? 'person' : 'person-outline'} {...props} />
+            <Icon
+              name={focused ? 'person' : 'person-outline'}
+              fontFamily="Ionicons"
+              {...props}
+            />
           ),
           tabBarLabel: t('common:settings'),
         }}
