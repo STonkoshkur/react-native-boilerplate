@@ -1,8 +1,7 @@
 import React, { FC, memo } from 'react';
 import { StyleSheet } from 'react-native';
 // components
-import Icon from 'react-native-vector-icons/Ionicons';
-import { IconProps } from 'react-native-vector-icons/Icon';
+import Icon, { IconProps } from 'src/components/Icon';
 // styling
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 

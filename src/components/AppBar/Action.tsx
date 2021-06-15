@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 // components
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'src/components/Icon';
 // styling
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 import { Spacing } from 'src/styles';
@@ -63,6 +63,7 @@ const AppBarAction: FC<AppBarActionProps> = ({
         name={icon}
         size={size}
         color={defaultColor}
+        fontFamily="Ionicons"
         style={[
           !!disabled && styles.disabledOpacity,
           !!isLoading && styles.iconWhileLoading,

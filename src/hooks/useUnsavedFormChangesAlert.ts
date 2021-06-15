@@ -25,11 +25,6 @@ export const useUnsavedFormChangesAlert = (hasFormUnsavedChanges: boolean) => {
       discardChangesText,
       onDiscardChanges = navigation.goBack,
     }: UnsavedFormChangesCancellationParams = {}) => {
-      console.log(
-        t,
-        t('common:unsavedFormChanges'),
-        't handleUnsavedFormChangesCancellation',
-      );
       if (hasFormUnsavedChanges) {
         Alert.alert(
           title ?? t('common:unsavedFormChanges'),

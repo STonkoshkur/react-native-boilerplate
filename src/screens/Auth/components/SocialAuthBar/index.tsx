@@ -13,7 +13,7 @@ import api from 'src/services/api';
 import { useDispatch } from 'react-redux';
 import { updateAuthToken } from 'src/store/modules/auth';
 // components
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'src/components/Icon';
 import {
   GoogleSignin,
   statusCodes,
@@ -271,6 +271,7 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
             name={icon}
             color={color ?? Colors.white}
             size={iconSize ?? buttonSize * 0.5}
+            fontFamily="Ionicons"
           />
         </TouchableOpacity>
       ))}
