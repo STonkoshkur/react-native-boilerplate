@@ -49,7 +49,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ios/Pods
-          key: cache-pods-app-${{ hashFiles('ios/Podfile.lock') }}
+          key: cache-pods-app-${{ hashFiles('ios/Podfile.lock') }}-${{ hashFiles('yarn.lock') }}
 
       - name: Install Dependencies
         if: steps.cache-pods-app.outputs.cache-hit != 'true'
