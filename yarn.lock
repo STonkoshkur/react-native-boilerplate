@@ -7518,10 +7518,10 @@ react-native-image-crop-picker@0.36.2:
   resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.36.2.tgz#fcb35c1a12d805bedbb6d94a87078e86a6c9b49f"
   integrity sha512-cTauoEHHzx14ZHA7Pt65e7RVnbn1WRYQz2ufTZp9/05EtNDrdsXwNhgtXdWVFbOhYB8qgUFQjy2NelkBOHIH3g==
 
-react-native-inappbrowser-reborn@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/react-native-inappbrowser-reborn/-/react-native-inappbrowser-reborn-3.6.1.tgz#9f2bfab73901f1e6c6ef6958e994749b008fa19b"
-  integrity sha512-4hoBh15ppCl1XxHbrZfvwq86s3Q+65jdUZwKZX3dCALWrSN1Rj47gxPEqlT6dSUltsgGBgWJ4Raq2JyIW2ZiYw==
+react-native-inappbrowser-reborn@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/react-native-inappbrowser-reborn/-/react-native-inappbrowser-reborn-3.6.2.tgz#bb68b76af54fdb6833fa6300e15b7480a6cbfd8e"
+  integrity sha512-oQi7hQIhiVwiXkx7u3QFivSsQyDOEBT0TV9o1XCmqm9coj6hwBbgEusxyYtDLuPPB48zW4leuOg9J0b0he6onw==
   dependencies:
     invariant "^2.2.4"
     opencollective-postinstall "^2.0.2"
