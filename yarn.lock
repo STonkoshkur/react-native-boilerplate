@@ -2147,10 +2147,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
-"@types/react-native-fbsdk@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-native-fbsdk/-/react-native-fbsdk-3.0.0.tgz#612a89a54ea5ab75f8e4edb39c89748f70b2251f"
-  integrity sha512-QTTL4vcKf74PSfjDYt7OCxT/71FFP5NQxG4L/oQMT1dASzOVLlkWDtmfGy2bti5kiVIUaL1YfVDCjoYn2eELGA==
+"@types/react-native-fbsdk@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-fbsdk/-/react-native-fbsdk-3.0.1.tgz#11f65188f8a2bec1cbd5fa1b8bcdb6479d64d548"
+  integrity sha512-e7wDnT/64bFv8w16xHGpW2SEhE3N08pCIIRLVFpRttBucfYmAbWohNtovoEfKIr3VgSsldy0xdfJZdIyhsWC+A==
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
