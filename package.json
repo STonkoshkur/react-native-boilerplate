@@ -79,7 +79,7 @@
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-react-native": "3.11.0",
-    "husky": "6.0.0",
+    "husky": "7.0.2",
     "jest": "27.0.6",
     "jest-circus": "27.0.6",
     "lint-staged": "11.0.0",
