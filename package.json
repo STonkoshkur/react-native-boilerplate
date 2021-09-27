@@ -61,7 +61,7 @@
     "@react-native-community/eslint-config": "3.0.0",
     "@types/color": "3.0.2",
     "@types/jest": "26.0.24",
-    "@types/lodash": "4.14.171",
+    "@types/lodash": "4.14.175",
     "@types/react-native": "0.64.12",
     "@types/react-native-fbsdk": "3.0.1",
     "@types/react-native-vector-icons": "6.4.8",
