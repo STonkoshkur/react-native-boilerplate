@@ -40,6 +40,7 @@ const HomeTabsNavigator: FC = () => {
         name={Routes.Tab1}
         component={ExmapleStackNavigator}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused, ...props }): ReactNode => (
             <Icon
               name={focused ? 'home' : 'home-outline'}
@@ -54,6 +55,7 @@ const HomeTabsNavigator: FC = () => {
         name={Routes.Tab2}
         component={ExmapleStackNavigator}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused, ...props }): ReactNode => (
             <Icon
               name={focused ? 'planet' : 'planet-outline'}
@@ -68,6 +70,7 @@ const HomeTabsNavigator: FC = () => {
         name={Routes.SettingsTab}
         component={SettingsStackNavigator}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused, ...props }): ReactNode => (
             <Icon
               name={focused ? 'person' : 'person-outline'}
@@ -86,7 +89,10 @@ const MainStack = () => {
   const { t } = useTranslation();
 
   return (
-    <Stack.Navigator mode="modal">
+    <Stack.Navigator
+      screenOptions={{
+        presentation: 'modal',
+      }}>
       <Stack.Screen
         name={Routes.Main}
         component={HomeTabsNavigator}

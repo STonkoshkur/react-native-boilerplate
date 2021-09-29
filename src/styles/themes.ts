@@ -27,10 +27,9 @@ type ExtendedThemeSchemaColorsKeys =
   | 'mutedText'
   | 'alternativeText';
 
-type ThemeSchemaColors = NavigationTheme['colors'] &
-  {
-    [k in ExtendedThemeSchemaColorsKeys]: string;
-  };
+type ThemeSchemaColors = NavigationTheme['colors'] & {
+  [k in ExtendedThemeSchemaColorsKeys]: string;
+};
 
 export type ThemeSchema = {
   dark: boolean;

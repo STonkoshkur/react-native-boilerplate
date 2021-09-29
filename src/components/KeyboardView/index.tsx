@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 // navigation
-import { useHeaderHeight } from '@react-navigation/stack';
+import { useHeaderHeight } from '@react-navigation/elements';
 
 const KeyboardView: FC = (props) => {
   const headerHeight = useHeaderHeight();

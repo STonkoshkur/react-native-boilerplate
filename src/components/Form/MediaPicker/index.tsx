@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { ReactElement, useCallback } from 'react';
 // utils
 import { useFileUpload } from 'src/hooks/useFileUpload';
@@ -87,21 +88,25 @@ function MediaPicker({
 
                 onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
               } catch (e) {
-                let error = e.data?.message ?? e.toString();
+                if (axios.isAxiosError(e)) {
+                  // TODO move e.toString() as another error;
+                  let error = e.response?.data?.message ?? e.toString();
 
-                if (e.status === 422) {
-                  error =
-                    e.data?.errors?.file ?? 'Unknown file validation error';
-                }
-
-                valueToUpdate.forEach((currentNewValueFile) => {
-                  if (currentNewValueFile.path === file.path) {
-                    currentNewValueFile.isLoading = false;
-                    currentNewValueFile.error = error;
+                  if (e.response?.status === 422) {
+                    error =
+                      e.response?.data?.errors?.file ??
+                      'Unknown file validation error';
                   }
-                });
 
-                onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
+                  valueToUpdate.forEach((currentNewValueFile) => {
+                    if (currentNewValueFile.path === file.path) {
+                      currentNewValueFile.isLoading = false;
+                      currentNewValueFile.error = error;
+                    }
+                  });
+
+                  onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
+                }
               }
             }),
           );

@@ -3,8 +3,7 @@ import * as yup from 'yup';
 import i18n from 'src/services/localization';
 
 export const schemaValidation = yup
-  .object()
-  .shape({
+  .object({
     email: yup
       .string()
       .email(i18n.t('validation:invalidEmail'))
@@ -21,4 +20,4 @@ export const schemaValidation = yup
     firstName: yup.string().required(i18n.t('validation:required')),
     lastName: yup.string().required(i18n.t('validation:required')),
   })
-  .defined();
+  .required();

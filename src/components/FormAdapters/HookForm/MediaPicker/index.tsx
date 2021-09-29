@@ -1,5 +1,11 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
-import { Control, Controller, Path, PathValue } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  Path,
+  PathValue,
+  UnpackNestedValue,
+} from 'react-hook-form';
 // components
 import MediaPicker, { MediaPickerProps } from 'src/components/Form/MediaPicker';
 
@@ -10,7 +16,7 @@ type MediaPickerAdapterProps<T> = Omit<
   onChange?: MediaPickerProps['onChange'];
   control: Control<T>;
   name: Path<T>;
-  defaultValue: PathValue<T, Path<T>>;
+  defaultValue: UnpackNestedValue<PathValue<T, Path<T>>> | undefined;
 };
 
 function MediaPickerAdapter<T>({
