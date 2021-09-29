@@ -4,7 +4,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 // root reducer
 import rootReducer from 'src/store/rootReducer';
 // services
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const persistConfig = {
   key: 'persist-data',

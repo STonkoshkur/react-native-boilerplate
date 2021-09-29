@@ -1,0 +1,36 @@
+name: Checks
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache App Dependencies
+        id: cache-node-modules-app
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: cache-node-modules-app-${{ hashFiles('yarn.lock') }}
+
+      - name: Copy ENV file
+        run: cp .env.example .env
+
+      - name: Install Dependencies
+        if: steps.cache-node-modules-app.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: TypeScript check
+        run: yarn run ts-compile-check
+      
+      - name: Lint check
+        run: yarn lint

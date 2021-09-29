@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { updateAuthToken } from 'src/store/modules/auth';
 // components
 import Icon from 'src/components/Icon';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import {
   appleAuthAndroid,

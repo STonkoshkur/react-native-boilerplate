@@ -431,7 +431,7 @@ PODS:
     - React-perflogger (= 0.65.1)
   - RNAppleAuthentication (2.1.5):
     - React-Core
-  - RNCAsyncStorage (1.12.1):
+  - RNCAsyncStorage (1.15.8):
     - React-Core
   - RNCCheckbox (0.5.8):
     - React-Core
@@ -442,7 +442,7 @@ PODS:
     - React-Core
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNGoogleSignin (5.0.0):
+  - RNGoogleSignin (6.0.0):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
   - RNImageCropPicker (0.36.4):
@@ -559,12 +559,12 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
-  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCCheckbox (from `../node_modules/@react-native-community/checkbox`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
+  - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
   - RNLocalize (from `../node_modules/react-native-localize`)
@@ -676,7 +676,7 @@ EXTERNAL SOURCES:
   RNAppleAuthentication:
     :path: "../node_modules/@invertase/react-native-apple-authentication"
   RNCAsyncStorage:
-    :path: "../node_modules/@react-native-community/async-storage"
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCCheckbox:
     :path: "../node_modules/@react-native-community/checkbox"
   RNCMaskedView:
@@ -686,7 +686,7 @@ EXTERNAL SOURCES:
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
-    :path: "../node_modules/@react-native-community/google-signin"
+    :path: "../node_modules/@react-native-google-signin/google-signin"
   RNImageCropPicker:
     :path: "../node_modules/react-native-image-crop-picker"
   RNInAppBrowser:
@@ -767,12 +767,12 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 85187f19dd9c47a7c102f9994f9d14e4dc2110de
   ReactCommon: eafed38eec7b591c31751bfa7494801618460459
   RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
-  RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
+  RNCAsyncStorage: e8b8d6320a0dd90eb610fb0d0b1ef90596697c69
   RNCCheckbox: 6bd119c26c6eb8264a29d59ff66cb70a14de3349
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNFBApp: b97d6654509a5852d49f0abf93be76b300fd2e2c
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
+  RNGoogleSignin: 111fd4792913208f338fe3178005f7a22e490ff9
   RNImageCropPicker: 73891a709e6fd8a47d32104d942757971f220aee
   RNInAppBrowser: 3ff3a3b8f458aaf25aaee879d057352862edf357
   RNLocalize: 7f1e5792b65a839af55a9552d05b3558b66d017e
