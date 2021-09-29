@@ -1,6 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { UseFormReturn } from 'react-hook-form';
+import axios from 'axios';
 // components
 import SignUpForm from './components/form/EditProfileForm';
 import KeyboardView from 'src/components/KeyboardView';
@@ -57,14 +58,18 @@ const ChangePasswordScreen: FC<ChangePasswordScreenProps> = ({
             type: 'error',
           });
 
-          if (e.status === 422) {
-            transformErrors<T>(e.data.errors).forEach((formError) => {
-              setError(formError.name, formError.error);
-            });
+          if (axios.isAxiosError(e)) {
+            if (e.response?.status === 422) {
+              transformErrors<T>(e.response?.data.errors).forEach(
+                (formError) => {
+                  setError(formError.name, formError.error);
+                },
+              );
+            }
           }
         }
       },
-    [showToast, navigation, t],
+    [showToast, navigation, t, dispatch],
   );
 
   return (

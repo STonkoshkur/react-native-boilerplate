@@ -1,13 +1,13 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 import { PathValue } from 'react-hook-form';
-import { Control, Controller, Path } from 'react-hook-form';
+import { Control, Controller, Path, UnpackNestedValue } from 'react-hook-form';
 // components
 import Input, { InputProps } from 'src/components/Form/Input';
 
 type InputAdapterProps<T> = InputProps & {
   control: Control<T>;
   name: Path<T>;
-  defaultValue: PathValue<T, Path<T>>;
+  defaultValue: UnpackNestedValue<PathValue<T, Path<T>>> | undefined;
 };
 
 function InputAdapter<T>({

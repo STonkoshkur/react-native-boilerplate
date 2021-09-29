@@ -14,10 +14,7 @@ import { useDispatch } from 'react-redux';
 import { updateAuthToken } from 'src/store/modules/auth';
 // components
 import Icon from 'src/components/Icon';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-community/google-signin';
+import { GoogleSignin } from '@react-native-community/google-signin';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import {
   appleAuthAndroid,
@@ -86,18 +83,7 @@ const SocialAuthBar: FC<SocialAuthBarProps> = ({
       });
 
       dispatch(updateAuthToken(loginData.token));
-    } catch (error) {
-      if (
-        !error.code ||
-        ![
-          statusCodes.SIGN_IN_CANCELLED,
-          statusCodes.IN_PROGRESS,
-          statusCodes.PLAY_SERVICES_NOT_AVAILABLE,
-        ].includes(error.code)
-      ) {
-        // TODO: add alerts for error cases
-      }
-    }
+    } catch (error) {}
   }, [dispatch]);
 
   /*

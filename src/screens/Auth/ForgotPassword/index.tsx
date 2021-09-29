@@ -1,6 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView, Alert } from 'react-native';
 import { UseFormReturn } from 'react-hook-form';
+import axios from 'axios';
 // navigation
 import { StackScreenProps } from '@react-navigation/stack';
 import { Routes, RootNavigationStackParamsList } from 'src/navigation';
@@ -46,10 +47,14 @@ const ForgotPasswordScreen: FC<ForgotPaaswordScreenProps> = ({
 
           navigation.goBack();
         } catch (e) {
-          if (e.status === 422) {
-            transformErrors<T>(e.data.errors).forEach((formError) => {
-              setError(formError.name, formError.error);
-            });
+          if (axios.isAxiosError(e)) {
+            if (e.response?.status === 422) {
+              transformErrors<T>(e.response?.data.errors).forEach(
+                (formError) => {
+                  setError(formError.name, formError.error);
+                },
+              );
+            }
           }
         }
       },

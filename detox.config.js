@@ -1,6 +1,8 @@
 const iosSimulatorName = 'iPhone 12';
+const iosSimulatorOs = 'iOS 14.5';
 const androidSimulatorName = 'Pixel_2_API_29';
 const simulatorName = process.env.SIMULATOR_NAME;
+const simulatorOs = process.env.SIMULATOR_OS;
 
 module.exports = {
   testRunner: 'jest',
@@ -10,6 +12,7 @@ module.exports = {
       type: 'ios.simulator',
       device: {
         type: simulatorName || iosSimulatorName,
+        os: simulatorOs || iosSimulatorOs,
       },
     },
     emulator: {

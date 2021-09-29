@@ -41,9 +41,8 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   ({ data }) => data,
   (responseData = {}) => {
-    const { response, message } = responseData;
-    const data = response?.data;
-    const status = response?.status as number;
+    const { response } = responseData;
+    const status = Number(response?.status);
 
     if (status >= 500) {
       showErrorAlert(
@@ -54,11 +53,7 @@ axiosInstance.interceptors.response.use(
       );
     }
 
-    return Promise.reject({
-      data,
-      message,
-      status,
-    });
+    return Promise.reject(responseData);
   },
 );
 

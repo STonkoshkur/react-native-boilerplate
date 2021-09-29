@@ -7,8 +7,8 @@ export type User = {
   email: string | null;
   provider: string;
   socialId?: string | null;
-  firstName: string | null;
-  lastName: string | null;
+  firstName: string;
+  lastName: string;
   photo?: FileEntity | null;
   role?: Role | null;
   status?: Status;
