@@ -35,7 +35,6 @@ type AvatarProps = Omit<ImageProps, 'source'> & {
   shape?: keyof typeof AvatarShapes;
 };
 
-// TODO: add support of avatar icons and bages
 const Avatar: FC<AvatarProps> = ({
   size: sizeFromProps = AvatarSizes.medium,
   shape = AvatarShapes.circle,

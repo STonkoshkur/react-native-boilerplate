@@ -23,7 +23,6 @@ export const store = configureStore({
       serializableCheck: false,
     }),
   ],
-  // TODO: add flipper redux middleware
   devTools: !!__DEV__,
 });
 

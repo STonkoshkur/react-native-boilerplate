@@ -19,10 +19,9 @@ const fallbackLocale: keyof typeof localizationResources = 'en'; // Default fall
  *
  * Based on https://www.i18next.com/misc/creating-own-plugins#languagedetector
  */
-// TODO: add in-app locale changing
 const languageDetector = {
   type: 'languageDetector' as const,
-  //   async: true,
+  // async: true,
   init: (): void => {}, // required property
   detect: (): string => {
     /*

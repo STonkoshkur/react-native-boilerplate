@@ -56,7 +56,6 @@ const ListItem: FC<PropsWithChildren<ListItemProps>> & ListItemSubcomponents =
         onPress={onPress}
         onLongPress={onLongPress}
         disabled={!!disabled}
-        // TODO: refactor underlayColor
         underlayColor={ColorUtil(colors.border).alpha(0.6).rgb().string()}
         style={[
           StyleSheet.flatten([

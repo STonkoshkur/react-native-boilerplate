@@ -4,7 +4,6 @@ import { View, StyleSheet, ViewProps } from 'react-native';
 import { useThemeSchema } from 'src/hooks/useThemeShema';
 import { Colors, Spacing } from 'src/styles';
 
-// TODO: add onPress & onLongPress props
 type CardProps = ViewProps;
 
 const Card: FC<PropsWithChildren<CardProps>> = ({

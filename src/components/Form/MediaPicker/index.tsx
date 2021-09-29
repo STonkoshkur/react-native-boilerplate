@@ -89,7 +89,6 @@ function MediaPicker({
                 onChange(isMultiSelect ? valueToUpdate : valueToUpdate[0]);
               } catch (e) {
                 if (axios.isAxiosError(e)) {
-                  // TODO move e.toString() as another error;
                   let error = e.response?.data?.message ?? e.toString();
 
                   if (e.response?.status === 422) {
