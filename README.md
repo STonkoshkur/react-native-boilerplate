@@ -18,7 +18,7 @@ React Native boilerplate with mostly used features.
 
 [E2E Testing](#e2e-testing)
 
-## Implemented features
+## Features
 
 - [x] Auth flow: sign in, sign up, reset password, log out
 - [x] Social sign-in ([Google](https://github.com/react-native-google-signin/google-signin), [Facebook](https://github.com/facebook/react-native-fbsdk), [Apple](https://github.com/invertase/react-native-apple-authentication) for iOS and Android)
@@ -37,9 +37,6 @@ React Native boilerplate with mostly used features.
 - [x] Pre-commit hook with eslint and TS compiling checks
 - [x] E2E tests via [Detox](https://github.com/wix/Detox)
 - [x] [GithubActions CI](https://github.com/features/actions) integration
-
-## To do features
-
 - [ ] Firebase push-notifications
 - [ ] Integration with RN CLI
 
