@@ -20,7 +20,7 @@ target 'ReactNativeBoilerplate' do
   # add pods for desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
 
-  pod 'GoogleSignIn', '~> 5.0.2'
+  pod 'GoogleSignIn', '~> 6.0.0'
 
   # Enables Flipper.
   #
@@ -30,5 +30,6 @@ target 'ReactNativeBoilerplate' do
 
   post_install do |installer|
     react_native_post_install(installer)
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
 end
