@@ -4,9 +4,7 @@ React Native boilerplate with mostly used features.
 
 ## Map
 
-[Implemented features](#implemented-features)
-
-[To do list](#to-do-features)
+[Features](#features)
 
 [Predefined commands on package.json](#predefined-commands-on-packagejson)
 
