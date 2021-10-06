@@ -199,7 +199,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     // Firebase
-    implementation platform("com.google.firebase:firebase-bom:26.1.1")
+    implementation platform("com.google.firebase:firebase-bom:28.4.2")
 
     // Google sign-in
     implementation(project(":react-native-google-signin_google-signin"))
