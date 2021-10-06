@@ -57,7 +57,7 @@
     "yup": "0.32.9"
   },
   "devDependencies": {
-    "@babel/core": "7.15.5",
+    "@babel/core": "7.15.8",
     "@babel/runtime": "7.15.4",
     "@react-native-community/eslint-config": "3.0.1",
     "@types/color": "3.0.2",
