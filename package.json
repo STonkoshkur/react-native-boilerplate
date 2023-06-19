@@ -54,7 +54,7 @@
     "react-redux": "7.2.5",
     "redux-persist": "6.0.0",
     "uuid": "8.3.2",
-    "yup": "0.32.9"
+    "yup": "0.32.11"
   },
   "devDependencies": {
     "@babel/core": "7.15.8",
@@ -68,7 +68,7 @@
     "@types/react-native-vector-icons": "6.4.9",
     "@types/react-test-renderer": "17.0.1",
     "@types/uuid": "8.3.1",
-    "@types/yup": "0.29.13",
+    "@types/yup": "0.29.14",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "babel-jest": "27.2.4",
